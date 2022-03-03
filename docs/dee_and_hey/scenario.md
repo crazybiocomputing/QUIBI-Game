@@ -19,6 +19,8 @@
 
 # 2. Forensics Lab - Coffee Room
 
+![](assets/lab.png)
+
 ## Dialog between **Girl** (Sandy) and **Boy** in the coffee room
 
 - **Boy**: 'Hmmmm...',
