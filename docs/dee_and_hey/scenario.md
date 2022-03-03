@@ -24,19 +24,19 @@
 ## Dialog between **Girl** (Sandy) and **Boy** in the coffee room
 
 - **Boy**: 'Hmmmm...',
-- **Girl** (G): 'I received the samples from the police...',
+- **Girl**: 'I received the samples from the police...',
 - **Boy**: 'And ? ...',
-- **Girl** (G): 'Four samples come from animals and the tooth is human...',
+- **Girl**: 'Four samples come from animals and the tooth is human...',
 - **Boy**: 'Interesting! what can we do with the animal samples?',
-- **Girl** (G): 'Don\'t know...',
+- **Girl**: 'Don\'t know...',
 - **Boy**: 'Maybe DNA barcoding can work...',
-- **Girl** (G): 'Yeees, that can solve my problem.',
+- **Girl**: 'Yeees, that can solve my problem.',
 - **Boy**: 'We need to extract DNA and sequence some genes...',
-- **Girl** (G): 'We need more details and know which gene to amplify and sequence ...',
+- **Girl**: 'We need more details and know which gene to amplify and sequence ...',
 - **Boy**: 'Hey you!<br>What are you waiting for?',
-- **Girl** (G): 'You want a coffee?<br>I\'m sorry, I have no coin',
+- **Girl**: 'You want a coffee?<br>I\'m sorry, I have no coin',
 - **Boy**: 'Are you listening to us?<br> Do you have any idea about Sandy\'s problem?'
-- **Girl** (G): 'If you think you can solve my problem,<br>please read my clipboard and answer the questions.'
+- **Girl**: 'If you think you can solve my problem,<br>please read my clipboard and answer the questions.'
 
 
 ## Clipboard
