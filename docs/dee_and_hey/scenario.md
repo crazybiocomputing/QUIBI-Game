@@ -84,6 +84,8 @@ Use BLAST to find out the various samples origins.
 
 # 4. Mansion
 
+![](assets/map.png)
+
 With the help of **Dr. Watson**, you spend the afternoon searching the various guests present the night of the murder.
 
 ##  boudoir 
@@ -132,6 +134,8 @@ The restroom is the only quiet place in this mansion!!! You call the CrazyTownPo
 - Which bioinformatics tool was used? `BLASTX`
 
 # 5. Gender
+
+![](assets/dialog_with_scientist.png)
 
 Unfortunately, the suspect found in the previous chapter has a good alibi. But, you didn't analyze the tooth found in the crime scene and it is human. You have to determine if it belongs to a man or a woman...
 
