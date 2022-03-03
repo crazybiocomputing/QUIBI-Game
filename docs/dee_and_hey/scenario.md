@@ -262,3 +262,65 @@ AACTCAACTTTCTTATTCTCCAGCTATTTTATGAGCTTTAGGATTTGTTTTTTTATTTACAGTAGGAGGA
 TTAACAGGAGTTGTTTTAGCTAATTCATCAGTAGATATTATTTTACATGATACTTATTATGTAGTAGCTC
 ATTTTCATTATGTTTTATCTATAGGAGCTGTATTTGCTATTATAGCAGGTTTTATTCACTGATACCCCTT
 ```
+
+## Answers
+
+```
+ cytochrome c oxidase subunit II [Homo sapiens]
+Sequence ID: ABB78146.1Length: 227Number of Matches: 1
+
+Alignment statistics for match #1 Score	Expect	Method	Identities	Positives	Gaps	Frame
+85.1 bits(209) 	9e-18 	Compositional matrix adjust. 	65/87(75%) 	69/87(79%) 	17/87(19%) 	+1
+
+Query  1    MAHAAQVGLQDATSPIIEELITFHDHALIIIYNIVERSITEFLICFLVlyalfltlttkl  180
+            MAHAAQVGLQDATSPI+EELITFHDHAL+II          FLICFLVLYALFLTL+TKL
+Sbjct  1    MAHAAQVGLQDATSPIMEELITFHDHALMII----------FLICFLVLYALFLTLSTKL  50
+
+Query  181  tntNISDSEGALENAQEIETV*TILPA  261
+            TNTNISD       AQE+ETV TILPA
+Sbjct  51   TNTNISD-------AQEMETVWTILPA  70
+```
+
+```
+ mtCOX2, partial [Homo sapiens]
+Sequence ID: BBH72725.1Length: 164Number of Matches: 1
+
+Alignment statistics for match #1 Score	Expect	Method	Identities	Positives	Gaps	Frame
+135 bits(340) 	1e-38 	Compositional matrix adjust. 	67/70(96%) 	69/70(98%) 	0/70(0%) 	+1
+
+Query  1    IILVLIALPSLRILYITDEVNDPSLTIKSIGHQWY*TYEYTDYGGLIFNSYILPPLFLEP  180
+            IILVLIALPSLRILY+TDEVNDPSLTIKSIGHQWY TYEYTDYGGLIFNSY+LPPLFLEP
+Sbjct  51   IILVLIALPSLRILYMTDEVNDPSLTIKSIGHQWYWTYEYTDYGGLIFNSYMLPPLFLEP  110
+
+Query  181  GDLRLLDVDN  210
+            GDLRLLDVDN
+Sbjct  111  GDLRLLDVDN  120
+```
+
+```
+ cytochrome oxidase subunit I [Sus scrofa]
+Sequence ID: CAA05231.1Length: 514Number of Matches: 2
+
+Alignment statistics for match #1 Score	Expect	Method	Identities	Positives	Gaps	Frame
+46.6 bits(109) 	4e-09 	Composition-based stats. 	22/24(92%) 	23/24(95%) 	0/24(0%) 	+3
+
+Query  6   AGIVGTALSLLIRAELGQPGTLCP  77
+           AG+VGTALSLLIRAELGQPGTL P
+Sbjct  26  AGMVGTALSLLIRAELGQPGTLLP  49
+```
+
+```
+ cytochrome c oxidase subunit I, partial [Drosophila suzukii]
+Sequence ID: ATX74927.1Length: 130Number of Matches: 1
+
+Alignment statistics for match #1 Score	Expect	Method	Identities	Positives	Gaps	Frame
+138 bits(348) 	1e-39 	Compositional matrix adjust. 	73/76(96%) 	74/76(97%) 	0/76(0%) 	+3
+
+Query  3    SATIIIAVPTGIKIFS*LATLHGTQLSYSPAIL*ALGFVFLFTVGGLTGVVLANSSVDII  182
+            SAT+IIAVPTGIKIFS LATLHGTQLSYSPAIL ALGFVFLFTVGGLTGVVLANSSVDII
+Sbjct  55   SATMIIAVPTGIKIFSWLATLHGTQLSYSPAILWALGFVFLFTVGGLTGVVLANSSVDII  114
+
+Query  183  LHDTYYVVAHFHYVLS  230
+            LHDTYYVVAHFHYVLS
+Sbjct  115  LHDTYYVVAHFHYVLS  130
+```
