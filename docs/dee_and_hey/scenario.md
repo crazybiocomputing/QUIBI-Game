@@ -6,15 +6,15 @@
 
 ![](assets/crime_scene.png)
 
-- spot001: 'Yes!! an interesting sample tagged as \'A\'');sample|=2;break;
-- spot002: alert('Yes!! A tooth... maybe during the fight');sample|=32;break;
-- spot003: alert('Yes!! an interesting sample \'C\'');sample|=8;break;
-- spot004: alert('The corpse was there...');break;
-- spot005: alert('Nothing.');break;
-- spot006: alert('Nooo!! Only dust');break;
-- spot007: alert('Nothing interesting');break;
-- spot008: alert('Yes!! an interesting sample  tagged as \'B\'');sample|=4;break;
-- spot009: alert('Yes!! an interesting sample  tagged as \'D\'');sample|=16;break;
+- spot001: 'Yes!! an interesting sample tagged as \'A\'
+- spot002: 'Yes!! A tooth... maybe during the fight'
+- spot003: 'Yes!! an interesting sample \'C\'
+- spot004: 'The corpse was there...'
+- spot005: 'Nothing.'
+- spot006: 'Nooo!! Only dust'
+- spot007: 'Nothing interesting'
+- spot008: 'Yes!! an interesting sample  tagged as \'B\'
+- spot009: 'Yes!! an interesting sample  tagged as \'D\'
 
 
 # 2. Forensics Lab - Coffee Room
