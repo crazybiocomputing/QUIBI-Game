@@ -91,7 +91,8 @@ With the help of **Dr. Watson**, you spend the afternoon searching the various g
 ##  boudoir 
 
 **Miss Pink** reads a fashion magazine while holding a horseshoe. In her purse, you find keys, a mobile phone, a four-leaf clover, a rabbit foot and a rope.
-- **Miss Pink**: I'm superstitious and this mansion is reknown to be haunted... **Lord Black** is another victim of the GHOST..." She is terrified.
+- **Miss Pink**: I'm superstitious and this mansion is reknown to be haunted... **Lord Black** is another victim of the GHOST..." 
+- **You**: She is terrified.
 
 ## dinner
 
