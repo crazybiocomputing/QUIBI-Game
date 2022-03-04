@@ -101,7 +101,8 @@ Nobody is in the dining room ... and no coffee ...
 
 **Prof. Violet** is in the kitchen holding a pair of pincers and tweezers. A book on snakes and a python living nestled in a vivarium are on the table close to a candlestick.
 
-- **Prof. Violet**: "These animals are really fascinating...". Hmmm... He doesn\'t seem really upset by the death of Lord Black.
+- **Prof. Violet**: "These animals are really fascinating...". 
+- **You**: Hmmm... He doesn\'t seem really upset by the death of Lord Black.
 
 ## gallery
 
