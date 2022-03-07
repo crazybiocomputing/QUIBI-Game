@@ -9,7 +9,9 @@ var barcodeDetector = new BarcodeDetector({formats: ['aztec', 'qr_code']});
 
 // check compatibility
 if (barcodeDetector) {
-  console.log('Barcode Detector supported!');
+  const msg = document.body.createElement('p');
+  document.body.appendChild(msg);
+  msg.textContent = 'Barcode Detector supported!';
 } else {
   console.log('Barcode Detector is not supported by this browser.');
 }
