@@ -3,12 +3,14 @@
 <head>
 </head>
 <body>
-<script>
+  <h1>Test BarcodeDetector</h1>
+<script type="text/javascript">
 // create new detector
 var barcodeDetector = new BarcodeDetector({formats: ['aztec', 'qr_code']});
 
 // check compatibility
 const msg = document.createElement('p');
+msg.textContent = 'Test Barcode Detector... Wait';
 document.body.appendChild(msg);
 if (barcodeDetector) {
   msg.textContent = 'Barcode Detector supported!';
