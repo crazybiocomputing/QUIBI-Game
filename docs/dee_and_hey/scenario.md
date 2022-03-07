@@ -48,7 +48,16 @@ DNA Barcode is a unique pattern of `DNA` sequence specific of a living thing. In
 
 # 3. Forensics Lab
 
-Once in the lab, you extract DNA and sequence your samples. Here are the results...
+Once in the lab, 
+
+![](assets/background_forensics.jpg)
+
+ou extract DNA and sequence your samples. Here are the results...
+
+- **Girl**: As you asked, I extracted DNA and I sequenced your samples. The results are now available...
+It's your turn to give me the origins of these samples
+
+- **Girl**: Here are the samples...
 
 ```
 > Sample#A
@@ -213,7 +222,7 @@ Congratulations!! The code for the mini-game is 'enamel.php'
 
 - id1=='amelogenin'
 - id2=='AMELX'
-- id3=='p22.31-p22.1'
+- id3=='p22.2'
 - id4=='AMELY'
 - id5=='p11.2'
 - id6=='Nucleotide'
@@ -230,97 +239,7 @@ Congratulations!! The code for the mini-game is 'enamel.php'
 - id17=='112'
 - sex=='M'
 
-# 6. docks
+# 6. Conclusion
 
+TODO
 
-Witnesses have mentioned a tall man escaping from the mansion of Lord Black during the night of the murder. Moreover, Lord Black of his real name 'Dr Frankenstein' is suspected to work in unofficial labs to create a genetically modified human being.
-
-In addition, rumors indicate that these labs have inserted their signatures to prove the paternity of the first GMM (Genetically Modified Man) and try to sell in the underground market "enhanced humans".
-
-During a raid of the french police at the 'Port de Bordeaux', four containers were investigated but they were unfortunately cleaned on arrival. Nevertheless, scientific police was able to take a few samples:
-
-
-```
->Container#1
-ATGGCACATGCAGCGCAAGTAGGTCTACAAGACGCTACTTCCCCTATCATAGAAGAGCTTATCACCTTTC
-ATGATCACGCCCTCATAATCATTTATAACATTGTGGAACGCAGCATTACCGAATTCCTTATCTGCTTCCT
-AGTCCTGTATGCCCTTTTCCTAACACTCACAACAAAACTAACTAATACTAACATCTCAGACAGCGAAGGC
-GCGCTGGAAAACGCTCAGGAAATAGAAACCGTCTGAACTATCCTGCCCGCC
-
->Container#2
-ATCATCCTAGTCCTCATCGCCCTCCCATCCCTACGCATCCTTTACATAACAGACGAGGTCAACGATCCCT
-CCCTTACCATCAAATCAATTGGCCACCAATGGTACTGAACCTACGAGTACACCGACTACGGCGGACTAAT
-CTTCAACTCCTACATACTTCCCCCATTATTCCTAGAACCAGGCGACCTGCGACTCCTTGACGTTGACAAT
-
->Container#3
-CATGAGCCGGTATAGTAGGCACTGCTTTGAGCCTCCTCATCCGAGCCGAACTAGGTCAGCCCGGTACTTT
-ATGCCCATCATAATTGGGGGCTTTGGAAACTGACTAGTGCCGTTAATAATTGGTGCTCCGGACATGGCAT
-
->Container#4
-CCTCAGCTACTATAATTATTGCAGTTCCTACTGGAATTAAAATTTTTAGTTGATTAGCTACTTTACATGG
-AACTCAACTTTCTTATTCTCCAGCTATTTTATGAGCTTTAGGATTTGTTTTTTTATTTACAGTAGGAGGA
-TTAACAGGAGTTGTTTTAGCTAATTCATCAGTAGATATTATTTTACATGATACTTATTATGTAGTAGCTC
-ATTTTCATTATGTTTTATCTATAGGAGCTGTATTTGCTATTATAGCAGGTTTTATTCACTGATACCCCTT
-```
-
-## Answers
-
-```
- cytochrome c oxidase subunit II [Homo sapiens]
-Sequence ID: ABB78146.1Length: 227Number of Matches: 1
-
-Alignment statistics for match #1 Score	Expect	Method	Identities	Positives	Gaps	Frame
-85.1 bits(209) 	9e-18 	Compositional matrix adjust. 	65/87(75%) 	69/87(79%) 	17/87(19%) 	+1
-
-Query  1    MAHAAQVGLQDATSPIIEELITFHDHALIIIYNIVERSITEFLICFLVlyalfltlttkl  180
-            MAHAAQVGLQDATSPI+EELITFHDHAL+II          FLICFLVLYALFLTL+TKL
-Sbjct  1    MAHAAQVGLQDATSPIMEELITFHDHALMII----------FLICFLVLYALFLTLSTKL  50
-
-Query  181  tntNISDSEGALENAQEIETV*TILPA  261
-            TNTNISD       AQE+ETV TILPA
-Sbjct  51   TNTNISD-------AQEMETVWTILPA  70
-```
-
-```
- mtCOX2, partial [Homo sapiens]
-Sequence ID: BBH72725.1Length: 164Number of Matches: 1
-
-Alignment statistics for match #1 Score	Expect	Method	Identities	Positives	Gaps	Frame
-135 bits(340) 	1e-38 	Compositional matrix adjust. 	67/70(96%) 	69/70(98%) 	0/70(0%) 	+1
-
-Query  1    IILVLIALPSLRILYITDEVNDPSLTIKSIGHQWY*TYEYTDYGGLIFNSYILPPLFLEP  180
-            IILVLIALPSLRILY+TDEVNDPSLTIKSIGHQWY TYEYTDYGGLIFNSY+LPPLFLEP
-Sbjct  51   IILVLIALPSLRILYMTDEVNDPSLTIKSIGHQWYWTYEYTDYGGLIFNSYMLPPLFLEP  110
-
-Query  181  GDLRLLDVDN  210
-            GDLRLLDVDN
-Sbjct  111  GDLRLLDVDN  120
-```
-
-```
- cytochrome oxidase subunit I [Sus scrofa]
-Sequence ID: CAA05231.1Length: 514Number of Matches: 2
-
-Alignment statistics for match #1 Score	Expect	Method	Identities	Positives	Gaps	Frame
-46.6 bits(109) 	4e-09 	Composition-based stats. 	22/24(92%) 	23/24(95%) 	0/24(0%) 	+3
-
-Query  6   AGIVGTALSLLIRAELGQPGTLCP  77
-           AG+VGTALSLLIRAELGQPGTL P
-Sbjct  26  AGMVGTALSLLIRAELGQPGTLLP  49
-```
-
-```
- cytochrome c oxidase subunit I, partial [Drosophila suzukii]
-Sequence ID: ATX74927.1Length: 130Number of Matches: 1
-
-Alignment statistics for match #1 Score	Expect	Method	Identities	Positives	Gaps	Frame
-138 bits(348) 	1e-39 	Compositional matrix adjust. 	73/76(96%) 	74/76(97%) 	0/76(0%) 	+3
-
-Query  3    SATIIIAVPTGIKIFS*LATLHGTQLSYSPAIL*ALGFVFLFTVGGLTGVVLANSSVDII  182
-            SAT+IIAVPTGIKIFS LATLHGTQLSYSPAIL ALGFVFLFTVGGLTGVVLANSSVDII
-Sbjct  55   SATMIIAVPTGIKIFSWLATLHGTQLSYSPAILWALGFVFLFTVGGLTGVVLANSSVDII  114
-
-Query  183  LHDTYYVVAHFHYVLS  230
-            LHDTYYVVAHFHYVLS
-Sbjct  115  LHDTYYVVAHFHYVLS  130
-```
