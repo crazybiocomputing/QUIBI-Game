@@ -5,7 +5,7 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar.js"></script>
     </head>
   <body style='margin : 0px; overflow: hidden;'>
-    <a-scene markers_start vr-mode-ui="enabled: false" color-space="sRGB" renderer="gammaOutput: true" embedded arjs="debugUIEnabled: false; sourceType: webcam; patternRatio: 0.9; trackingMethod: best;">
+    <a-scene markers_start vr-mode-ui="enabled: false" color-space="sRGB" renderer="colorManagement: true;" embedded arjs="debugUIEnabled: false; sourceType: webcam; patternRatio: 0.9; trackingMethod: best;">
 
       <a-marker type="pattern" url="patterns/pattern-pattern.patt"> 
           <a-box position="0 0.5 0" material="color: yellow;"></a-box>
