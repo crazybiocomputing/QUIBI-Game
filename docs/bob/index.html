@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>Bob</title>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Coda" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../css/quibi.css" type="text/css">
+  
+</head>
+<body>
+  <header>
+      <span class="elem">header</span>
+      <center>
+      <p> HOME HELP CRAZYBIOCOMPUTING [Level #5 | Game #1 ] </p>
+      </center>
+  </header>
+  <div id="wrapper">
+      <!-- Menu -->
+    <article id="status">
+    <nav>
+      <span class="elem">nav</span>
+      <a id="closeBtn" href="#" class="close">&times;</a>
+      <ul>
+        <li>History</li>
+        <li>Locations</li>
+        <li>Save Session</li>
+        <li>Settings</li>
+      </ul>
+
+    </nav>
+    <!-- Location Time -->
+    <p id="wherewhen" style="float:right">Location DD:HH:MM</p>
+    <a href="#" id="openBtn">
+      <span class="burger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </a>
+    </article>
+    <!-- Main panel -->
+    <section id="main">
+      <article id="bubble">
+       <span class="elem">article: Dialog</span>
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt eget libero vitae finibus. Integer sit amet pretium nibh. Duis placerat ut libero eu dignissim. Sed sed faucibus libero. Vestibulum varius leo sit amet nisl viverra mattis. In non hendrerit sapien. Cras in eleifend dolor, a scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent a erat arcu. Proin interdum eros nec velit vestibulum rhoncus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur pulvinar dapibus lacus ut congue. 
+      </article>
+      <article>
+         <span class="elem">Drag and drop a character...</span>
+         <article>
+          <img title="Character" src="../assets/person-bounding-box.svg" width=200></img>
+         </article>
+        <p style="font-size: 2em; font-family: 'Coda',cursive;">is asked about...</p>
+        <span class="elem">a character or an item</span><br>
+        <article>
+          <img src="../assets/question-square.svg" width=200 height=200></img>
+        </article>
+      </article>
+    </section>
+    <!-- Inventory -->
+    <aside id="sidebar">
+      <span class="elem">aside: Inventory</span>
+      <nav id="locs">
+        <span class="elem">nav:locs</span>
+        <ul>
+        <li class="location"><a href="#">A28 | 205<img src="../assets/geo-alt-fill.svg" width=70></img><span style="font-size:0.5em"></span></a></li>
+        </ul>
+      </nav>
+      <nav id="chars">
+        <span class="elem">nav:chars</span>
+        <ul>
+        <li><a href="#"><img class="open" title="Amy" src="../assets/char01.svg" width=80></img></a></li>
+        <li><a href="#"><img class="close" title="Bob" src="../assets/char02.png" width=80></img></a></li>
+        <li><a href="#"><img class="close" title="HAL" src="../assets/char03.svg" width=80></img></a></li>
+        <li><a href="#"><img class="close" title="Lio" src="../assets/char04.png" width=80></img></a></li>
+        </ul>
+      </nav>
+      <nav id="items">
+        <span class="elem">nav:items</span>
+        <ul>
+          <li class="small item"><a href="#"><p>Blast</p></a></li>
+          <li class="small item"><a href="#"><p>Databank</p></a></li>
+          <li class="small item"><a href="#"><p>Papers</p></a></li>
+          <li class="small item"><a href="#"><p>Species</p></a></li>
+          </ul>
+      </nav>
+    </aside>
+  </div>
+  <footer>
+  <span class="elem">footer</span>
+  https://www.alsacreations.com/xmedia/tuto/html5/sections/index.html
+  </footer>
+  
+<script>
+  var sidenav = document.querySelector("#status>nav");
+  var openBtn = document.getElementById("openBtn");
+  var closeBtn = document.getElementById("closeBtn");
+
+  openBtn.onclick = openNav;
+  closeBtn.onclick = closeNav;
+
+  /* Set the width of the side navigation to 250px */
+  function openNav() {
+    sidenav.classList.add("active");
+  }
+
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    sidenav.classList.remove("active");
+  }
+</script>
+</body>
+</html>
