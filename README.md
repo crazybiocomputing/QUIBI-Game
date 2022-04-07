@@ -8,8 +8,8 @@ Hybrid Serious Game using 2D-Code for interactivity
 
 ## References
 
-https://gameprogrammingpatterns.com/state.html
-https://gamedevelopment.tutsplus.com/tutorials/finite-state-machines-theory-and-implementation--gamedev-11867
+- https://gameprogrammingpatterns.com/state.html
+- https://gamedevelopment.tutsplus.com/tutorials/finite-state-machines-theory-and-implementation--gamedev-11867
 
 
 
