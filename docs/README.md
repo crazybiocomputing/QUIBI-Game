@@ -1,5 +1,5 @@
 
-## Credits
+## Credits about the assets
 
 ### Characters
 
