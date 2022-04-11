@@ -31,12 +31,16 @@
           "require": [],
           "update": [
             {
+              "func": "addchar",
+              "arg": "02"
+            },
+           {
               "func": "additem",
               "arg": "papers"
             }
           ],
-          "fr": "Vous venez d'entrer dans la salle info 005 où plusieurs étudiant.e.s travaillent silencieusement devant les ordinateurs quand soudain, un étudiant `char:44` s'arrache les cheveux et se lamente bruyamment en chiffonnant une feuille `item:papers` qu'il jette au sol avant de la piétiner.",
-          "en" : "You have just entered computer room 005 where several students are silently working in front of the computers when suddenly, a student `char:44` is tearing his hair out and wailing loudly while crumpling up a paper sheet `item:papers` that he throws to the ground before stomping on it."
+          "fr": "Vous venez d'entrer dans la salle info 005 où plusieurs étudiant.e.s travaillent silencieusement devant les ordinateurs quand soudain, un étudiant `char:02` s'arrache les cheveux et se lamente bruyamment en chiffonnant une feuille `item:papers` qu'il jette au sol avant de la piétiner.",
+          "en" : "You have just entered computer room 005 where several students are silently working in front of the computers when suddenly, a student `char:02` is tearing his hair out and wailing loudly while crumpling up a paper sheet `item:papers` that he throws to the ground before stomping on it."
         }
       }
     }
