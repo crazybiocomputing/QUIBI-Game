@@ -24,142 +24,268 @@
 
 'use strict';
 
-const ITEMS = [
-  /* Items Bioinformatics Tools */
+const DECKS = [
   {
-    id: 'item_01',
-    category: 'NCBI',
-    name: 'blast',
-    code:'IT01'
+    deck: 'NCBI',
+    comment: 'NCBI Bioinformatics Tools',
+    collection: [
+      {
+        id: 'item_01',
+        name: 'blast',
+        code:'IT01'
+      },
+      {
+        id: 'item_02',
+        name: 'blast2seq',
+        code:'IT02'
+      },
+      {
+        id: 'item_03',
+        name:'primer-blast',
+        code:'IT03'
+      },
+      {
+        id: 'item_04',
+        name:'Entrez',
+        code:'IT04'
+      },
+      {
+        id: 'item_05',
+        name:'Databank',
+        code:'IT05'
+      },
+      {
+        id: 'item_06',
+        name:'Organism',
+        code:'IT06'
+      },
+      {
+        id: 'item_07',
+        name:'Date',
+        code:'IT07'
+      },
+      {
+        id: 'item_08',
+        name:'Settings',
+        code:'IT08'
+      }
+    ]
   },
   {
-    id: 'item_02',
-    category: 'NCBI',
-    name: 'blast2seq',
-    code:'IT02'
+    deck: 'EMBOSS',
+    comment: 'EMBOSS Bioinformatics Tools',
+    collection: [
+      {
+        id: 'item_10',
+        deck: 'EMBOSS',
+        name:'needle',
+        code:'IT10'
+      },
+      {
+        id: 'item_11',
+        deck: 'EMBOSS',
+        name:'pepstats',
+        code:'IT11'
+      },
+      {
+        id: 'item_12',
+        deck: 'EMBOSS',
+        name:'primersearch',
+        code:'IT12'
+      },
+      {
+        id: 'item_13',
+        deck: 'EMBOSS',
+        name:'showseq',
+        code:'IT13'
+      },
+      {
+        id: 'item_14',
+        deck: 'EMBOSS',
+        name:'sixpack',
+        code:'IT14'
+      },
+      {
+        id: 'item_15',
+        deck: 'EMBOSS',
+        name:'transseq',
+        code:'IT15'
+      },
+      {
+        id: 'item_16',
+        deck: 'EMBOSS',
+        name:'water',
+        code:'IT16'
+      }
+    ]
   },
   {
-    id: 'item_03',
-    category: 'NCBI',
-    name:'primer-blast',
-    code:'IT03'
+    deck: 'NGS',
+    comment: 'NGS Bioinformatics Tools',
+    collection: [
+      {
+        id: 'item_20',
+        deck: 'NGS',
+        name:'bowtie2',
+        code:'IT20'
+      },
+      {
+        id: 'item_21',
+        deck: 'NGS',
+        name:'bedtools',
+        code:'IT21'
+      },
+      {
+        id: 'item_22',
+        deck: 'NGS',
+        name:'samtools',
+        code:'IT11'
+      }
+    ]
   },
   {
-    id: 'item_04',
-    category: 'EMBOSS',
-    name:'needle',
-    code:'IT04'
+    deck: 'PHYLOGENY',
+    comment: 'PHYLOGENY Bioinformatics Tools',
+    collection: [
+      {
+        id: 'item_30',
+        name:'clustalO',
+        code:'IT30'
+      },
+      {
+        id: 'item_31',
+        name:'GBlocks',
+        code:'IT31'
+      },
+      {
+        id: 'item_32',
+        name:'TCoffee',
+        code:'IT32'
+      },
+      {
+        id: 'item_33',
+        name:'Muscle',
+        code:'IT33'
+      }
+    ]
   },
   {
-    id: 'item_05',
-    category: 'EMBOSS',
-    name:'pepstats',
-    code:'IT05'
+    deck: 'BASH',
+    comment: 'BASH Commands',
+    collection: [
+      {
+        id: 'item_50',
+        name:'cd',
+        code:'IT50'
+      },
+      {
+        id: 'item_51',
+        name:'ls',
+        code:'IT51'
+      },
+      {
+        id: 'item_52',
+        name:'pwd',
+        code:'IT52'
+      },
+      {
+        id: 'item_53',
+        name:'cat',
+        code:'IT53'
+      },
+      {
+        id: 'item_54',
+        name:'cut',
+        code:'IT54'
+      },
+      {
+        id: 'item_55',
+        name:'grep',
+        code:'IT55'
+      },
+      {
+        id: 'item_56',
+        name:'head',
+        code:'IT56'
+      },
+      {
+        id: 'item_57',
+        name:'mkdir',
+        code:'IT57'
+      },
+      {
+        id: 'item_58',
+        name:'mv',
+        code:'IT58'
+      },
+      {
+        id: 'item_59',
+        name:'printf',
+        code:'IT59'
+      },
+      {
+        id: 'item_60',
+        name:'rm',
+        code:'IT60'
+      },
+      {
+        id: 'item_61',
+        name:'seq',
+        code:'IT61'
+      },
+      {
+        id: 'item_62',
+        name:'sort',
+        code:'IT62'
+      },
+      {
+        id: 'item_63',
+        name:'tail',
+        code:'IT63'
+      },
+      {
+        id: 'item_64',
+        name:'touch',
+        code:'IT64'
+      },
+      {
+        id: 'item_65',
+        name:'tree',
+        code:'IT65'
+      },
+      {
+        id: 'item_66',
+        name:'uniq',
+        code:'IT66'
+      },
+      {
+        id: 'item_67',
+        name:'uniq -c',
+        code:'IT67'
+      },
+      {
+        id: 'item_70',
+        name:'awk',
+        code:'IT70'
+      }
+    ]
   },
   {
-    id: 'item_06',
-    category: 'EMBOSS',
-    name:'primersearch',
-    code:'IT06'
-  },
-  {
-    id: 'item_07',
-    category: 'EMBOSS',
-    name:'showseq',
-    code:'IT07'
-  },
-  {
-    id: 'item_08',
-    category: 'EMBOSS',
-    name:'water',
-    code:'IT08'
-  },
-  {
-    id: 'item_20',
-    category: 'NGS',
-    name:'bowtie2',
-    code:'IT20'
-  },
-  {
-    id: 'item_21',
-    category: 'NGS',
-    name:'bedtools',
-    code:'IT21'
-  },
-  {
-    id: 'item_22',
-    category: 'NGS',
-    name:'samtools',
-    code:'IT11'
-  },
-  {
-    id: 'item_30',
-    category: 'PHYLOGENY',
-    name:'clustalO',
-    code:'IT30'
-  },
-  {
-    id: 'item_31',
-    category: 'PHYLOGENY',
-    name:'GBlocks',
-    code:'IT31'
-  },
-  {
-    id: 'item_32',
-    category: 'PHYLOGENY',
-    name:'TCoffee',
-    code:'IT32'
-  },
-  {
-    id: 'item_33',
-    category: 'PHYLOGENY',
-    name:'Muscle',
-    code:'IT33'
-  },
-  {
-    id: 'item_50',
-    category: 'BASH',
-    name:'cd',
-    code:'IT50'
-  },
-  {
-    id: 'item_51',
-    category: 'BASH',
-    name:'ls',
-    code:'IT51'
-  },
-  {
-    id: 'item_52',
-    category: 'BASH',
-    name:'pwd',
-    code:'IT52'
-  },
-  {
-    id: 'item_53',
-    category: 'BASH',
-    name:'cut',
-    code:'IT53'
-  },
-  {
-    id: 'item_54',
-    category: 'BASH',
-    name:'tree',
-    code:'IT54'
-  },
-
-  /* Items Biophysical Devices */
-  {
-    id: 'item_101',
-    category: 'DEVICE',
-    name: 'spectrophotometer',
-    code:'IV01'
-  },
-  {
-    id: 'item_102',
-    category: 'DEVICE',
-    name: 'Mass Spectrometer',
-    code:'IV02'
-  },
+    deck: 'DEVICE',
+    comment: 'Biophysical Devices',
+    collection: [
+      {
+        id: 'item_101',
+        name: 'spectrophotometer',
+        code:'IV01'
+      },
+      {
+        id: 'item_102',
+        name: 'Mass Spectrometer',
+        code:'IV02'
+      }
+    ]
+  }
 ];
 
 const CHARS = [

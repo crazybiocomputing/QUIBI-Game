@@ -5,25 +5,37 @@
   <title>Bob</title>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
   <link href="http://fonts.googleapis.com/css?family=Coda" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../css/crazybio.css" type="text/css">
+  <link rel="stylesheet" href="../css/burger.css" type="text/css">
   <link rel="stylesheet" href="../css/quibi.css" type="text/css">
   
+  <script type="text/javascript" src="../../src/assets.js"></script>
+  <script type="text/javascript" src="../../src/dragdrop.js"></script>
+  <script type="text/javascript" src="../../src/debug.js"></script>
+  <script type="text/javascript" src="../../src/engine.js"></script>
+  <script type="text/javascript" src="../../src/history.js"></script>
+  <script type="text/javascript" src="../../src/init.js"></script>
+  <script type="text/javascript" src="../../src/network.js"></script>
 </head>
 <body>
-  <header>
-      <span class="elem">header</span>
-      <center>
-      <p> HOME HELP CRAZYBIOCOMPUTING [Level #5 | Game #1 ] </p>
-      </center>
+  <header id="crazybioHead">
+    <ul>
+    <li><a href="../index.php">[ H o m e ]</a></li>
+    <li><a href="help.php">[ H e l p ]</a></li>
+    <li><a href="history.php">— c&nbsp;&nbsp;r&nbsp;&nbsp;a&nbsp;&nbsp;z&nbsp;&nbsp;y
+    &nbsp;&nbsp;b&nbsp;&nbsp;i&nbsp;&nbsp;o
+    &nbsp;&nbsp;c&nbsp;&nbsp;o&nbsp;&nbsp;m&nbsp;&nbsp;p&nbsp;&nbsp;u&nbsp;&nbsp;t&nbsp;&nbsp;i&nbsp;&nbsp;n&nbsp;&nbsp;g  —</a></li>
+    <li><a href="#">[ L e v e l # 2 — g a m e # 2 ]</a></li>
+    </ul>
   </header>
   <div id="wrapper">
       <!-- Menu -->
-    <article id="status">
+    <article id="burger">
     <nav>
       <span class="elem">nav</span>
       <a id="closeBtn" href="#" class="close">&times;</a>
       <ul>
         <li>History</li>
-        <li>Locations</li>
         <li>Save Session</li>
         <li>Settings</li>
       </ul>
@@ -42,8 +54,6 @@
     <!-- Main panel -->
     <section id="main">
       <article id="bubble">
-       <span class="elem">article: Dialog</span>
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt eget libero vitae finibus. Integer sit amet pretium nibh. Duis placerat ut libero eu dignissim. Sed sed faucibus libero. Vestibulum varius leo sit amet nisl viverra mattis. In non hendrerit sapien. Cras in eleifend dolor, a scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent a erat arcu. Proin interdum eros nec velit vestibulum rhoncus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur pulvinar dapibus lacus ut congue. 
       </article>
       <article>
          <span class="elem">Drag and drop a character...</span>
@@ -63,27 +73,18 @@
       <span class="elem">aside: Inventory</span>
       <nav id="locs">
         <span class="elem">nav:locs</span>
-        <ul>
-        <li class="location"><a href="#">A28 | 205<img src="../assets/icons/geo-alt-fill.svg" width=70></img><span style="font-size:0.5em"></span></a></li>
+        <ul id="navlocs">
         </ul>
       </nav>
       <nav id="chars">
         <span class="elem">nav:chars</span>
-        <ul>
-        <li><a href="#"><img class="open" title="Amy" src="../assets/char01.svg" width=80></img></a></li>
-        <li><a href="#"><img class="close" title="Bob" src="../assets/char02.png" width=80></img></a></li>
-        <li><a href="#"><img class="close" title="HAL" src="../assets/char03.svg" width=80></img></a></li>
-        <li><a href="#"><img class="close" title="Lio" src="../assets/char04.png" width=80></img></a></li>
+        <ul id="navchars">
         </ul>
       </nav>
       <nav id="items">
         <span class="elem">nav:items</span>
-        <ul>
-          <li class="small item"><a href="#"><p>Blast</p></a></li>
-          <li class="small item"><a href="#"><p>Databank</p></a></li>
-          <li class="small item"><a href="#"><p>Papers</p></a></li>
-          <li class="small item"><a href="#"><p>Species</p></a></li>
-          </ul>
+        <ul id="navitems">
+        </ul>
       </nav>
     </aside>
   </div>
@@ -97,9 +98,9 @@
   </footer>
   
 <script>
-  var sidenav = document.querySelector("#status>nav");
-  var openBtn = document.getElementById("openBtn");
-  var closeBtn = document.getElementById("closeBtn");
+  let sidenav = document.querySelector("#burger>nav");
+  let openBtn = document.getElementById("openBtn");
+  let closeBtn = document.getElementById("closeBtn");
 
   openBtn.onclick = openNav;
   closeBtn.onclick = closeNav;
