@@ -38,7 +38,7 @@ async function fetchJSON(url) {
  * Asynchronously Read Markdown Scenario
  * TODO
  */
-async function fetchJSON(url) {
+async function fetchMD(url) {
   
   const response = await fetch(url);
   const txt = response.text();

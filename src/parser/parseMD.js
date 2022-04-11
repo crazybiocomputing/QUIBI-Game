@@ -256,8 +256,18 @@ const parseListItems = (txt) => {
       key = tok.v.replaceAll('**','').replaceAll('_','');
     }
     else if (tok.type !== MD.SEPARATOR && tok.type !== MD.EOL && key !== MD.NONE){
-      let [cat,prop] = key.split('.');
-      if (prop) {
+      let [cat,prop,subprop] = key.split('.');
+      if (subprop) {
+        if (cat in obj === false) {
+          obj[cat] = {};
+        }
+        if (prop in obj[cat] == false) {
+          obj[cat][prop] = {};
+        }
+        console.log(cat,prop,subprop);
+        obj[cat][prop][subprop] ??= tok.v;
+      }
+      else if (prop) {
         if (cat in obj === false) {
           obj[cat] = {};
         }
