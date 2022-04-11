@@ -1,0 +1,78 @@
+{
+  "title": "Bob",
+  "settings": {
+    "comment" : "General Settings for all the gamers",
+    "timecost": {
+      "move": 20,
+      "interrogate": 5
+    }
+  },
+  "gamers" : [
+    {
+      "name": "gamer0",
+      "settings": {
+        "starttime": "00:11:00",
+        "location": "loc:A28.005",
+        "variables" : [
+          {
+            "var": "blast",
+            "value": 0
+          },
+          {
+            "var": "failure",
+            "value": 0
+          },
+          {
+            "var": "seq",
+            "value": 0
+          }
+        ],
+        "intro": {
+          "require": [],
+          "update": [
+            {
+              "func": "additem",
+              "arg": "papers"
+            }
+          ],
+          "fr": "Vous venez d'entrer dans la salle info 005 où plusieurs étudiant.e.s travaillent silencieusement devant les ordinateurs quand soudain, un étudiant `char:44` s'arrache les cheveux et se lamente bruyamment en chiffonnant une feuille `item:papers` qu'il jette au sol avant de la piétiner.",
+          "en" : "You have just entered computer room 005 where several students are silently working in front of the computers when suddenly, a student `char:02` is tearing his hair out and wailing loudly while crumpling up a paper sheet `item:papers` that he throws to the ground before stomping on it."
+        }
+      },
+      "char:02": {
+        "name": "Bob",
+        "states" : [
+          {
+            "name": "present"
+          },
+          {
+            "name": "absent"
+          }
+        ],
+        "about" : [
+          {
+            "dest" : "char:02",
+            "name": "Bob",
+            "require" : [],
+            "update" : [
+              {
+                "func": "addchar",
+                "arg": "char:01"
+              },
+              {
+                "func": "addchar",
+                "arg": "char:03"
+              },
+              {
+                "func": "addchar",
+                "arg": "char:04"
+              }
+            ],
+            "fr": "Je m'appelle Bob et je suis étudiant en Biologie. Je suis inscrit à un cours de Bioinfo et c'est vraiment difficile. Je viens ici pour travailler sur ordinateur `char:03` car il y a souvent des étudiants en bioinformatique qui peuvent m'aider... D'ailleurs, il y en a deux ici `char:01` et `char:04`.",
+            "en": "My name is Bob and I am a Biology student. I am enrolled in a Bioinfo course and it is really difficult. I come here to work on computer `char:03` because there are often bioinformatics students who can help me... By the way, there are two here `char:01` and `char:04` ."
+          }
+        ]
+      }
+    }
+  ]
+}

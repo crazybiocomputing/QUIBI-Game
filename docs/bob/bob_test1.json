@@ -1,0 +1,44 @@
+{
+  "title": "Bob",
+  "settings": {
+    "comment" : "General Settings for all the gamers",
+    "timecost": {
+      "move": 20,
+      "interrogate": 5
+    }
+  },
+  "gamers" : [
+    {
+      "name": "gamer0",
+      "settings": {
+        "starttime": "00:11:00",
+        "location": "loc:A28.005",
+        "variables" : [
+          {
+            "var": "blast",
+            "value": 0
+          },
+          {
+            "var": "failure",
+            "value": 0
+          },
+          {
+            "var": "seq",
+            "value": 0
+          }
+        ],
+        "intro": {
+          "require": [],
+          "update": [
+            {
+              "func": "additem",
+              "arg": "papers"
+            }
+          ],
+          "fr": "Vous venez d'entrer dans la salle info 005 où plusieurs étudiant.e.s travaillent silencieusement devant les ordinateurs quand soudain, un étudiant `char:44` s'arrache les cheveux et se lamente bruyamment en chiffonnant une feuille `item:papers` qu'il jette au sol avant de la piétiner.",
+          "en" : "You have just entered computer room 005 where several students are silently working in front of the computers when suddenly, a student `char:44` is tearing his hair out and wailing loudly while crumpling up a paper sheet `item:papers` that he throws to the ground before stomping on it."
+        }
+      }
+    }
+  ]
+}
