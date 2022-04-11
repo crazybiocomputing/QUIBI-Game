@@ -23,3 +23,42 @@
  */
 
 'use strict';
+
+/**
+ * Asynchronously Read JSON Scenario
+ *
+ */
+async function fetchJSON(url) {
+  
+  const response = await fetch(url);
+  return await response.json();
+}
+
+/**
+ * Asynchronously Read Markdown Scenario
+ * TODO
+ */
+async function fetchJSON(url) {
+  
+  const response = await fetch(url);
+  const txt = response.text();
+  /*
+  const data = parseMD(txt);
+  return data;
+  */
+}
+
+
+/**
+ * Init game from `scenario`
+ * To run this example, type in QUIBI-Game
+ * `python3 -m http.server 8888`
+ */
+async function init(scenario) {
+  console.log('init');
+  // Load scenario in format JSON or Markdown
+  const data = await fetchJSON(scenario);
+  console.log(data);
+  // Create Game and GUI
+  
+}
