@@ -13,3 +13,8 @@ Hybrid Serious Game using 2D-Code for interactivity
 
 
 
+# Multi-Player
+
+## References about webRTC
+- https://medium.com/bumble-tech/webrtc-making-a-peer-to-peer-game-using-javascript-f7123aed769e
+- 
