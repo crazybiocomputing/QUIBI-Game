@@ -298,3 +298,11 @@ span.elem {
   border: solid 1px #444;
 }
 
+#dropzone {
+  width:200px;
+  height:200px;
+  background-image: url("../assets/icons/person-bounding-box.svg");
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+}
+

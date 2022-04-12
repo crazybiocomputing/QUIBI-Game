@@ -23,3 +23,32 @@
  */
 
 'use strict';
+
+function dragstart_handler(ev) {
+  // On ajoute l'identifiant de l'élément cible à l'objet de transfert
+  console.log(ev.target.id);
+  ev.dataTransfer.setData("application/my-app", ev.target.id);
+  event.dataTransfer.effectAllowed = "copy";
+  ev.dataTransfer.dropEffect = "copy";
+}
+
+function dragover_handler(ev) {
+  ev.preventDefault();
+  ev.dataTransfer.dropEffect = "copy";
+}
+
+function drop_handler(ev) {
+  ev.preventDefault();
+  // On obtient l'identifiant de la cible et on ajoute l'élément déplacé
+  // au DOM de la cible
+  var data = ev.dataTransfer.getData("application/my-app");
+  let copyNode = document.getElementById(data).cloneNode(true);
+  copyNode.id = `${data}_from`;
+  console.log(data,event.dataTransfer.dropEffect);
+  if (ev.target.hasChildNodes() ) {
+    // Remove previous element
+    ev.target.childNodes[0].remove();
+  }
+  const asset = CHARS.find( asset => asset.id === data);
+  ev.target.style.backgroundImage = `url(${asset.url}`;
+}

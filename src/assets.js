@@ -292,22 +292,22 @@ const CHARS = [
   {
     id: 'char_01',
     code:'CH01',
-    url:'assets/chars/char_01.svg'
+    url:'../assets/chars/char01.svg'
   },
   {
     id: 'char_02',
     code:'CH02',
-    url:'assets/chars/char_02.svg'
+    url:'../assets/chars/char02.png'
   },
   {
-    id: 'char_01',
+    id: 'char_03',
     code:'CH03',
-    url:'assets/chars/char_03.svg'
+    url:'../assets/chars/char03.svg'
   },
   {
     id: 'char_04',
     code:'CH04',
-    url:'assets/chars/char_04.svg'
+    url:'../assets/chars/char04.png'
   },
 ];
 

@@ -7,6 +7,9 @@
   <link href="http://fonts.googleapis.com/css?family=Coda" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="../css/quibi.css" type="text/css">
   
+  <script type="text/javascript" src="../../src/assets.js"></script>
+  <script type="text/javascript" src="../../src/dragdrop.js"></script>
+
 </head>
 <body>
   <header>
@@ -46,14 +49,14 @@
        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt eget libero vitae finibus. Integer sit amet pretium nibh. Duis placerat ut libero eu dignissim. Sed sed faucibus libero. Vestibulum varius leo sit amet nisl viverra mattis. In non hendrerit sapien. Cras in eleifend dolor, a scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent a erat arcu. Proin interdum eros nec velit vestibulum rhoncus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur pulvinar dapibus lacus ut congue. 
       </article>
       <article>
-         <span class="elem">Drag and drop a character...</span>
-         <article>
-          <img title="Character" src="../assets/icons/person-bounding-box.svg" width=200></img>
-         </article>
+        <span class="elem">Drag and drop a character...</span>
+        <article id="dropzone" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
+          
+        </article>
         <p style="font-size: 2em; font-family: 'Coda',cursive;">is asked about...</p>
         <span class="elem">a character or an item</span><br>
-        <article>
-          <img src="../assets/icons/question-square.svg" width=200 height=200></img>
+        <article ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
+          <img src="../assets/icons/question-square.svg" width=200 ></img>
         </article>
       </article>
     </section>
@@ -70,10 +73,10 @@
       <nav id="chars">
         <span class="elem">nav:chars</span>
         <ul>
-        <li><a href="#"><img class="open" title="Amy" src="../assets/char01.svg" width=80></img></a></li>
-        <li><a href="#"><img class="close" title="Bob" src="../assets/char02.png" width=80></img></a></li>
-        <li><a href="#"><img class="close" title="HAL" src="../assets/char03.svg" width=80></img></a></li>
-        <li><a href="#"><img class="close" title="Lio" src="../assets/char04.png" width=80></img></a></li>
+        <li><img id="char_01" href="#" draggable="true" ondragstart="dragstart_handler(event)" class="open" title="Amy" src="../assets/chars/char01.svg" width=80></img></li>
+        <li><img id="char_02" href="#" draggable="true" ondragstart="dragstart_handler(event)" class="close" title="Bob" src="../assets/chars/char02.png" width=80></img></a></li>
+        <li><img id="char_03" href="#" draggable="true" ondragstart="dragstart_handler(event)" class="close" title="HAL" src="../assets/chars/char03.svg" width=80></img></a></li>
+        <li><img id="char_04" href="#" draggable="true" ondragstart="dragstart_handler(event)" class="close" title="Lio" src="../assets/chars/char04.png" width=80></img></a></li>
         </ul>
       </nav>
       <nav id="items">
