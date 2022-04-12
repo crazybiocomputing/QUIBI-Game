@@ -20,6 +20,7 @@ Hybrid Serious Game using 2D-Code for interactivity
 - https://developer.mozilla.org/fr/docs/Web/API/WebRTC_API/Connectivity
 - https://medium.com/bumble-tech/webrtc-making-a-peer-to-peer-game-using-javascript-f7123aed769e
 - https://www.tutorialspoint.com/webrtc/webrtc_signaling.htm
+- https://github.com/cjb/serverless-webrtc
 
 ## Drag and Drop
 
