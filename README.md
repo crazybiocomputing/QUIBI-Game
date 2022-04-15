@@ -22,6 +22,7 @@ Hybrid Serious Game using 2D-Code for interactivity
 - https://www.tutorialspoint.com/webrtc/webrtc_signaling.htm
 - https://github.com/cjb/serverless-webrtc
 - https://github.com/nielsbaloe/webrtc-php
+- https://mac-blog.org.ua/webrtc-one-to-one-without-signaling-server
 
 ## Drag and Drop
 
