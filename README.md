@@ -25,6 +25,7 @@ Hybrid Serious Game using 2D-Code for interactivity
 - https://mac-blog.org.ua/webrtc-one-to-one-without-signaling-server
 - https://owebio.github.io/serverless-webrtc-chat/
 - https://hpbn.co/webrtc/
+- https://webrtchacks.com/the-minimum-viable-sdp/
 
 
 ## Drag and Drop
