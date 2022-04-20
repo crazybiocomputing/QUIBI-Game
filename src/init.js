@@ -22,16 +22,13 @@
  * Jean-Christophe Taveau
  */
 
-'use strict';
-
 /**
  * Asynchronously Read JSON Scenario
  *
  */
 async function fetchJSON(url) {
-  
   const response = await fetch(url);
-  return await response.json();
+  return response.json();
 }
 
 /**
@@ -39,7 +36,6 @@ async function fetchJSON(url) {
  * TODO
  */
 async function fetchMD(url) {
-  
   const response = await fetch(url);
   const txt = response.text();
   /*
@@ -47,7 +43,6 @@ async function fetchMD(url) {
   return data;
   */
 }
-
 
 /**
  * Init game from `scenario`
@@ -60,5 +55,4 @@ async function init(scenario) {
   const data = await fetchJSON(scenario);
   console.log(data);
   // Create Game and GUI
-  
 }
