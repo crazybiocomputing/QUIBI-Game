@@ -23,3 +23,11 @@
  */
 
 'use strict';
+
+//verification du drag and drop
+
+//init des variables interoge et interoger
+
+//changement d'etat
+
+//affichage dialogue (voir appel de fonction init dialogue)

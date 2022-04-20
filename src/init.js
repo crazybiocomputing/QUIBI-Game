@@ -20,8 +20,11 @@
  *
  * Authors:
  * Jean-Christophe Taveau
- */
-
+ * Louis Texier
+ * Léa Chabot
+ * Bluwen Guidoux D'Halluin
+ * Fatoumata Mangane
+*/
 'use strict';
 
 /**
@@ -61,4 +64,169 @@ async function init(scenario) {
   console.log(data);
   // Create Game and GUI
   
+
+  //TO DO
+
+    //Load the characteres
+    showCharactere();
+
+    //Load the dialogue with the right language (TO DO right now only work for the intro)
+    dialogue(data,'fr');
+
+    //Show the localisation (TO DO only work for the intro)
+    showLoc(data);
+
+    //Show the items
+    showItems();
+
+    initDrag();
+
 }
+
+/**
+ * 
+ * @param {Object} data 
+ */
+function showLoc(data){
+  let navlocs=getId('navlocs');
+
+  let loc = data['gamers'][0]["settings"]['location'];
+
+  let li = create('li');
+  let a =create('a');
+  let img =create('img');
+  let span = create('span');
+
+  li.class="location";
+  a.href='#'
+  a.textContent=loc.substring(4,7)+" | "+loc.substring(8);
+  img.src="../assets/icons/geo-alt-fill.svg";
+  img.width=70;
+  span.style="font-size:0.5em"
+  append(a,img);
+  append(a,span);
+  append(li,a);
+  append(navlocs,li);
+}
+
+/**
+ * 
+ */
+function showCharactere(){
+  let narch=getId('navchars');
+
+  for(let i =0; i<CHARS.length;i++){
+
+    let li = create('li');
+    let a =create('a');
+    let img =create('img');
+
+    a.href ='#';
+    a.setAttribute("ondragstart","dragstart_handler(event)");
+    img.setAttribute("class","close");
+
+    img.src=CHARS[i].url;
+    img.id=CHARS[i].id;
+    img.draggable ='true';
+    img.width=80;
+
+
+    append(a,img);
+    append(li,a);
+    append(narch,li);
+  }
+}
+
+/**
+ * 
+ */
+function showItems(){
+  let narIt=getId('navitems');
+
+  for (let i = 0; i<DECKS.length;i++){
+
+    let li = create('li');
+    let a = create('a');
+    let p = create('p');
+
+    a.href='#';
+    a.setAttribute("ondragstart","dragstart_handler(event)");
+
+    p.setAttribute("class","close");
+    p.textContent=DECKS[i].deck;
+
+    li.setAttribute("class","small item");
+
+    append(a,p);
+    append(li,a);
+    append(narIt,li);
+  }
+}
+
+//modification de l'index html ajout d'id pour les articles
+function initDrag(){
+
+  let dragUp= getId("dropzone1");
+  let dragDown=getId("dropzone2");
+
+  dragUp.setAttribute("ondrop","drop_handler(event)");
+  dragUp.setAttribute("ondragover","dragover_handler(event)");
+
+  dragDown.setAttribute("ondrop","drop_handler(event)");
+  dragDown.setAttribute("ondragover","dragover_handler(event)");
+}
+
+/**
+ * 
+ * @param {Object} data 
+ * @param {String} language 
+ */
+function dialogue(data,language){
+  let art= getId('bubble');
+  let p = create('p');
+  p.textContent = data['gamers'][0]["settings"]['intro'][language];
+  append(art,p);
+}
+
+
+
+/**
+ * 
+ * @param {String} type 
+ * @returns Object
+ */
+function create(type){
+  const el = document.createElement(type);
+  return el
+}
+
+/**
+ * 
+ * @param {String} id 
+ * @returns Object
+ */
+function getId(id){
+  const el = document.getElementById(id);
+  return el
+}
+
+/**
+ * 
+ * @param {String} parent 
+ * @param {String} child 
+ */
+function append(parent,child){
+  parent.appendChild(child);
+}
+
+//fonction affichechar qui affiche toutes les icones des characteres
+
+//fonction afficheitem qui affiche toutes les icones des items
+
+//fonction addchar ajoute dans char le charactere debloquer (vert)
+
+//fonction additem ajoute dans item l'objet debloquer
+
+//fonction dialogue
+
+//init des variables (seq, blast, failure)
