@@ -21,5 +21,3 @@
  * Authors:
  * Jean-Christophe Taveau
  */
-
-'use strict';
