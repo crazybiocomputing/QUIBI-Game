@@ -26,80 +26,83 @@
  * Fatoumata Mangane
  */
 
-// Commentaire seulement en francais a modifier, present juste pour la comprehension lors de l'ecriture, a remettre en anglais
 'use strict';
 
-/*
- * Recupere l'objet et check les status, puis les place dans un string pour fabriquer le nombre binaire, puis le convertit en hexadecimal
+/** 
+ * Convert a binary number into hexadecimal
  * 
- * Renvoie le nombre en hexadecimal
- */
-function get_status(object){
-    let binaire = "";
-    for (let i=0; i<object.length; i++){
-        if (object.status == 0 /*(ou false selon object)*/) {
-            binaire+="0";
-        }
-        else {
-            binaire+="1";
-        }
-    }
-    let hexa = conversion(binaire);
-    return hexa;
-}
-
-/*
- * Recupere un string d'un nombre binaire
- * 
- * parseInt(nb,base) transforme le nombre en entier de base 10, toString() le transforme en base 16 en string, toUpperCase() remplace les minuscules par des majuscules 
- * 
- * Renvoie le nombre en hexadecimal
- */
-function conversion(binaire){
-    let hexadecimal = parseInt(binaire,2).toString(16).toUpperCase();
+ * @param {string} binary -  String containing the binary number
+ * @return {string} - String containing the hexadecimal number
+*/
+function convert_to_hexa(binary){
+    let hexadecimal = parseInt(binary,2).toString(16).toUpperCase();
     return hexadecimal;
 }
 
-/*
- * Recupere un string d'un nombre hexadecimal
- *  
- * Renvoie le nombre en binaire
- */
-function conversion_2(hexadecimal){
-    let binaire = parseInt(hexadecimal,16).toString(2);
-    return binaire;
+/** 
+ * Convert a hexadecimal number into binary
+ * 
+ * @param {string} hexadecimal -  String containing the hexadecimal number
+ * @return {string} - String containing the binary number
+*/
+function convert_to_binary(hexadecimal){
+    let binary = parseInt(hexadecimal,16).toString(2);
+    return binary;
 }
 
-/*
- * Recupere le document et le nombre hexadecimal
- *  
- * Cree et place un cookie comprenant l'hexadecimal
- */
-function set_cookie(document,hexadecimal){
-    document.cookie = `hexadecimal=${hexadecimal}`;
+
+
+
+/** 
+ * Create and set a cookie for the key 'hexadecimal'
+ * 
+ * @param {string} hexadecimal - String containing the hexadecimal number
+*/
+function set_cookie(hexadecimal){
+    localStorage.setItem('hexadecimal',hexadecimal.toString());
 }
 
-/*
- * Recupere le document contenant le cookie
- *  
- * Cree et place un cookie comprenant l'hexadecimal
- */
-function get_cookie(document){
-    let cookie = document.cookie.split(";");
-    let string = "";
-    for (let i = 0; i < cookie.length; i++){
-        string+=cookie[i];
-    }
+/** 
+ * Get the cookie for the key 'hexadecimal'
+ * 
+ * @return {string} - String containing the hexadecimal number
+*/
+function get_cookie(){
+    let cookie = localStorage.getItem('hexadecimal')
     return cookie;
 }
 
-/*
- * Recupere l'object avec les status et l'hexadecimal
- *  
- * Convertit l'hexadecimal en binaire puis set les status
- */
-function set_status(object,hexadecimal){ // Definir object
-    let nb = conversion_2(hexadecimal)
+
+
+
+/** 
+ * Creation of the hexadecimal number
+ * 
+ * @param {object} object -  Object containing the status of the events
+ * @return {string} - String containing the hexadecimal number
+*/
+function get_status(object){
+    let binary = "";
+    for (let i=0; i<object.length; i++){
+        if (object.status == 0 /*(ou false selon object)*/) {
+            binary+="0";
+        }
+        else {
+            binary+="1";
+        }
+    }
+    let hexa = convert_to_hexa(binary);
+    return hexa;
+}
+
+/** 
+ * Set the status of the event depending of the hexadecimal keep in the cookie 
+ * 
+ * @param {object} object -  Object containing the status of the events (Define object and status)
+ * @param {string} hexadecimal -  Object containing the hexadecimal number
+*/
+function set_status(object,hexadecimal){
+    let nb = convert_to_binary(hexadecimal)
     let string = toString(nb);
     if (nb.length != object.length){
         let diff = object.length - nb.length;
