@@ -1,0 +1,38 @@
+<!-- Qrcode reader via a HTML page-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf8">
+    <title>Qrcode</title>
+    </head>
+    <body>
+        <div id="reader" width="600px"></div>
+        <script src="https://unpkg.com/html5-qrcode" type="text/javascript">
+            
+        </script>
+        <script>
+            function onScanSuccess(decodedText, decodedResult) {
+                // Handle on success condition with the decoded text or result.
+                console.log(`Scan result: ${decodedText}`, decodedResult);
+            }
+
+            var html5QrcodeScanner = new Html5QrcodeScanner(
+                "reader", { fps: 10, qrbox: 250 });
+                html5QrcodeScanner.render(onScanSuccess);
+                var html5QrcodeScanner = new Html5QrcodeScanner(
+                "reader", { fps: 10, qrbox: 250 });
+                    
+            function onScanSuccess(decodedText, decodedResult) {
+                // Handle on success condition with the decoded text or result.
+                console.log(`Scan result: ${decodedText}`, decodedResult);
+                // ...
+                html5QrcodeScanner.clear();
+                // ^ this will stop the scanner (video feed) and clear the scan area.
+            }
+
+            html5QrcodeScanner.render(onScanSuccess);
+        </script> 
+    </body>
+</html>
