@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8">
+<title>Cloud</title>
+<script type="text/javascript" src="../src/core.js"></script>
+<script type="text/javascript" src="../src/keyboard.js"></script>
+<script type="text/javascript" src="../src/team.js"></script>
+<script type="text/javascript" src="../src/cloud.js"></script>
+
+
+<style>
+.box {
+  display: flex;
+  border: solid 2px black;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#recipients {
+  margin: 0;
+  padding: 0;
+}
+
+#recipients li {
+  display: inline-block;
+}
+
+.erase {
+  background-image: url('../docs/assets/icons/x.svg');
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+  padding: 2px;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: solid 1px black;
+
+}
+
+.whoami {
+  background-image: url('../docs/assets/icons/person-check.svg');
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+  padding: 2px;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: solid 1px black;
+
+}
+
+.attempt {
+  display: flex;
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
+  perspective: 800px;
+}
+
+#letter-container {
+  width: 48px;
+  height: 48px;
+  margin: 2px;
+}
+
+#letter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #2f2f2f;
+  border-top-color: rgb(47, 47, 47);
+  border-right-color: rgb(47, 47, 47);
+  border-bottom-color: rgb(47, 47, 47);
+  border-left-color: rgb(47, 47, 47);
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: transform .1s,background .1s,border .1s;
+    transition-delay: 0s, 0s, 0s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#letter-container.selected {
+  border-color: #73adff;
+}
+
+.keyboard-line {
+  margin: 0;
+  padding: 0;
+}
+
+.keyboard button {
+  color: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  border-radius: 0;
+  align-items: flex-start;
+  text-index: 0;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  line-height: 1em;
+}
+
+.keyboard .key {
+  width: 30px;
+  height: 60px;
+  cursor: pointer;
+  margin: 2px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  background: #636363;
+  border-radius: 6px;
+  border: none;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  border-bottom: 2px solid #4d4d4d;
+  user-select: none;
+  transition: transform .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.keyboard .key.big {
+  width: 90px;
+}
+
+.keyboard .key.big img {
+  filter: invert(1);
+}
+
+.keyboard .key:hover {
+  background: #5a5a5a;
+}
+</style>
+</head>
+<body>
+<section id="team" style="background:#ccc;">
+
+</section>
+<section id="cloud">
+<article class="box">
+<div>
+  <img src="../docs/assets/icons/send.svg" width=100></div>
+<div>
+<p>From: <button>Bud</button></p>
+
+<ul id="recipients">
+<li><label>To:</label></li>
+<li><button>Pol</button></li>
+<li><button>Jen</button></li>
+<li><button>Yin</button></li>
+</ul>
+</div>
+<div>
+  <img src="../docs/assets/icons/question-square.svg" width="200" height="150">
+</div>
+</article>
+<article class="box">
+<div>
+<img src="../docs/assets/icons/inbox.svg" width=100>
+</div>
+<div>
+Type the code
+<div class="attempt">
+  <div id="letter-container" class="selected" style="transition-delay: 0s; animation-delay: 0s;"><!----></div>
+  <div id="letter-container" class="" style="transition-delay: 0s; animation-delay: 0.3s;"><!----></div>
+  <div id="letter-container" class="" style="transition-delay: 0s; animation-delay: 0.6s;"><!----></div>
+  <div id="letter-container" class="" style="transition-delay: 0s; animation-delay: 0.9s;"><!----></div>
+  <div id="letter-container" class="" style="transition-delay: 0s; animation-delay: 1.2s;"><!----></div>
+  <div id="letter-container" class="" style="transition-delay: 0s; animation-delay: 1.5s;"><!----></div>
+</div>
+
+<div class="keyboard">
+  <div class="keyboard-line">
+    <button class="single key">A</button>
+    <button class="single key">Z</button>
+    <button class="single key">E</button>
+    <button class="single key">R</button>
+    <button class="single key">T</button>
+    <button class="single key">Y</button>
+    <button class="single key">U</button>
+    <button class="single key">I</button>
+    <button class="single key">O</button>
+    <button class="single key">P</button>
+  </div>
+  <div class="keyboard-line">
+    <button class="single key">Q</button>
+    <button class="single key">S</button>
+    <button class="single key">D</button>
+    <button class="single key">F</button>
+    <button class="single key">G</button>
+    <button class="single key">H</button>
+    <button class="single key">J</button>
+    <button class="single key">K</button>
+    <button class="single key">L</button>
+    <button class="single key">M</button>
+  </div>
+  <div class="keyboard-line">
+    <button id="enter" class="big azerty"><div><img src="../assets/icons/arrow-return-left.svg" alt="Enter" class="icon"></div></button>
+    <button class="single key">W</button>
+    <button class="single key">X</button>
+    <button class="single key">C</button>
+    <button class="single key">V</button>
+    <button class="single key">B</button>
+    <button class="single key">N</button>
+    <button id="del" class="big azerty"><div><img src="../assets/icons/backspace.svg" alt="Del" class="icon"></div></button>
+  </div>
+</div>
+</div>
+
+<div>
+<p>From: <button>Pol</button></p>
+<p>To: <button>Bud</button></p>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt eget libero vitae finibus. Integer sit amet pretium nibh. Duis placerat ut libero eu dignissim. Sed sed faucibus libero. Vestibulum varius leo sit amet nisl viverra mattis. In non hendrerit sapien. </p>
+Click here to download in your inventory, the received item
+</div>
+
+</article>
+
+</section>
+<script>
+
+
+let GAME = {
+  cypher: '1ABC2DEF3GHI4JKL5MNO6PQR7STU8VWX9YZ0',
+  players: 2,
+  team: ['','',''],
+  time: [0,0,0], // day,hour,minutes
+  scenario: {}
+}
+
+// Create section `team` 
+newTeam(document.getElementById('team'));
+
+// Send by player2
+GAME.team = ['FOO','ADA','RAY'];
+GAME.whoami = 2;
+const passwd = send_item([25,1]);
+
+// Received by player1
+GAME.whoami = 1
+receive_item([passwd]);
+
+
+</script>
+</body>
+</html>
