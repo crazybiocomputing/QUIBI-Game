@@ -263,6 +263,25 @@ function itemFindId(identifiant){
     }
 }
 
+//Change the language for the game
+function language(){
+    let btn = getId('monselect');
+
+    btn.addEventListener('click', updateBtn);
+
+    function updateBtn() {
+    if (btn.value === 'fr') {
+        console.log('bonjour');
+    } else {
+        btn.value = 'en';
+        console.log('hello');
+    }
+    }
+    return btn.value;
+}
+
+
+
 //verification du drag and drop
 
 //init des variables interoge et interoger

@@ -63,7 +63,7 @@ async function init(scenario) {
   const data = await fetchJSON(scenario);
   console.log(data);
   // Create Game and GUI
-  let langue = 'fr';
+  let langue = language();
   //TO DO
 
   //Load the characters
@@ -89,6 +89,7 @@ async function init(scenario) {
 
   //Clean the drag and drop
   cleanDragAndDrop();
+
 }
 
 /**
