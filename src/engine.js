@@ -89,6 +89,7 @@ function addchar(char,name){
                 a.href ='#';
                 a.setAttribute("ondragstart","dragstart_handler(event)");
                 a.id=CHARS[i].id;
+                a.title=CHARS[i].id;
                 img.setAttribute("class","open");
             
                 img.src=CHARS[i].url;

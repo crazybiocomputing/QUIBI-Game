@@ -178,10 +178,10 @@ function initDrag(){
   let dragUp= getId("dropzone1");
   let dragDown=getId("dropzone2");
 
-  dragUp.setAttribute("ondrop","drop_handler(event)");
+  dragUp.setAttribute("ondrop","drop_handler_up(event)");
   dragUp.setAttribute("ondragover","dragover_handler(event)");
 
-  dragDown.setAttribute("ondrop","drop_handler(event)");
+  dragDown.setAttribute("ondrop","drop_handler_down(event)");
   dragDown.setAttribute("ondragover","dragover_handler(event)");
 }
 

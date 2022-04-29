@@ -51,7 +51,7 @@ function drop_handler_0(ev) {
   ev.target.style.backgroundImage = `url(${asset.url}`;
 }
 
-function drop_handler(ev) {
+function drop_handler_down(ev) {
   ev.preventDefault();
   // On obtient l'identifiant de la cible et on ajoute l'élément déplacé
   // au DOM de la cible
@@ -69,8 +69,27 @@ function drop_handler(ev) {
     ev.target.alt= asset.name;
     ev.target.src="";
   }else{
-    console.log(asset.url);
     ev.target.src = asset.url;
   }
-  
 }
+  
+
+  function drop_handler_up(ev) {
+    ev.preventDefault();
+    // On obtient l'identifiant de la cible et on ajoute l'élément déplacé
+    // au DOM de la cible
+    const data = ev.dataTransfer.getData('application/my-app');
+    const copyNode = document.getElementById(data).cloneNode(true);
+    copyNode.id = `${data}_from`;
+    console.log(data, ev.dataTransfer.dropEffect);
+    if (ev.target.hasChildNodes()) {
+      // Remove previous element
+      ev.target.childNodes[0].remove();
+    }
+    let asset = CHARS.find((a) => a.id === data);
+    if (asset === undefined){
+      window.alert("Don't work")
+    }else{
+      ev.target.src = asset.url;
+    }
+  }
