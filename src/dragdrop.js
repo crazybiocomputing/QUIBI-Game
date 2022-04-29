@@ -35,7 +35,7 @@ function dragover_handler(ev) {
   ev.dataTransfer.dropEffect = 'copy';
 }
 
-function drop_handler(ev) {
+function drop_handler_0(ev) {
   ev.preventDefault();
   // On obtient l'identifiant de la cible et on ajoute l'élément déplacé
   // au DOM de la cible
@@ -49,4 +49,28 @@ function drop_handler(ev) {
   }
   const asset = CHARS.find((a) => a.id === data);
   ev.target.style.backgroundImage = `url(${asset.url}`;
+}
+
+function drop_handler(ev) {
+  ev.preventDefault();
+  // On obtient l'identifiant de la cible et on ajoute l'élément déplacé
+  // au DOM de la cible
+  const data = ev.dataTransfer.getData('application/my-app');
+  const copyNode = document.getElementById(data).cloneNode(true);
+  copyNode.id = `${data}_from`;
+  console.log(data, ev.dataTransfer.dropEffect);
+  if (ev.target.hasChildNodes()) {
+    // Remove previous element
+    ev.target.childNodes[0].remove();
+  }
+  let asset = CHARS.find((a) => a.id === data);
+  if (asset === undefined){
+    let asset= itemFindId(data);
+    ev.target.alt= asset.name;
+    ev.target.src="";
+  }else{
+    console.log(asset.url);
+    ev.target.src = asset.url;
+  }
+  
 }

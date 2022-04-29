@@ -27,3 +27,17 @@
 */
 
 'use strict';
+
+
+function b_test1(data,language){
+    let el =data['gamers'][0]["settings"]['intro']['update']
+    let text= data['gamers'][0]["settings"]['intro'][language];
+    for (let i =0; i<el.length;i++){
+        let func = el[i]['func'];
+        switch(func){
+            case "addchar" : let els =el[i]['args']; let name = el[i]['name'];addchar(els,name); break;
+            case "additem" : let array = el[i]['args'];let type = el[i]['type']; additem(array,type);break;
+        }
+    }
+    dialog(text);
+}

@@ -56,28 +56,39 @@ async function fetchMD(url) {
  * To run this example, type in QUIBI-Game
  * `python3 -m http.server 8888`
  */
+//Pour appler le code dans engine
 async function init(scenario) {
   console.log('init');
   // Load scenario in format JSON or Markdown
   const data = await fetchJSON(scenario);
   console.log(data);
   // Create Game and GUI
-
+  let langue = 'fr';
   //TO DO
 
   //Load the characters
-  showCharacters();
+  //showCharacters();
 
   //Load the dialog with the right language (TO DO right now only work for the intro)
-  dialog(data,'fr');
+  //dialog(data,'fr');
 
   //Show the localisation (TO DO only work for the intro)
   showLoc(data);
 
   //Show the items
-  showItems();
+  //showItems();
 
   initDrag();
+
+  //addchar_1(data);
+
+  //additem(data);
+
+  //Load the first scenario : bob_test1
+  b_test1(data,langue);
+
+  //Clean the drag and drop
+  cleanDragAndDrop();
 }
 
 /**
@@ -120,6 +131,7 @@ function showCharacters(){
 
     a.href ='#';
     a.setAttribute("ondragstart","dragstart_handler(event)");
+    a.id=CHARS[i].id;
     img.setAttribute("class","close");
 
     img.src=CHARS[i].url;
@@ -173,17 +185,7 @@ function initDrag(){
   dragDown.setAttribute("ondragover","dragover_handler(event)");
 }
 
-/**
- * 
- * @param {Object} data 
- * @param {String} language 
- */
-function dialog(data,language){
-  let art= getId('bubble');
-  let p = create('p');
-  p.textContent = data['gamers'][0]["settings"]['intro'][language];
-  append(art,p);
-}
+
 
 
 
