@@ -76,21 +76,46 @@ function get_cookie(){
 
 
 /** 
+ * Update the status of the characters and items
+ * 
+ * 
+ *  let status = {"char_01" : 0,
+  "char_02" : 1,
+  "char_03" : 0,
+  "char_04" : 0,
+  "item_101" : 0,
+  "item_102" : 0,
+  "item_103" : 1,
+  "item_104" : 0,
+  "item_105" : 0,
+  };
+ * 
+ * @param {object} data -  Object containing the current status of the events
+ * @param {array} array -  Array containing the status of the last action of the player
+ * @return {object} - Object containing the new status of the events
+*/
+function get_status(array,data){
+    for (let i in data) {
+        console.log(i);
+        if (array[0] == i){
+            data[`${i}`] = 1;
+        }
+    }
+    return data;
+}
+
+/** 
  * Creation of the hexadecimal number
  * 
  * @param {object} object -  Object containing the status of the events
- * @return {string} - String containing the hexadecimal number
+ * @return {String} - String containing the hexadecimal number
 */
-function get_status(object){
+function create_hexadecimal(data){
     let binary = "";
-    for (let i=0; i<object.length; i++){
-        if (object.status == 0 /*(ou false selon object)*/) {
-            binary+="0";
-        }
-        else {
-            binary+="1";
-        }
+    for (let i in data){
+        binary += data[`${i}`].toString();
     }
+    console.log(binary);
     let hexa = convert_to_hexa(binary);
     return hexa;
 }
@@ -120,4 +145,3 @@ function set_status(object,hexadecimal){
         /* object.status[i] = string[i] si 0 et 1 utilise */
     }
 }
-
