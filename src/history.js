@@ -123,25 +123,36 @@ function create_hexadecimal(data){
 /** 
  * Set the status of the event depending of the hexadecimal keep in the cookie 
  * 
+ * @param {object} data - Object containing the scenario from the json file
  * @param {object} object -  Object containing the status of the events (Define object and status)
- * @param {string} hexadecimal -  Object containing the hexadecimal number
+ * @param {string} hexadecimal -  String containing the hexadecimal number
 */
-function set_status(object,hexadecimal){
-    let nb = convert_to_binary(hexadecimal)
-    let string = toString(nb);
-    if (nb.length != object.length){
-        let diff = object.length - nb.length;
-        for (let d = 0; d<diff; d++){
-            string = "0" + string;
+function set_status(data,object,hexadecimal){
+    let j = 0;
+    let binary = convert_to_binary(hexadecimal);
+    let str = "";
+    let el =data['gamers'][0]["settings"]['intro']['update'];
+
+    if (binary.length != Object.keys(object).length){
+        for (let k=0; k<Object.keys(object).length-binary.length; k++){
+            str += "0";
         }
+        str += binary;
     }
-    for (let i=0; i < object.length; i++){
-        if (string[i] == 0){
-            object.status[i] = False; 
+
+    for (let i in object){
+        console.log(i);
+        console.log(str[j]);
+        if ( i.substring(0,4) == "char" && str[j] == 1){
+            let els =el[j]['args']; 
+            let name = el[j]['name'];
+            addchar(els,name);
         }
-        else {
-            object.status[i] = True;
+        if ( i.substring(0,4) == "item" && str[j] == 1){
+            let array = el[i]['args'];
+            let type = el[i]['type']; 
+            additem(array,type);
         }
-        /* object.status[i] = string[i] si 0 et 1 utilise */
+        j++;
     }
 }
