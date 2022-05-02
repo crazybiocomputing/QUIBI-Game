@@ -63,40 +63,33 @@ async function init(scenario) {
   const data = await fetchJSON(scenario);
   console.log(data);
   // Create Game and GUI
-  let langue = language();
+  
   //TO DO
 
-  //Load the characters
-  //showCharacters();
-
-  //Load the dialog with the right language (TO DO right now only work for the intro)
-  //dialog(data,'fr');
+  let langue = language();
 
   //Show the localisation (TO DO only work for the intro)
   showLoc(data);
 
-  //Show the items
-  //showItems();
-
   initDrag();
 
-  //addchar_1(data);
-
-  //additem(data);
-
-  //Load the first scenario : bob_test1
-  b_test1(data,langue);
+  //Load the intro of the interaction
+  intro(data,langue);
 
   //Clean the drag and drop
   cleanDragAndDrop();
+  
+  //Check the drag and drop and show the interactions bettween two cards
+  checkDragAndDrop(data,langue);
 
 }
 
 /**
  * 
- * @param {Object} data 
+ * @param {Object} data - in format JSON
  */
 function showLoc(data){
+  //Show the localisation (TO DO only work for the intro)
   let navlocs=getId('navlocs');
 
   let loc = data['gamers'][0]["settings"]['location'];
@@ -118,9 +111,7 @@ function showLoc(data){
   append(navlocs,li);
 }
 
-/**
- * 
- */
+/*
 function showCharacters(){
   let narch=getId('navchars');
 
@@ -147,9 +138,6 @@ function showCharacters(){
   }
 }
 
-/**
- * 
- */
 function showItems(){
   let narIt=getId('navitems');
 
@@ -171,10 +159,10 @@ function showItems(){
     append(li,a);
     append(narIt,li);
   }
-}
+}*/
 
-//modification de l'index html ajout d'id pour les articles
 function initDrag(){
+  //add the function for the drag and drop
 
   let dragUp= getId("dropzone1");
   let dragDown=getId("dropzone2");
@@ -185,9 +173,6 @@ function initDrag(){
   dragDown.setAttribute("ondrop","drop_handler_down(event)");
   dragDown.setAttribute("ondragover","dragover_handler(event)");
 }
-
-
-
 
 
 /**
@@ -219,14 +204,3 @@ function append(parent,child){
   parent.appendChild(child);
 }
 
-//fonction affichechar qui affiche toutes les icones des characteres
-
-//fonction afficheitem qui affiche toutes les icones des items
-
-//fonction addchar ajoute dans char le charactere debloquer (vert)
-
-//fonction additem ajoute dans item l'objet debloquer
-
-//fonction dialogue
-
-//init des variables (seq, blast, failure)

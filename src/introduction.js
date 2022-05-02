@@ -28,8 +28,12 @@
 
 'use strict';
 
-
-function b_test1(data,language){
+/**
+ * 
+ * @param {Object} data - in format JSON
+ * @param {String} language
+ */
+function intro(data,language){
     let el =data['gamers'][0]["settings"]['intro']['update']
     let text= data['gamers'][0]["settings"]['intro'][language];
     for (let i =0; i<el.length;i++){
@@ -40,4 +44,75 @@ function b_test1(data,language){
         }
     }
     dialog(text);
+}
+
+/**
+ * 
+ * @param {Array} array - contains the id of the drag and drop result 
+ * @param {Object} data - in format JSON
+ * @param {String} language 
+ */
+function interaction(array,data,language){
+    let el = data['gamers'][0][array[0]]['about'];
+    for(let i = 0; i<el.length;i++){
+        let dest=el[i]['dest'];
+        if (dest === array[1]){
+            let update = el[i]['update'];
+            let text = el[i][language];
+            for (let j =0; j<update.length;j++){
+                let func = update[j]['func'];
+                console.log(func)
+                console.log(update[j]['args']);
+                switch(func){
+                    case "addchar" : let els =update[j]['args']; let name = update[j]['name'];addchar(els,name); break;
+                    case "additem" : let array = update[j]['args'];let type = update[j]['type']; additem(array,type);break;
+                }
+            }
+            dialog(text);
+        }
+    }
+}
+
+/**
+ * 
+ * @param {Object} data - in format JSON
+ * @param {String} language 
+ */
+function checkDragAndDrop(data,language){
+    //Check the drag and drop and show the interactions bettween two cards
+    let btn = getId('chek');
+    btn.addEventListener('click', chek);
+
+    function chek(){
+        let el =returnId();
+        if(el === undefined){
+            alert("There is no card or the card is misplaced");
+            return;
+        }
+        if(el.length==1){
+            alert("There is only one card");
+            return;
+        }
+        interaction(el,data,language);
+    }
+}
+/**
+ * 
+ * @returns Array - contains the id of the drag and drop result 
+ */
+function returnId(){
+    let el = getId('zone1');
+    let el_down =getId('zone2');
+    if (el.title==''){
+        return;
+    }
+    let array=[];
+    array.push(el.title);
+    if(el_down.title===''){
+        return array;
+    }else{
+        array.push(el_down.title);
+        return array;
+        
+    }
 }

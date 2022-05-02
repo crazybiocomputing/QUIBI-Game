@@ -20,6 +20,10 @@
  *
  * Authors:
  * Jean-Christophe Taveau
+ * Louis Texier
+ * Léa Chabot
+ * Bluwen Guidoux D'Halluin
+ * Fatoumata Mangane
  */
 
 function dragstart_handler(ev) {
@@ -68,8 +72,10 @@ function drop_handler_down(ev) {
     let asset= itemFindId(data);
     ev.target.alt= asset.name;
     ev.target.src="";
+    ev.target.title=asset.id;
   }else{
     ev.target.src = asset.url;
+    ev.target.title = asset.id;
   }
 }
   
@@ -91,5 +97,6 @@ function drop_handler_down(ev) {
       window.alert("Don't work")
     }else{
       ev.target.src = asset.url;
+      ev.target.title = asset.id;
     }
   }

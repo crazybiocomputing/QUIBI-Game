@@ -42,6 +42,7 @@
           <select id="monselect">
             <option value="fr" selected>Français</option>
             <option value="en">Inglish</option>
+            <option value="br">Brezoneg</option>
           </select>
         </li>
       </ul>
@@ -60,6 +61,7 @@
     <!-- Main panel -->
     <section id="main">
       <article id="bubble">
+        <p id="dialogue"></p>
       </article>
       <article>
          <span class="elem">Drag and drop a character...</span>
@@ -67,14 +69,15 @@
           <input id="Retour1" type="button" value="Retour">
 
          <article id="dropzone1">
-          <img id="zone1" title="Character" src="../assets/icons/person-bounding-box.svg" width=150></img>
+          <img id="zone1" title="" src="../assets/icons/person-bounding-box.svg" width=150></img>
          </article>
         <p style="font-size: 2em; font-family: 'Coda',cursive;">is asked about...</p>
         <input id="Retour2" type="button" value="Retour">
         <span class="elem">a character or an item</span><br>
         <article id="dropzone2">
-          <img id ="zone2" src="../assets/icons/question-square.svg" width=200 height=150 ></img>
+          <img id ="zone2" src="../assets/icons/question-square.svg" width=200 height=150 title=""></img>
         </article>
+        <input id='chek'type ='button' value="Chek">
       </article>
     </section>
 
@@ -126,7 +129,7 @@
   }
 </script>
 <script>
-  init('./bob_test1.json');
+  init('./bob_test2.json');
 </script>
 </body>
 </html>

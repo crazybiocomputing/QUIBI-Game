@@ -20,63 +20,22 @@
  *
  * Authors:
  * Jean-Christophe Taveau
+ * Louis Texier
+ * Léa Chabot
+ * Bluwen Guidoux D'Halluin
+ * Fatoumata Mangane
  */
 
 'use strict';
 
 
-//Change the state of the class close to open
-function addchar_0(data){
-    let el =data['gamers'][0]["settings"]['intro']['update'][0]['args'];
-
-    for(let j =0; j<=el.length;j++){
-        for(let i =0; i<CHARS.length;i++){
-            if (el[j]==CHARS[i].id){
-                let img = getId(CHARS[i].id);
-                img.setAttribute("class","open");
-                img.titre = "Bob";
-            }
-        }
-    }
-}
-
-//Show only the caractere that are in green
-//Function used before the simplification
-function addchar_1(data){
-    let el =data['gamers'][0]["settings"]['intro']['update'][0]['args'];
-    let name = data['gamers'][0]["settings"]['intro']['update'][0]['name'];
-    console.log(name);
-    let narch=getId('navchars');
-
-    for(let j =0; j<el.length;j++){
-        for(let i =0; i<CHARS.length;i++){
-            if (el[j]==CHARS[i].id){
-                let li = create('li');
-                let a =create('a');
-                let img =create('img');
-            
-                a.href ='#';
-                a.setAttribute("ondragstart","dragstart_handler(event)");
-                a.id=CHARS[i].id;
-                img.setAttribute("class","open");
-            
-                img.src=CHARS[i].url;
-                img.id=CHARS[i].id;
-                img.draggable ='true';
-                img.width=80;
-            
-            
-                append(a,img);
-                append(li,a);
-                append(narch,li);
-                img.title = name[j];
-            }
-        }
-    }
-}
-
-//Show only the caractere that are in green -transfrome for intro
+/**
+ * 
+ * @param {Array} char - contains alls the characters'update 
+ * @param {Array} name - contains alls the characters'names 
+ */
 function addchar(char,name){
+    //Show only the caractere that are in green
     let narch=getId('navchars');
 
     for(let j =0; j<char.length;j++){
@@ -107,71 +66,20 @@ function addchar(char,name){
     }
 }
 
-/*
-function additem_0(data){
-    let el =data['gamers'][0]["settings"]['intro']['update'][1]['args'];
-    let narIt=getId('navitems');
-
-    for(let j =0; j<el.length;j++){
-        let li = create('li');
-        let a = create('a');
-        let p = create('p');
-    
-        a.href='#';
-        a.id=el[j];
-        a.setAttribute("ondragstart","dragstart_handler(event)");
-    
-        p.setAttribute("class","open");
-        p.textContent=el[j];
-    
-        li.setAttribute("class","small item");
-    
-        append(a,p);
-        append(li,a);
-        append(narIt,li);
-    }
-}
-*/
-
 /**
  * 
- * @param {Array} array - contiens alls the items'update 
- */
-function additem_1(array){
-    let narIt=getId('navitems');
-
-    for(let j =0; j<array.length;j++){
-        let li = create('li');
-        let a = create('a');
-        let p = create('p');
-    
-        a.href='#';
-        a.id=array[j];
-        a.setAttribute("ondragstart","dragstart_handler(event)");
-    
-        p.setAttribute("class","open");
-        p.textContent=array[j];
-    
-        li.setAttribute("class","small item");
-    
-        append(a,p);
-        append(li,a);
-        append(narIt,li);
-    }
-}
-
-/**
- * 
- * @param {Array} array - contiens alls the items'update 
+ * @param {Array} array - contains alls the items'update 
+ * @param {Array} type - contains alls the items'type
  */
  function additem(array,type){
+    //Show the items
     let narIt=getId('navitems');
 
     for(let j =0; j<array.length;j++){
-        for (let i=0; i<DECKS.length;i++){ //parcous DZCKS
-            if(type[j]===DECKS[i]['deck']){ //si les types ici PAPER correspondent
+        for (let i=0; i<DECKS.length;i++){
+            if(type[j]===DECKS[i]['deck']){
                 let deck=DECKS[i]['collection']; 
-                for(let y=0;y<deck.length;y++){ //parcours le nombre d'item comrpris dans la partie paper
+                for(let y=0;y<deck.length;y++){
                     if (array[j]===deck[y]['id']){
 
                         let li = create('li');
@@ -199,35 +107,20 @@ function additem_1(array){
     }
 }
 
-/**
- * 
- * @param {Object} data 
- * @param {String} language 
- */
- function dialog_0(data,language){
-    let art= getId('bubble');
-    let p = create('p');
-    p.textContent = data['gamers'][0]["settings"]['intro'][language];
-    append(art,p);
-}
-
 
 /**
  * 
- * @param {Object} data 
- * @param {String} language 
+ * @param {Object} data - format JSON
  */
  function dialog(text){
-    let art= getId('bubble');
-    let p = create('p');
+    let p= getId('dialogue');
     p.textContent = text;
-    append(art,p);
 }
 
-/**
- * Clear the img of the target darg and drop
- */
+
 function cleanDragAndDrop(){
+    //Clear the img of the target darg and drop
+
     let zone1=getId('zone1');
     let zone2 = getId('zone2');
     let input1 = getId('Retour1')
@@ -240,6 +133,7 @@ function cleanDragAndDrop(){
       if (zone2.src != '../assets/icons/question-square.svg') {
         zone2.src = '../assets/icons/question-square.svg';
         zone2.alt ='';
+        zone2.title='';
       }
     }
 
@@ -247,12 +141,18 @@ function cleanDragAndDrop(){
         if (zone1.src != '../assets/icons/person-bounding-box.svg') {
             zone1.src = '../assets/icons/person-bounding-box.svg';
             zone1.alt ='';
+            zone1.title ='';
             }
     }
 }
 
-//Find un item based on is id and return the item
+/**
+ * 
+ * @param {String} identifiant - an id 
+ * @returns Object
+ */
 function itemFindId(identifiant){
+    //Find un item based on is id and return the item
     for(let i=0;i<DECKS.length;i++){
         let deck=DECKS[i]['collection'];
         for (let j=0;j<deck.length;j++){
@@ -263,29 +163,33 @@ function itemFindId(identifiant){
     }
 }
 
-//Change the language for the game
+/**
+ * 
+ * @param {String} identifiant - an id 
+ * @returns Object
+ */
+function charsFindId(identifiant){
+    //Find un Character based on is id and return the character
+    for(let i=0;i<CHARS.length;i++){
+        if (identifiant==CHARS[i]['id']){
+            return CHARS[i];
+        }
+    }
+}
+
+//Change the language for the game - TO DO
 function language(){
     let btn = getId('monselect');
-
     btn.addEventListener('click', updateBtn);
 
     function updateBtn() {
     if (btn.value === 'fr') {
-        console.log('bonjour');
-    } else {
-        btn.value = 'en';
-        console.log('hello');
+        return btn.value;
+    } else if (btn.value === 'en') {
+        return
+    }else {
+        console.log('demat');
     }
     }
     return btn.value;
 }
-
-
-
-//verification du drag and drop
-
-//init des variables interoge et interoger
-
-//changement d'etat
-
-//affichage dialogue (voir appel de fonction init dialogue)

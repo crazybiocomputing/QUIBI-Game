@@ -45,7 +45,7 @@
           "en" : "You have just entered computer room 005 where several students are silently working in front of the computers when suddenly, a student `char:02` is tearing his hair out and wailing loudly while crumpling up a paper sheet `item:papers` that he throws to the ground before stomping on it."
         }
       },
-      "char:02": {
+      "char_02": {
         "name": "Bob",
         "states" : [
           {
@@ -63,24 +63,53 @@
             "update" : [
               {
                 "func": "addchar",
-                "arg": ["char_01"],
+                "args": ["char_01"],
                 "name": ["?"]
               },
               {
                 "func": "addchar",
-                "arg": ["char_03"],
+                "args": ["char_03"],
                 "name": ["?"]
               },
               {
                 "func": "addchar",
-                "arg": ["char_04"],
+                "args": ["char_04"],
                 "name": ["?"]
               }
             ],
             "fr": "Je m'appelle Bob et je suis étudiant en Biologie. Je suis inscrit à un cours de Bioinfo et c'est vraiment difficile. Je viens ici pour travailler sur ordinateur `char:03` car il y a souvent des étudiants en bioinformatique qui peuvent m'aider... D'ailleurs, il y en a deux ici `char:01` et `char:04`.",
             "en": "My name is Bob and I am a Biology student. I am enrolled in a Bioinfo course and it is really difficult. I come here to work on computer `char:03` because there are often bioinformatics students who can help me... By the way, there are two here `char:01` and `char:04` ."
+          },
+          {
+            "dest" : "char_01",
+            "name" : "Lio",
+            "require" : [],
+            "update" : [],
+            "fr": "Je la vois souvent dans cette salle qui est ouverte aux étudiant.e.s d'autres formations. Je l'ai entendu dire qu'elle était en master de bioinformatique."
           }
         ]
+      },
+      "char_03":{
+        "name": "HAL",
+        "states" : [
+          {
+            "name": "present"
+          },
+          {
+            "name": "absent"
+          }
+        ],
+        "about" : [
+          {
+            "dest" : "char_03",
+            "name" : "HAL",
+            "require" : [],
+            "update" : [],
+            "fr": "Dans une fenêtre, un shell Linux et un prompt $>  vous attend impassible... ",
+            "en": "In a window, a Linux shell and a prompt $>  awaits you impassively..."
+          }
+        ]
+
       }
     }
   ]
