@@ -63,7 +63,7 @@ async function init(scenario) {
   const data = await fetchJSON(scenario);
   console.log(data);
   // Create Game and GUI
-  
+  let obj =data;
   //TO DO
 
   let langue = language();
@@ -78,9 +78,18 @@ async function init(scenario) {
 
   //Clean the drag and drop
   cleanDragAndDrop();
-  
+  let time = setTime(data);
+  console.log('it s time');
+  console.log(time);
   //Check the drag and drop and show the interactions bettween two cards
-  checkDragAndDrop(data,langue);
+  checkDragAndDrop(data,langue,time);
+
+  
+  startTime(data);
+
+  showSection;
+  cloud_sender;
+  initGUI;
 
 }
 
@@ -172,6 +181,24 @@ function initDrag(){
 
   dragDown.setAttribute("ondrop","drop_handler_down(event)");
   dragDown.setAttribute("ondragover","dragover_handler(event)");
+}
+
+
+//Change the language for the game - TO DO
+function language(){
+  let btn = getId('monselect');
+  btn.addEventListener('click', updateBtn);
+
+  function updateBtn() {
+  if (btn.value === 'fr') {
+      return btn.value;
+  } else if (btn.value === 'en') {
+      return
+  }else {
+      console.log('demat');
+  }
+  }
+  return btn.value;
 }
 
 

@@ -83,9 +83,13 @@ function addchar(char,name){
                     if (array[j]===deck[y]['id']){
 
                         let li = create('li');
+                        let div = create('div');
                         let a = create('a');
                         let p = create('p');
                     
+                        div.id = deck[y]['id'];
+                        div.setAttribute("class","small item");
+                        //a.setAttribute("class","small item");
                         a.href='#';
                         a.id=deck[y]['id'];
                         a.setAttribute("ondragstart","dragstart_handler(event)");
@@ -94,10 +98,11 @@ function addchar(char,name){
                         p.textContent=type[j];
                         p.title=deck[y]['name'];
                     
-                        li.setAttribute("class","small item");
+                        //li.setAttribute("class","small item");
                     
                         append(a,p);
-                        append(li,a);
+                        append(div,a);
+                        append(li,div);
                         append(narIt,li);
                     }
                 }
@@ -130,10 +135,11 @@ function cleanDragAndDrop(){
     input1.addEventListener('click',updateRetour1);
     
     function updateRetour2() {
-      if (zone2.src != '../assets/icons/question-square.svg') {
+      if (zone2.src != '../assets/icons/question-square.svg' || zone2.title !='') {
         zone2.src = '../assets/icons/question-square.svg';
         zone2.alt ='';
         zone2.title='';
+        zone2.setAttribute("class","");
       }
     }
 
@@ -176,20 +182,130 @@ function charsFindId(identifiant){
         }
     }
 }
+/**
+ * 
+ *  @param {Object} data - format JSON
+ * @returns Array contains string of the interaction's time cost
+ */
+function setTime(data){
+    //collect the interaction's time cost
+    let timeCost=[];
+    let move = data['settings']['timecost']['move'];
+    let interrogate = data['settings']['timecost']['interrogate'];
+    timeCost.push(move);
+    timeCost.push(interrogate);
+    return timeCost; 
+}
+/**
+ * 
+ * @param {Object} data - format JSON
+ */
+function startTime(data){
+    //Show the time when the sernario start
+    let time = data['gamers'][0]['settings']['starttime'];
+    let showtime = getId('showtimes');
+    showtime.textContent=time;
+}
 
-//Change the language for the game - TO DO
-function language(){
-    let btn = getId('monselect');
-    btn.addEventListener('click', updateBtn);
+/**
+ * 
+ * @param {Array} array - contains string of the interaction's time cost
+ * @param {String} typeUpdate - indicate the type of interaction
+ */
+function updateTime(array,typeUpdate){
+    //uptdate the time of the game
+    let showtime = getId('showtimes');
+    let time = showtime.textContent;
+    let newtime="";
+    let days="";
+    let hour="";
+    let minutes="";
+    for(let i =0; i<2; i++){
+        days+=time[i];
+    }
+    for(let i =3; i<5; i++){
+        hour+=time[i];
+    }
+    for(let i =6; i<8; i++){
+        minutes+=time[i];
+    }
 
-    function updateBtn() {
-    if (btn.value === 'fr') {
-        return btn.value;
-    } else if (btn.value === 'en') {
-        return
-    }else {
-        console.log('demat');
+    if(typeUpdate==="move"){
+        let addTime = array[0];
+        let cal;
+        cal = Number(minutes)+Number(addTime);
+        let change = cal.toString();
+        if (change.length==1){
+            let text=minutes[0]+cal.toString();
+            minutes=text;
+        }else{
+            let text=cal.toString();
+            minutes=text;
+        }
     }
+
+    if(typeUpdate==='interrogate'){
+        let addTime = array[1];
+        let cal;
+            cal = Number(minutes)+Number(addTime);
+            let change = cal.toString();
+            if (change.length==1){
+                let text=minutes[0]+cal.toString();
+                minutes=text;
+            }else{
+                let text=cal.toString();
+                minutes=text;
+            }
+        }else{
+            cal = Number(minutes+addTime);
+            minutes= cal.toString();
+        }
+    
+    if(minutes[0]==='6'){
+        minutes='00';
+        let cal = Number(hour)+1;
+        let change = cal.toString();
+        if (change.length==1){
+            let text=hour[0]+cal.toString();
+            hour=text;
+        }else{
+            let text=cal.toString();
+            hour=text;
+        }
     }
-    return btn.value;
+    if(hour==='24'){
+        hour='00';
+        let cal = Number(days)+1;
+        let change = cal.toString();
+        if (change.length==1){
+            let text=days[0]+cal.toString();
+            days=text;
+        }else{
+            let text=cal.toString();
+            days=text;
+        }
+    }
+    if(days==='99'){
+        days='00';
+        hour='00';
+        minutes='00';
+        alert("Retour dans le passé");
+    }
+
+    days+=":";
+    hour+=":";
+
+    for(let i =0; i<3; i++){
+        newtime+=days[i];
+    }
+
+    for(let i =0; i<3; i++){
+        newtime+=hour[i];
+    }
+
+    for(let i =0; i<2; i++){
+        newtime+=minutes[i];
+    }
+
+    showtime.textContent = newtime;
 }

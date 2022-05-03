@@ -17,6 +17,7 @@
   <script type="text/javascript" src="../../src/init.js"></script>
   <script type="text/javascript" src="../../src/network.js"></script>
   <script type="text/javascript" src="../../src/introduction.js"></script>
+  <script type="text/javascript" src="../../src/gui.js"></script>
 </head>
 <body>
   <header id="crazybioHead">
@@ -30,7 +31,7 @@
     </ul>
   </header>
   <div id="wrapper">
-      <!-- Menu -->
+      <!-- Menu 
     <article id="burger">
     <nav>
       <span class="elem">nav</span>
@@ -45,10 +46,42 @@
             <option value="br">Brezoneg</option>
           </select>
         </li>
-      </ul>
-
-    </nav>
-    <!-- Location Time -->
+      </ul>-->
+      <article id="status">
+        <nav style="display: flex">
+          <ul style="flex-grow: 1">
+            <li class="menu"><a id="settings" class="child" href="#" title="Settings"><a id="closeBtn" href="#" class="close">&times;</a></a>
+              <select id="monselect">
+              <a href="#" id="openBtn"></a>
+              <option value="fr" selected>Français</option>
+              <option value="en">English</option>
+              <option value="br">Brezoneg</option>
+            </select></li>
+            <li class="menu"><a id="history"  class="child" href="#"  title="History"></a></li>
+            <li class="menu"><a id="load_session"  class="child" href="#"  title="Load Session"></a></li>
+            <li class="menu"><a id="save_session"  class="child" href="#"  title="Save Session"></a></li>
+            <li class="menu"><a id="team"  class="child" href="#"  title="Team"></a></li>
+            <li class="menu"><span id="separator"></span></li>
+            <li class="menu"><a id="chat"  class="child" href="#"  title="Interrogate"></a></li>
+            <li class="menu"><a id="scan"  class="child" href="#"  title="Scan"></a></li>
+            <li class="menu"><a id="explore"  class="child" href="#"  title="Explore"></a></li>
+            <li class="menu"><a id="puzzle"  class="child" href="#"  title="Solve"></a></li>
+            <li class="menu"><a id="cloud_upload"  class="child" href="#"  title="Send in Cloud"></a></li>
+            <li class="menu"><a id="cloud_download"  class="child" href="#"  title="Receive from Cloud"></a></li>
+            <li class="menu"><span id="separator"></span></li>
+          </ul>
+          <!-- Location Time -->
+          <ul style="flex-shrink: 1">
+            <li class="menu"><a id="location" class="child" href="#"  title="A28 Room 205"></a></li>
+            <li class="menu"><span class="wherewhen">Bldg A28 Room 205</span></li>
+            <li class="menu"><a id="time"  class="child" href="#"  title="Time"></a></li>
+            <li class="menu"><span id="showtimes" class="wherewhen"></span></li>
+          </ul>
+    
+    
+        </nav>
+        </article>
+    <!-- Location Time
     <p id="wherewhen" style="float:right">Location DD:HH:MM</p>
     <a href="#" id="openBtn">
       <span class="burger-icon">
@@ -56,7 +89,7 @@
         <span></span>
         <span></span>
       </span>
-    </a>
+    </a> -->
     </article>
     <!-- Main panel -->
     <section id="main">
@@ -109,7 +142,7 @@
     <p>https://www.alsacreations.com/xmedia/tuto/html5/sections/index.html</p>
 
   </footer>
-  
+<!--
 <script>
   let sidenav = document.querySelector("#burger>nav");
   let openBtn = document.getElementById("openBtn");
@@ -126,10 +159,10 @@
   /* Set the width of the side navigation to 0 */
   function closeNav() {
     sidenav.classList.remove("active");
-  }
+  }-->
 </script>
 <script>
-  init('./bob_test2.json');
+  init('./bob_test3.json');
 </script>
 </body>
 </html>

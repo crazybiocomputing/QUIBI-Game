@@ -76,9 +76,9 @@ function interaction(array,data,language){
 /**
  * 
  * @param {Object} data - in format JSON
- * @param {String} language 
- */
-function checkDragAndDrop(data,language){
+ * @param {String} language
+ */ 
+function checkDragAndDrop(data,language,array){
     //Check the drag and drop and show the interactions bettween two cards
     let btn = getId('chek');
     btn.addEventListener('click', chek);
@@ -94,8 +94,10 @@ function checkDragAndDrop(data,language){
             return;
         }
         interaction(el,data,language);
+        updateTime(array,'interrogate');
     }
 }
+
 /**
  * 
  * @returns Array - contains the id of the drag and drop result 

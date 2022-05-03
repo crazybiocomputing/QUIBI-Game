@@ -28,6 +28,7 @@ const showSection = (name) => (ev) => {
   // Switch off all the main sections
   document.querySelectorAll('.main').forEach( (section) => section.style.display = 'none');
   document.getElementById(name).style.display = 'block';
+  console.log('hey je marche');
 }
 
 const cloud_sender = (scenario,lang) => {
@@ -64,12 +65,11 @@ const initGUI = (scenario) => {
   const lang = navigator.language || 'en';
   
   // Create all the sections required for the scenario
-  
+  /*
   // Update header menu
      <nav style="display: flex">
       <ul style="flex-grow: 1">
-        <li class="menu"><a id="settings" class="child" href="#" title="Settings"></a></li>
-
+        <li class="menu"><a id="settings" class="child" href="#" title="Settings"></a></li>*/
   sections.forEach( (s) => {
     const item = document.createElement('li');
     item.className = 'menu';

@@ -70,13 +70,27 @@ function drop_handler_down(ev) {
   let asset = CHARS.find((a) => a.id === data);
   if (asset === undefined){
     let asset= itemFindId(data);
+    ev.target.setAttribute("class","small item");
     ev.target.alt= asset.name;
     ev.target.src="";
     ev.target.title=asset.id;
+    //TO DO
+    //Check if drag and drop trop fait
+    //Triger dispaly text vihout check button
+
+    /*showText();
+    *updateGame();
+      *updateLocation();
+      *updateTime();
+      *uptadeteStates();
+      *uptadeEvens();
+    */
   }else{
+    ev.target.setAttribute("class","");
     ev.target.src = asset.url;
     ev.target.title = asset.id;
   }
+  //check(obj,language);
 }
   
 

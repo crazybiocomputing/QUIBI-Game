@@ -297,7 +297,19 @@ const DECKS = [
       }
      
     ]
+  },
+  {
+  deck: 'SEARCH',
+  comment:'',
+  collection:[
+    {
+    id:'item_105',
+    name:"search",
+    code:'IX01'
+    }
+  ]
   }
+
 ];
 
 const CHARS = [

@@ -1,0 +1,275 @@
+{
+  "title": "Bob",
+  "settings": {
+    "comment" : "General Settings for all the gamers",
+    "timecost": {
+      "move": "20",
+      "interrogate": "5"
+    }
+  },
+  "gamers" : [
+    {
+      "name": "gamer0",
+      "settings": {
+        "starttime": "00:11:00",
+        "location": "loc:A28.005",
+        "variables" : [
+          {
+            "var": "blast",
+            "value": 0
+          },
+          {
+            "var": "failure",
+            "value": 0
+          },
+          {
+            "var": "seq",
+            "value": 0
+          }
+        ],
+        "intro": {
+          "require": [],
+          "update": [
+            {
+              "func": "addchar",
+              "args": ["char_02"],
+              "name": ["Bob"]
+            },
+           {
+              "func": "additem",
+              "args": ["item_103"],
+              "type": ["PAPER"]
+            }
+          ],
+          "fr": "Vous venez d'entrer dans la salle info 005 où plusieurs étudiant.e.s travaillent silencieusement devant les ordinateurs quand soudain, un étudiant `char:44` s'arrache les cheveux et se lamente bruyamment en chiffonnant une feuille `item:papers` qu'il jette au sol avant de la piétiner.",
+          "en" : "You have just entered computer room 005 where several students are silently working in front of the computers when suddenly, a student `char:02` is tearing his hair out and wailing loudly while crumpling up a paper sheet `item:papers` that he throws to the ground before stomping on it."
+        }
+      },
+      "char_02": {
+        "name": "Bob",
+        "states" : [
+          {
+            "name": "present"
+          },
+          {
+            "name": "absent"
+          }
+        ],
+        "about" : [
+          {
+            "dest" : "char_02",
+            "name": "Bob",
+            "require" : [],
+            "update" : [
+              {
+                "func": "addchar",
+                "args": ["char_01"],
+                "name": ["Lio"]
+              },
+              {
+                "func": "addchar",
+                "args": ["char_03"],
+                "name": ["HAL"]
+              },
+              {
+                "func": "addchar",
+                "args": ["char_04"],
+                "name": ["Amy"]
+              }
+            ],
+            "fr": "Je m'appelle Bob et je suis étudiant en Biologie. Je suis inscrit à un cours de Bioinfo et c'est vraiment difficile. Je viens ici pour travailler sur ordinateur `char:03` car il y a souvent des étudiants en bioinformatique qui peuvent m'aider... D'ailleurs, il y en a deux ici `char:01` et `char:04`.",
+            "en": "My name is Bob and I am a Biology student. I am enrolled in a Bioinfo course and it is really difficult. I come here to work on computer `char:03` because there are often bioinformatics students who can help me... By the way, there are two here `char:01` and `char:04` ."
+          },
+          {
+            "dest" : "char_01",
+            "name" : "Lio",
+            "require" : [],
+            "update" : [],
+            "fr": "Je la vois souvent dans cette salle qui est ouverte aux étudiant.e.s d'autres formations. Je l'ai entendu dire qu'elle était en master de bioinformatique.",
+            "en": "I often see her in this room which is open to students from other courses. I heard her say that she was in a master's program in bioinformatics."
+          },
+          {
+            "dest": "char_04",
+            "name": "Amy",
+            "require": [],
+            "update" : [],
+            "fr":"Je l'ai déjà vu mais je ne lui ai jamais parlé. Elle travaille toujours avec `char_03`",
+            "en":"I've seen her before but never talked to her. She always works with `char_03`"
+          },
+          {
+            "dest": "char_03",
+            "name": "HAL",
+            "require": [],
+            "update" : [
+              {
+                "func": "additem",
+                "args": ["item_105"],
+                "type": ["SEARCH"]
+              }
+            ],
+            "fr":"Sur le navigateur web, j'ai utilisé le moteur de recherche NCBI:Entrez `item_search` mais je ne sais pas quoi taper comme mots clés. Je n'y comprends rien du tout. Ah la la!!! et l'heure tourne. C'est la catastrophe.",
+            "en":"On the web browser, I used the NCBI:Enter `item_search` engine but I don't know what to type in as keywords. I don't understand it at all. Oh boy!!! and the clock is ticking. It's a disaster."
+          },
+          {
+            "dest": "item_103",
+            "name": "bob's project topic",
+            "require": [],
+            "update" : [],
+            "fr":"C'est le sujet de mon projet que je dois rendre avant midi. Vous pouvez le lire. Il vous tend le papier chiffonné.\nSujet: \nVous devez rechercher dans UniprotKB des séquences protéiques similaires chez E. coli à partir de la séquence dont le numéro d'accession est: \nAB011381.",
+            "en":""
+          }
+        ]
+      },
+      "char_03":{
+        "name": "HAL",
+        "states" : [
+          {
+            "name": "present"
+          },
+          {
+            "name": "absent"
+          }
+        ],
+        "about" : [
+          {
+            "dest" : "char_03",
+            "name" : "HAL",
+            "require" : [],
+            "update" : [],
+            "fr": "Dans une fenêtre, un shell Linux et un prompt `$> ` vous attend impassible... ",
+            "en": "In a window, a Linux shell and a prompt `$> ` awaits you impassively..."
+          }
+        ]
+      },
+      "char_01":{
+        "name": "Lio",
+        "states" : [
+          {
+            "name": "present"
+          },
+          {
+            "name": "absent"
+          }
+        ],
+        "about" : [
+          {
+            "dest" : "char_01",
+            "name" : "Lio",
+            "require" : [],
+            "update" : [],
+            "fr": "Je m'appelle Lio et je suis étudiante en 2ème année de master de Bioinformatique.",
+            "en": ""
+          },
+          {
+            "dest" : "char_04",
+            "name" : "Amy",
+            "require" : [],
+            "update" : [],
+            "fr": "On travaille souvent ensemble sur des projets bioinformatiques.",
+            "en": ""
+          },
+          {
+            "dest" : "char_02",
+            "name" : "Bob",
+            "require" : [],
+            "update" : [],
+            "fr": "On le voit de temps en temps. Il parle fort et il a l'air bizarre et... toujours en retard sur ces projets.",
+            "en": ""
+          },
+          {
+            "dest" : "char_03",
+            "name" : "HAL",
+            "require" : [],
+            "update" : [],
+            "fr": "C'est un des ordinateurs de la salle info. Il est sous Linux. Il faut avoir un login et un mot de passe pour se connecter.",
+            "en": ""
+          },
+          {
+            "dest": "item_103",
+            "name": "bob's project topic",
+            "require": [],
+            "update" : [],
+            "fr":"C'est un sujet classique de bio-informatique. Ce n'est pas très dur...",
+            "en":""
+          }
+        ]
+      },
+      "char_04":{
+        "name": "Amy",
+        "states" : [
+          {
+            "name": "present"
+          },
+          {
+            "name": "absent"
+          }
+        ],
+        "about" : [
+          {
+            "dest" : "char_04",
+            "name" : "Amy",
+            "require" : [],
+            "update" : [],
+            "fr": "Je m'appelle Amy et je suis en 1ère année de master bio-informatique.",
+            "en": ""
+          },
+          {
+            "dest" : "char_01",
+            "name" : "Lio",
+            "require" : [],
+            "update" : [],
+            "fr": "On travaille ensemble sur un projet de phylogénie sur les variants du COVID-19.",
+            "en": ""
+          },
+          {
+            "dest" : "char_02",
+            "name" : "Bob",
+            "require" : [],
+            "update" : [],
+            "fr": "Je ne le connais pas...",
+            "en": ""
+          },
+          {
+            "dest" : "char_03",
+            "name" : "HAL",
+            "require" : [],
+            "update" : [],
+            "fr": "C'est un ordinateur Tour classique sous Linux. On l'appelle familièrement HAL en rapport avec ... enfin, vous savez déjà ... La plupart des logiciels pour le développement de programmes et de bio-informatique sont installés.",
+            "en": ""
+          },
+          {
+            "dest": "item_103",
+            "name": "bob's project topic",
+            "require": [],
+            "update" : [],
+            "fr":"Hmmm... Vu le sujet, tout peut être fait en ligne avec un navigateur web. Pas besoin de la ligne de commande sous Linux.",
+            "en":""
+          },
+          {
+            "dest": "item_105",
+            "name": "search",
+            "require": [],
+            "update" : [
+              {
+                "func": "additem",
+                "args": ["item_01"],
+                "type": ["NCBI"]
+              }
+            ],
+            "fr":"Je ne ferai pas comme Bob qui utilise NCBI:Entrez mais je ferai plutôt une recherche par similarité de séquences avec BLAST `item:BLAST`",
+            "en":""
+          },
+          {
+            "dest": "item_01",
+            "name": "blast",
+            "require": [],
+            "update" : [],
+            "fr":"En fonction du type de séquence (nucléique ou protéique) et du type de banques de données (nucléique ou protéique), on peut choisir de lancer BLASTn, BLASTp, BLASTx ou tBLASTn.",
+            "en":""
+          }
+        ]
+      }
+
+    }
+  ]
+}
