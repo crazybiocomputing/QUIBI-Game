@@ -4,48 +4,127 @@
   <meta charset="utf8">
   <title>Bob</title>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-  <link href="http://fonts.googleapis.com/css?family=Coda" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../css/crazybio.css" type="text/css">
+  <link rel="stylesheet" href="../css/burger.css" type="text/css">
   <link rel="stylesheet" href="../css/quibi.css" type="text/css">
   
   <script type="text/javascript" src="../../src/assets.js"></script>
   <script type="text/javascript" src="../../src/dragdrop.js"></script>
-
+  <script type="text/javascript" src="../../src/debug.js"></script>
+  <script type="text/javascript" src="../../src/engine.js"></script>
+  <script type="text/javascript" src="../../src/gui.js"></script>
+  <script type="text/javascript" src="../../src/history.js"></script>
+  <script type="text/javascript" src="../../src/init.js"></script>
+  <script type="text/javascript" src="../../src/network.js"></script>
 </head>
 <body>
-  <header>
-      <span class="elem">header</span>
-      <center>
-      <p> HOME HELP CRAZYBIOCOMPUTING [Level #5 | Game #1 ] </p>
-      </center>
+  <header id="crazybioHead">
+    <ul>
+    <li><a href="#">[ H o m e ]</a></li>
+    <li><a href="help.html">[ H e l p ]</a></li>
+    <li><a href="#">— c&nbsp;&nbsp;r&nbsp;&nbsp;a&nbsp;&nbsp;z&nbsp;&nbsp;y
+    &nbsp;&nbsp;b&nbsp;&nbsp;i&nbsp;&nbsp;o
+    &nbsp;&nbsp;c&nbsp;&nbsp;o&nbsp;&nbsp;m&nbsp;&nbsp;p&nbsp;&nbsp;u&nbsp;&nbsp;t&nbsp;&nbsp;i&nbsp;&nbsp;n&nbsp;&nbsp;g  —</a></li>
+    <li><a href="#">[ L e v e l # 2 — g a m e # 2 ]</a></li>
+    </ul>
   </header>
+
   <div id="wrapper">
       <!-- Menu -->
     <article id="status">
-    <nav>
-      <span class="elem">nav</span>
-      <a id="closeBtn" href="#" class="close">&times;</a>
-      <ul>
-        <li>History</li>
-        <li>Locations</li>
-        <li>Save Session</li>
-        <li>Settings</li>
+    <nav style="display: flex">
+      <ul style="flex-grow: 1">
+        <li class="menu"><a id="settings" class="child" href="#" title="Settings"></a></li>
+        <li class="menu"><a id="history"  class="child" href="#"  title="History"></a></li>
+        <li class="menu"><a id="load_session"  class="child" href="#"  title="Load Session"></a></li>
+        <li class="menu"><a id="save_session"  class="child" href="#"  title="Save Session"></a></li>
+        <li class="menu"><a id="team"  class="child" href="#"  title="Team"></a></li>
+        <li class="menu"><span id="separator"></span></li>
+        <li class="menu"><a id="chat"  class="child" href="#"  title="Interrogate"></a></li>
+        <li class="menu"><a id="scan"  class="child" href="#"  title="Scan"></a></li>
+        <li class="menu"><a id="explore"  class="child" href="#"  title="Explore"></a></li>
+        <li class="menu"><a id="puzzle"  class="child" href="#"  title="Solve"></a></li>
+        <li class="menu"><a id="cloud_upload"  class="child" href="#"  title="Send in Cloud"></a></li>
+        <li class="menu"><a id="cloud_download"  class="child" href="#"  title="Receive from Cloud"></a></li>
+        <li class="menu"><span id="separator"></span></li>
+      </ul>
+      <!-- Location Time -->
+      <ul style="flex-shrink: 1">
+        <li class="menu"><a id="location" class="child" href="#"  title="A28 Room 205"></a></li>
+        <li class="menu"><span class="wherewhen">Bldg A28 Room 205</span></li>
+        <li class="menu"><a id="time"  class="child" href="#"  title="Time"></a></li>
+        <li class="menu"><span class="wherewhen">00:00:00</span></li>
       </ul>
 
+
     </nav>
-    <!-- Location Time -->
-    <p id="wherewhen" style="float:right">Location DD:HH:MM</p>
-    <a href="#" id="openBtn">
-      <span class="burger-icon">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-    </a>
     </article>
     <!-- Main panel -->
-    <section id="main">
-      <article id="bubble">
-       <span class="elem">article: Dialog</span>
+    <section id="setter" class="main">
+      <span class="elem">section: Settings</span>
+      <ul>
+      <li><label><img src="../assets/icons/translate.svg" width=30 height=30></img></label>Available Languages: [en fr sp it]</li>
+      <li><label><img src="../assets/icons/volume-up.svg" width=30 height=30></img></label>Audio: [on off]</li>
+      </ul>
+    </section>
+    <section id="historian" class="main">
+      <span class="elem">section: History</span>
+    </section>
+    <section id="session_loader" class="main">
+      <span class="elem">section: Load Session</span>
+      <p>Paste your passphrase for re-loading your previous session.</p>
+      <input type="text">
+    </section>
+    <section id="session_saver" class="main">
+      <span class="elem">section: Save Session</span>
+      <p>Copy and paste the following passphrase for recovering your session.</p>
+    </section>
+    <section id="team_builder" class="main">
+      <span class="elem">section: Set Team</span>
+      <ul>
+        <li>
+          <div id="grid" style="display:flex">
+            <div class="letter-container"><label><img src="../assets/icons/flag.svg" width=30 height=30 title="Team Name"></img></label></div>
+            <div class="letter-container"></div>
+            <div class="letter-container"></div>
+            <div class="letter-container"></div>
+            <div class="letter-container"></div>
+          </div>
+        </li>
+        <li><label><img src="../assets/icons/person.svg" width=30 height=30></img>Player #1</label>
+          <div id="grid" style="display:flex">
+            <div class="letter-container"></div>
+            <div class="letter-container"></div>
+            <div class="letter-container"></div>
+          </div>
+        </li>
+        <li><label><img src="../assets/icons/person.svg" width=30 height=30></img>Player #2</label>
+          <div id="grid" style="display:flex">
+            <div class="letter-container"></div>
+            <div class="letter-container"></div>
+            <div class="letter-container"></div>
+          </div>
+        </li>
+        <li><label><img src="../assets/icons/person.svg" width=30 height=30></img>Player #2</label>
+          <div id="grid" style="display:flex">
+            <div class="letter-container"></div>
+            <div class="letter-container"></div>
+            <div class="letter-container"></div>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section id="introducer" class="main">
+      <span class="elem">section: Intro</span>
+      <article class="speak">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt eget libero vitae finibus. Integer sit amet pretium nibh. Duis placerat ut libero eu dignissim. Sed sed faucibus libero. Vestibulum varius leo sit amet nisl viverra mattis. In non hendrerit sapien. 
+      </article>
+    </section>
+
+    <section id="interrogate" class="main">
+           <span class="elem">section: Interrogate</span>
+      <article id="bubble" class="speak">
        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt eget libero vitae finibus. Integer sit amet pretium nibh. Duis placerat ut libero eu dignissim. Sed sed faucibus libero. Vestibulum varius leo sit amet nisl viverra mattis. In non hendrerit sapien. Cras in eleifend dolor, a scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent a erat arcu. Proin interdum eros nec velit vestibulum rhoncus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur pulvinar dapibus lacus ut congue. 
       </article>
       <article>
@@ -60,16 +139,40 @@
         </article>
       </article>
     </section>
+    <section id="explorer" class="main">
+      <span class="elem">section: Explorer</span>
+    </section>
+    <section id="scanner" class="main">
+      <span class="elem">section: Scanner</span>
+    </section>
+    <section id="solver" class="main">
+      <span class="elem">section: Puzzle</span>
+    </section>
+    <section id="cloudsender" class="main">
+      <span class="elem">section: Cloud Upload</span>
+      <p>Drag and drop the item you want from your inventory to send it to another player...</p>
+      <article id="empty-container"></article>
+      <p>... Then, give him.her the following code by voice, by e-mail, by instant messaging, etc.</p>
+    </section>
+    <section id="cloudreceiver" class="main">
+      <span class="elem">section: Cloud Download</span>
+    </section>
+    <section id="event" class="main">
+      <span class="elem">section: Event</span>
+    </section>
+    <section id="moveto" class="main">
+      <span class="elem">section: Move to new Location</span>
+      <ul>
+      <li>Building A28 Room 205</li>
+      </ul>
+    </section>
+    <section id="ending" class="main">
+      <span class="elem">section: Ending</span>
+    </section>
 
     <!-- Inventory -->
     <aside id="sidebar">
       <span class="elem">aside: Inventory</span>
-      <nav id="locs">
-        <span class="elem">nav:locs</span>
-        <ul>
-        <li class="location"><a href="#">A28 | 205<img src="../assets/icons/geo-alt-fill.svg" width=70></img><span style="font-size:0.5em"></span></a></li>
-        </ul>
-      </nav>
       <nav id="chars">
         <span class="elem">nav:chars</span>
         <ul>
@@ -100,22 +203,12 @@
   </footer>
   
 <script>
-  var sidenav = document.querySelector("#status>nav");
-  var openBtn = document.getElementById("openBtn");
-  var closeBtn = document.getElementById("closeBtn");
-
-  openBtn.onclick = openNav;
-  closeBtn.onclick = closeNav;
-
-  /* Set the width of the side navigation to 250px */
-  function openNav() {
-    sidenav.classList.add("active");
-  }
-
-  /* Set the width of the side navigation to 0 */
-  function closeNav() {
-    sidenav.classList.remove("active");
-  }
+  // Init
+  // Step #1 - Load Scenario
+  // Step #2 - Build the GUI
+  document.getElementById('introducer').style.display='block';
+  initGUI();
+  document.getElementById('team_builder').appendChild(keyboard('azerty'));
 </script>
 </body>
 </html>
