@@ -62,6 +62,33 @@ async function init(scenario) {
   // Load scenario in format JSON or Markdown
   const data = await fetchJSON(scenario);
   console.log(data);
+  
+  /* Tests historique et inventaire
+  const data_2 = update_id_scenario(data);
+  let text_history = "";
+  let array = ["char_02","char_01"];
+  text_history = update_history(data_2, array, text_history);
+  array = ["char_04","char_01"];
+  text_history = update_history(data_2, array, text_history);
+  array = ["char_02","char_01"];
+  text_history = update_history(data_2, array, text_history);
+  let status = {"char_01" : 0,
+  "char_02" : 1,
+  "char_03" : 0,
+  "char_04" : 0,
+  "item_101" : 0,
+  "item_102" : 0,
+  "item_103" : 1,
+  "item_104" : 0,
+  "item_105" : 0,
+  };
+  status = create_hexadecimal_inventory(status);
+  console.log(status);console.log(text_history);
+  let passphrase = create_cookie_value(status, text_history);
+  transform_cookie(passphrase);
+*/
+
+
   // Create Game and GUI
   let obj =data;
   //TO DO
