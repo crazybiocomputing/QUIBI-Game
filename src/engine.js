@@ -309,3 +309,140 @@ function updateTime(array,typeUpdate){
 
     showtime.textContent = newtime;
 }
+
+/**
+ * 
+ * @param {Array} char 
+ * @returns Booleans
+ */
+function noDuplicationChar(char){
+    for(let j =0; j<char.length;j++){
+    let a = getId(char[j])
+    if (a === null){
+        return true
+    }else{
+        return false
+    }            
+    }
+}
+
+/**
+ * 
+ * @param {Array} item 
+ * @returns Booleans
+ */
+function noDuplicationItem(item){
+    for(let j =0; j<item.length;j++){
+    let a = getId(item[j])
+    if (a === null){
+        return true
+    }else{
+        return false
+    }            
+    }
+}
+
+/////////For the variable/////////
+
+/**
+ * 
+ * @param {Objects} data - in forma Json 
+ */
+function initValue(data){
+    //Init the variable for the game
+    let variables = data['gamers'][0]['settings']['variables'];
+    for(let i=0; i<variables.length;i++){
+        let variable =variables[i]['var'];
+        let value=variables[i]['value'];
+
+        let stock = getId('value');
+
+        let span = create('span');
+
+        span.id=variable;
+        span.setAttribute("title",value);
+
+        append(stock,span);
+
+    }
+}
+
+/**
+ * 
+ * @param {String} type - the name of the variable
+ * @param {String} value - the value you want for the variable
+ * @param {String} code  - a unique code
+ */
+function addvalue(type,value,code){
+    //adds the new value with the old one and create a span that take a unique code to memorise the action
+  let variable = getId(type);
+  let new_value = Number(variable.title)+Number(value);
+  variable.title =new_value;
+  let span = create('span');
+  span.id=code;
+  append(variable,span);
+}
+
+/**
+ * 
+ * @param {String} type - the name of the variable
+ * @param {String} value - the value you want for the variable
+ * @param {String} code  - a unique code
+ */
+function transformvalue(type,value,code){
+    //Transform the value of the variable and create a span that take a unique code to memorise the action
+    let variable = getId(type);
+    variable.title =value;
+    let span = create('span');
+    span.id=code;
+    append(variable,span);
+}
+
+/**
+ * 
+ * @param {String} type - the name of the variable
+ * @param {String} value - the value you want for the variable
+ * @returns Boolean
+ */
+function checkvalue(type,value){
+    let variable = getId(type);
+    console.log(variable.title);
+    if(variable==null||variable==undefined){
+        alert("erreur dans le scénario");
+    }
+    if(value===variable.title){
+        return true;
+    }
+    return false;
+}
+
+/**
+ * 
+ * @param {String} code  - a unique code
+ * @returns Boolean
+ */
+function noDuplicationvalue(code){
+    //Chek if the code is allready used
+    let variable = getId(code);
+    if(variable===null){
+        console.log("oui");
+        return true
+    }else{
+        console.log("non");
+        return false;
+    }
+}
+
+/**
+ * 
+ * @param {String} type - item's id
+ * @returns Boolean
+ */
+function checkitem(type){
+    //Check if the item was find
+    let item = getId(type)
+    if(item==null||item==undefined){
+        return false;
+    }
+    return true;
+}

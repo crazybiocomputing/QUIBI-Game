@@ -55,7 +55,6 @@
               <a href="#" id="openBtn"></a>
               <option value="fr" selected>Français</option>
               <option value="en">English</option>
-              <option value="br">Brezoneg</option>
             </select></li>
             <li class="menu"><a id="history"  class="child" href="#"  title="History"></a></li>
             <li class="menu"><a id="load_session"  class="child" href="#"  title="Load Session"></a></li>
@@ -73,7 +72,7 @@
           <!-- Location Time -->
           <ul style="flex-shrink: 1">
             <li class="menu"><a id="location" class="child" href="#"  title="A28 Room 205"></a></li>
-            <li class="menu"><span class="wherewhen">Bldg A28 Room 205</span></li>
+            <li class="menu"><span id="showlocs"class="wherewhen"></span></li>
             <li class="menu"><a id="time"  class="child" href="#"  title="Time"></a></li>
             <li class="menu"><span id="showtimes" class="wherewhen"></span></li>
           </ul>
@@ -134,6 +133,8 @@
       </nav>
     </aside>
   </div>
+  <span id="value">
+  </span>
   <footer>
     <span class="elem">footer</span>
     <article id="debug">
@@ -162,7 +163,7 @@
   }-->
 </script>
 <script>
-  init('./bob_test3.json');
+  init('./bob_test4.json');
 </script>
 </body>
 </html>

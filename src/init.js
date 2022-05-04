@@ -62,6 +62,33 @@ async function init(scenario) {
   // Load scenario in format JSON or Markdown
   const data = await fetchJSON(scenario);
   console.log(data);
+  
+  /* Tests historique et inventaire
+  const data_2 = update_id_scenario(data);
+  let text_history = "";
+  let array = ["char_02","char_01"];
+  text_history = update_history(data_2, array, text_history);
+  array = ["char_04","char_01"];
+  text_history = update_history(data_2, array, text_history);
+  array = ["char_02","char_01"];
+  text_history = update_history(data_2, array, text_history);
+  let status = {"char_01" : 0,
+  "char_02" : 1,
+  "char_03" : 0,
+  "char_04" : 0,
+  "item_101" : 0,
+  "item_102" : 0,
+  "item_103" : 1,
+  "item_104" : 0,
+  "item_105" : 0,
+  };
+  status = create_hexadecimal_inventory(status);
+  console.log(status);console.log(text_history);
+  let passphrase = create_cookie_value(status, text_history);
+  transform_cookie(passphrase);
+*/
+
+
   // Create Game and GUI
   let obj =data;
   //TO DO
@@ -72,6 +99,7 @@ async function init(scenario) {
   showLoc(data);
 
   initDrag();
+  initValue(data);
 
   //Load the intro of the interaction
   intro(data,langue);
@@ -123,47 +151,34 @@ function showLoc(data){
 /*
 function showCharacters(){
   let narch=getId('navchars');
-
   for(let i =0; i<CHARS.length;i++){
-
     let li = create('li');
     let a =create('a');
     let img =create('img');
-
     a.href ='#';
     a.setAttribute("ondragstart","dragstart_handler(event)");
     a.id=CHARS[i].id;
     img.setAttribute("class","close");
-
     img.src=CHARS[i].url;
     img.id=CHARS[i].id;
     img.draggable ='true';
     img.width=80;
-
-
     append(a,img);
     append(li,a);
     append(narch,li);
   }
 }
-
 function showItems(){
   let narIt=getId('navitems');
-
   for (let i = 0; i<DECKS.length;i++){
-
     let li = create('li');
     let a = create('a');
     let p = create('p');
-
     a.href='#';
     a.setAttribute("ondragstart","dragstart_handler(event)");
-
     p.setAttribute("class","close");
     p.textContent=DECKS[i].deck;
-
     li.setAttribute("class","small item");
-
     append(a,p);
     append(li,a);
     append(narIt,li);

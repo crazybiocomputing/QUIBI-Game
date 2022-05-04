@@ -40,7 +40,7 @@ function intro(data,language){
         let func = el[i]['func'];
         switch(func){
             case "addchar" : let els =el[i]['args']; let name = el[i]['name'];addchar(els,name); break;
-            case "additem" : let array = el[i]['args'];let type = el[i]['type']; additem(array,type);break;
+            case "additem" : let array = el[i]['args'];let type = el[i]['type'];additem(array,type);break;
         }
     }
     dialog(text);
@@ -52,7 +52,7 @@ function intro(data,language){
  * @param {Object} data - in format JSON
  * @param {String} language 
  */
-function interaction(array,data,language){
+function interaction_naive(array,data,language){
     let el = data['gamers'][0][array[0]]['about'];
     for(let i = 0; i<el.length;i++){
         let dest=el[i]['dest'];
@@ -64,12 +64,147 @@ function interaction(array,data,language){
                 console.log(func)
                 console.log(update[j]['args']);
                 switch(func){
-                    case "addchar" : let els =update[j]['args']; let name = update[j]['name'];addchar(els,name); break;
-                    case "additem" : let array = update[j]['args'];let type = update[j]['type']; additem(array,type);break;
+                    case "addchar" : {
+                        let els =update[j]['args'];
+                        if(noDuplicationChar(els)){
+                            let name = update[j]['name'];
+                            addchar(els,name);
+                        };
+                        break;
+                    }
+                    case "additem" : {
+                        let array = update[j]['args'];
+                        if(noDuplicationItem(array)){
+                            let type = update[j]['type']; 
+                            additem(array,type);
+                        };
+                            break;
+                        }
+                    case "addvalue" : {
+                        let type = update[j]['args'];
+                        let value =update[j]['value'];
+                        let code = update[j]['code'];
+                        if(noDuplicationvalue(code)){
+                            addvalue(type,value,code);
+                        };
+                        break;
+                    }
+                    case "transformvalue" : {
+                        let type = update[j]['args'];
+                        let value =update[j]['value'];
+                        let code = update[j]['code'];
+                        if(noDuplicationvalue(code)){
+                            transformvalue(type,value,code);
+                        };
+                        break;
+                    }
                 }
             }
             dialog(text);
         }
+    }
+}
+
+/**
+ * 
+ * @param {Object} position - in format JSON
+ * @param {String} language 
+ */
+function interaction(position,language){
+    //Use when there is conditions
+    let update = position;
+    let text= language;
+    for (let j =0; j<update.length;j++){
+        let func = update[j]['func'];
+        switch(func){
+            case "addchar" : {
+                let els =update[j]['args'];
+                if(noDuplicationChar(els)){
+                    let name = update[j]['name'];
+                    addchar(els,name);
+                };
+                break;
+            }
+            case "additem" : {
+                let array = update[j]['args'];
+                if(noDuplicationItem(array)){
+                    let type = update[j]['type']; 
+                    additem(array,type);
+                };
+                    break;
+                }
+            case "addvalue" : {
+                let type = update[j]['args'];
+                let value =update[j]['value'];
+                let code = update[j]['code'];
+                if(noDuplicationvalue(code)){
+                    addvalue(type,value,code);
+                };
+                break;
+            }
+            case "transformvalue" : {
+                let type = update[j]['args'];
+                let value =update[j]['value'];
+                let code = update[j]['code'];
+                if(noDuplicationvalue(code)){
+                    transformvalue(type,value,code);
+                };
+                break;
+            }
+        }
+    }
+    dialog(text);
+}
+
+/**
+ * 
+ * @param {Array} array - contains the id of the drag and drop result 
+ * @param {Object} data - in format JSON
+ * @param {String} language 
+ */
+function require(array,data,language){
+    //Check the requirement
+    let el = data['gamers'][0][array[0]]['about'];
+    let indicat = 0;
+    for(let i = 0; i<el.length;i++){
+        let dest=el[i]['dest'];
+        if (dest === array[1]){
+            console.log("oui le if marche");
+            let valueRequire=el[i]['require'];
+            for(let j=0;j<valueRequire.length;j++){
+                console.log("je suis toujours dans la boucle");
+                let func = valueRequire[j]['func'];
+                switch(func){
+                    case "checkvalue" : {
+                        let type =valueRequire[j]['args'];
+                        let value =valueRequire[j]['value'];
+                        if(checkvalue(type,value)){
+                            indicat =1;
+                        }else{
+                            indicat=0;
+                        };
+                        break;
+                    };
+                    case "checkitem" :{
+                        let type = valueRequire[j]['args']
+                        if(checkitem(type)){
+                            indicat =1;
+                        }else{
+                            indicat=0;
+                        };
+                        break;
+                    }
+                }
+                if(indicat==1){
+                    interaction(el[i]['update'],el[i][language]);
+                    return;
+                }
+            }
+            }
+        }
+    if(indicat==0){
+        interaction_naive(array,data,language);
+        return;
     }
 }
 
@@ -93,7 +228,7 @@ function checkDragAndDrop(data,language,array){
             alert("There is only one card");
             return;
         }
-        interaction(el,data,language);
+        require(el,data,language);
         updateTime(array,'interrogate');
     }
 }
