@@ -28,3 +28,83 @@
 
 'use strict';
 
+/** 
+ * Update the status of the characters and items
+ * 
+ * 
+ *  let status = {"char_01" : 0,
+  "char_02" : 1,
+  "char_03" : 0,
+  "char_04" : 0,
+  "item_101" : 0,
+  "item_102" : 0,
+  "item_103" : 1,
+  "item_104" : 0,
+  "item_105" : 0,
+  };
+ * 
+ * @param {object} data -  Object containing the current status of the events
+ * @param {array} array -  Array containing the status of the last action of the player
+ * @return {object} - Object containing the new status of the events
+*/
+function update_inventory(array,data){
+    for (let i in data) {
+        console.log(i);
+        if (array[0] == i){
+            data[`${i}`] = 1;
+        }
+    }
+    return data;
+}
+
+/** 
+ * Creation of the hexadecimal number
+ * 
+ * @param {object} object -  Object containing the status of the events
+ * @return {String} - String containing the hexadecimal number
+*/
+function create_hexadecimal_inventory(data){
+    let binary = "";
+    for (let i in data){
+        binary += data[`${i}`].toString();
+    }
+    let hexa = convert(binary,2,16);
+    return hexa;
+}
+
+/** 
+ * Set the status of the event depending of the hexadecimal keep in the cookie 
+ * 
+ * @param {object} data - Object containing the scenario from the json file
+ * @param {object} object -  Object containing the status of the events (Define object and status)
+ * @param {string} hexadecimal -  String containing the hexadecimal number
+*/
+function set_status(data,object,hexadecimal){
+    let j = 0;
+    let binary = convert(hexadecimal,16,2);
+    let str = "";
+    let el =data['gamers'][0]["settings"]['intro']['update'];
+
+    if (binary.length != Object.keys(object).length){
+        for (let k=0; k<Object.keys(object).length-binary.length; k++){
+            str += "0";
+        }
+        str += binary;
+    }
+
+    for (let i in object){
+        console.log(i);
+        console.log(str[j]);
+        if ( i.substring(0,4) == "char" && str[j] == 1){
+            let els =el[j]['args']; 
+            let name = el[j]['name'];
+            addchar(els,name);
+        }
+        if ( i.substring(0,4) == "item" && str[j] == 1){
+            let array = el[i]['args'];
+            let type = el[i]['type']; 
+            additem(array,type);
+        }
+        j++;
+    }
+}

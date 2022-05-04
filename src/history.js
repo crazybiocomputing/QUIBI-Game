@@ -50,16 +50,27 @@ function convert_to_binary(hexadecimal){
     return binary;
 }
 
-
+/** 
+ * Convert a number into another base
+ * 
+ * @param {string} string -  String containing the number to convert
+ * @param {int} base_string -  Current base in which the string is 
+ * @param {int} base_convert -  Base for the conversion
+ * @return {string} - String containing the new number
+*/
+function convert(string, base_string, base_convert){
+    let conversion = parseInt(string,base_string).toString(base_convert).toUpperCase();
+    return conversion;
+}
 
 
 /** 
  * Create and set a cookie for the key 'hexadecimal'
  * 
- * @param {string} hexadecimal - String containing the hexadecimal number
+ * @param {string} value - String containing the history string
 */
-function set_cookie(hexadecimal){
-    localStorage.setItem('hexadecimal',hexadecimal.toString());
+function set_cookie(value){
+    localStorage.setItem('history',value.toString());
 }
 
 /** 
@@ -68,91 +79,74 @@ function set_cookie(hexadecimal){
  * @return {string} - String containing the hexadecimal number
 */
 function get_cookie(){
-    let cookie = localStorage.getItem('hexadecimal')
+    let cookie = localStorage.getItem('history')
     return cookie;
 }
 
 
-
-
 /** 
- * Update the status of the characters and items
+ * Update the scenario and apply an id for each text
  * 
- * 
- *  let status = {"char_01" : 0,
-  "char_02" : 1,
-  "char_03" : 0,
-  "char_04" : 0,
-  "item_101" : 0,
-  "item_102" : 0,
-  "item_103" : 1,
-  "item_104" : 0,
-  "item_105" : 0,
-  };
- * 
- * @param {object} data -  Object containing the current status of the events
- * @param {array} array -  Array containing the status of the last action of the player
- * @return {object} - Object containing the new status of the events
+ * @param {object} data - Object containing the scenario
+ * @return {object} - Data with id apply
 */
-function get_status(array,data){
-    for (let i in data) {
-        console.log(i);
-        if (array[0] == i){
-            data[`${i}`] = 1;
+function update_id_scenario(data){
+    let count = 0;
+    for (let i in data["gamers"]){
+        for (let j in data['gamers'][i]){
+            if (j.substring(0,4)=="char" ){
+                for (let k in data['gamers'][i][j]){
+                    if (k == "about"){
+                        for (let l in data['gamers'][i][j][k]){
+                            data['gamers'][i][j][k][l]["id"]=count;
+                            count++;
+                        }
+                    }
+                }
+            }
         }
     }
-    return data;
+    return (data);
 }
 
-/** 
- * Creation of the hexadecimal number
- * 
- * @param {object} object -  Object containing the status of the events
- * @return {String} - String containing the hexadecimal number
-*/
-function create_hexadecimal(data){
-    let binary = "";
-    for (let i in data){
-        binary += data[`${i}`].toString();
-    }
-    console.log(binary);
-    let hexa = convert_to_hexa(binary);
-    return hexa;
-}
-
-/** 
- * Set the status of the event depending of the hexadecimal keep in the cookie 
- * 
- * @param {object} data - Object containing the scenario from the json file
- * @param {object} object -  Object containing the status of the events (Define object and status)
- * @param {string} hexadecimal -  String containing the hexadecimal number
-*/
-function set_status(data,object,hexadecimal){
-    let j = 0;
-    let binary = convert_to_binary(hexadecimal);
-    let str = "";
-    let el =data['gamers'][0]["settings"]['intro']['update'];
-
-    if (binary.length != Object.keys(object).length){
-        for (let k=0; k<Object.keys(object).length-binary.length; k++){
-            str += "0";
-        }
-        str += binary;
-    }
-
-    for (let i in object){
-        console.log(i);
-        console.log(str[j]);
-        if ( i.substring(0,4) == "char" && str[j] == 1){
-            let els =el[j]['args']; 
-            let name = el[j]['name'];
-            addchar(els,name);
-        }
-        if ( i.substring(0,4) == "item" && str[j] == 1){
-            let array = el[i]['args'];
-            let type = el[i]['type']; 
-            additem(array,type);
+function update_history(data, array, string){
+    let j=0;
+    let dest = 0;
+    for (let i of data["gamers"][0][array[0]]["about"]){
+        if (i["dest"]==array[1]){
+            dest = j;
         }
         j++;
     }
+    let id = data["gamers"][0][array[0]]["about"][dest]["id"];
+    if (string.includes(id) != true){
+        if (id.toString().length == 1){
+            id="0"+id.toString();
+        }
+        string+=id.toString();
+    }
+    return (string);
+}
+
+function create_cookie_value(inventory, history){
+    history = convert(history,10,16);
+    let passphrase = "^"+history+"_"+inventory+"$";
+    console.log(passphrase);
+    return passphrase;
+}
+
+function transform_cookie(cookie){
+    let array = [];
+    if (cookie.substring(0,1)=="^" && cookie.substring(cookie.length - 1)=="$"){
+        for (let i=0; i<cookie.length-1; i++){
+            if (cookie.substring(i,i+1)=="_"){
+                array.push(cookie.substring(1,i));
+                array.push(cookie.substring(i+1,cookie.length-1));
+            }
+        }
+    }
+    console.log(array);
+    array[1] = convert(array[1],16,2);
+    array[0] = convert(array[0],16,10);
+    console.log(array);
 }

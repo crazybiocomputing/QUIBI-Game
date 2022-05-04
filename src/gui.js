@@ -46,57 +46,80 @@ const cloud_sender = (scenario,lang) => {
 }
 
 const initGUI = (scenario) => {
-  const menus = [
-    {buttonid:'settings',title:'Settings',sectionid:'setter'},
-    {buttonid:'history',title:'History',sectionid:'historian'},
-    {buttonid:'team',title:'Team',sectionid:'team_builder'},
-    {buttonid:'load_session',title:'Load Session',sectionid:'session_loader'},
-    {buttonid:'save_session',title:'Save Session',sectionid:'session_saver'},
-    {buttonid:'chat',title:'Interrogate',sectionid:'interrogate'},
-    {buttonid:'scan',title:'Scan',sectionid:'scanner'},
-    {buttonid:'explore',title:'Explore',sectionid:'explorer'},
-    {buttonid:'puzzle',title:'Solve',sectionid:'solver'},
-    {buttonid:'cloud_upload',title:'Send in Cloud',sectionid:'cloudsender',func: cloud_sender},
-    {buttonid:'cloud_download',title:'Receive from Cloud',sectionid:'cloudreceiver'},
-    {buttonid:'location',title:'Location',sectionid:'moveto'}
+
+  const sections = [
+    {buttonid:'',title:'Introduction',sectionid:'introducer',pos: 'none'},
+    {buttonid:'settings',title:'Settings',sectionid:'setter',pos: 'left'},
+    {buttonid:'history',title:'History',sectionid:'historian',pos: 'left'},
+    {buttonid:'team',title:'Team',sectionid:'team_builder',pos: 'left'},
+    {buttonid:'load_session',title:'Load Session',sectionid:'session_loader',pos: 'left'},
+    {buttonid:'save_session',title:'Save Session',sectionid:'session_saver',pos: 'left'},
+    {buttonid:'separator',title:'',sectionid:'',pos: 'left'},
+    {buttonid:'chat',title:'Interrogate',sectionid:'interrogate',pos: 'left'},
+    {buttonid:'scan',title:'Scan',sectionid:'scanner',pos: 'left'},
+    {buttonid:'explore',title:'Explore',sectionid:'explorer',pos: 'left'},
+    {buttonid:'puzzle',title:'Solve',sectionid:'solver',pos: 'left'},
+    {buttonid:'cloud_upload',title:'Send in Cloud',sectionid:'cloudsender',func: cloud_sender,pos: 'left'},
+    {buttonid:'cloud_download',title:'Receive from Cloud',sectionid:'cloudreceiver',pos: 'left'},
+    {buttonid:'separator',title:'',sectionid:'',pos: 'left'},
+    {buttonid:'location',title:'Location',sectionid:'location',pos: 'right'},
+    {buttonid:'time',title:'Time',sectionid:'',pos: 'right'},
   ];
   
   // Get language
   const lang = navigator.language || 'en';
   
   // Create all the sections required for the scenario
-  /*
+  
   // Update header menu
-     <nav style="display: flex">
-      <ul style="flex-grow: 1">
-        <li class="menu"><a id="settings" class="child" href="#" title="Settings"></a></li>*/
-  sections.forEach( (s) => {
+  // Create menubar
+  const left = document.getElementById('buttons');
+  const right = document.getElementById('status');
+  
+  sections.filter( (s) => s.buttonid !== '').forEach( (s) => {
     const item = document.createElement('li');
     item.className = 'menu';
-    list.appendChild(item);
-    const button = document.createElement('a');
-    button.id = s.buttonid;
-    button.className = 'child';
-    button.href='#';
-    button.title = s.title;
-    item.appendChild(button);
+    if (s.pos === 'left') {
+      left.appendChild(item);
+    }
+    else {
+      right.appendChild(item);
+    }
 
-    // Add listener
-    button.addEventListener('click',showSection(s.sectionid));
+    let button;
+    // Separator
+    if (s.buttonid === 'separator') {
+      button = document.createElement('span');
+      button.id = s.buttonid;
+    }
+    // Others...
+    else {
+      button = document.createElement('a');
+      button.id = s.buttonid;
+      button.className = 'child';
+      button.href='#';
+      button.title = s.title;
+
+      // Add listener
+      button.addEventListener('click',showSection(s.sectionid));
+    }
+    item.appendChild(button);
+    
+  });
+
+  // Create sections
+  const parent = document.getElementById('wrapper');
+  const ref = document.querySelector('aside');
+  sections.filter( (s) => s.sectionid !== '').forEach( (s) => {
+    console.log('Build',s.sectionid);
+    const sec = document.createElement('section');
+    sec.className = "main";
+    sec.id = s.sectionid;
+    // DEBUG ONLY
+    sec.innerHTML = `<span class="elem">section:${s.title}</span>`;
+    parent.insertBefore(sec,ref);
   });
   
-
-  document.getElementById('history').addEventListener('click',showSection('historian'));
-  document.getElementById('team').addEventListener('click',showSection('team_builder'));
-  document.getElementById('load_session').addEventListener('click',showSection('session_loader'));
-  document.getElementById('save_session').addEventListener('click',showSection('session_saver'));
-  document.getElementById('chat').addEventListener('click',showSection('interrogate'));
-  document.getElementById('scan').addEventListener('click',showSection('scanner'));
-  document.getElementById('explore').addEventListener('click',showSection('explorer'));
-  document.getElementById('puzzle').addEventListener('click',showSection('solver'));
-  document.getElementById('cloud_upload').addEventListener('click',showSection('cloudsender'));
-  document.getElementById('cloud_download').addEventListener('click',showSection('cloudreceiver'));
- document.getElementById('location').addEventListener('click',showSection('moveto'));
 }
 
 const keypressed = (key) => (ev) => {
