@@ -126,26 +126,15 @@ async function init(scenario) {
  * @param {Object} data - in format JSON
  */
 function showLoc(data){
-  //Show the localisation (TO DO only work for the intro)
-  let navlocs=getId('navlocs');
+  //Show the localisation
+  let showlocs=getId('showlocs');
+  let nameloc=getId('location');
 
   let loc = data['gamers'][0]["settings"]['location'];
 
-  let li = create('li');
-  let a =create('a');
-  let img =create('img');
-  let span = create('span');
+  nameloc.title=loc.substring(4,7)+" Room "+loc.substring(8);
 
-  li.class="location";
-  a.href='#'
-  a.textContent=loc.substring(4,7)+" | "+loc.substring(8);
-  img.src="../assets/icons/geo-alt-fill.svg";
-  img.width=70;
-  span.style="font-size:0.5em"
-  append(a,img);
-  append(a,span);
-  append(li,a);
-  append(navlocs,li);
+  showlocs.textContent="Bldg "+loc.substring(4,7)+" Room "+loc.substring(8);
 }
 
 /*
