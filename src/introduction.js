@@ -34,7 +34,6 @@
  * @param {String} language
  */
 function intro(data,language){
-    //mettre toutes les fonctions de departs
     let el =data['gamers'][0]["settings"]['intro']['update']
     let text= data['gamers'][0]["settings"]['intro'][language];
     for (let i =0; i<el.length;i++){
@@ -46,6 +45,12 @@ function intro(data,language){
     }
     dialog(text);
     startGame();
+    startTime(data);
+    showLoc(data);
+    initValue(data);
+    initDrag();
+    let time = setTime(data);
+    return time;
 }
 
 /**
@@ -63,8 +68,6 @@ function interaction_naive(array,data,language){
             let text = el[i][language];
             for (let j =0; j<update.length;j++){
                 let func = update[j]['func'];
-                console.log(func)
-                console.log(update[j]['args']);
                 switch(func){
                     case "addchar" : {
                         let els =update[j]['args'];
@@ -171,10 +174,8 @@ function require(array,data,language){
     for(let i = 0; i<el.length;i++){
         let dest=el[i]['dest'];
         if (dest === array[1]){
-            console.log("oui le if marche");
             let valueRequire=el[i]['require'];
             for(let j=0;j<valueRequire.length;j++){
-                console.log("je suis toujours dans la boucle");
                 let func = valueRequire[j]['func'];
                 switch(func){
                     case "checkvalue" : {
@@ -234,9 +235,10 @@ function checkDragAndDrop(data,language,array){
             }
             require(el,data,language);
             updateTime(array,'interrogate');
+            endGame(data);
             endtime(data);
         }else{
-            alert("Fin de la partie");
+            alert("End of the Game");
         }
     }
 }

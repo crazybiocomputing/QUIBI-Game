@@ -96,30 +96,23 @@ async function init(scenario) {
   let langue = language();
 
   //Show the localisation (TO DO only work for the intro)
-  showLoc(data);
+  //showLoc(data);
 
-  initDrag();
-  initValue(data);
+  //initDrag();
+  //initValue(data);
 
   //Load the intro of the interaction
-  intro(data,langue);
+  let time = intro(data,langue);
 
   //Clean the drag and drop
   cleanDragAndDrop();
-  let time = setTime(data);
-  console.log('it s time');
-  console.log(time);
+  //let time = setTime(data);
+
   //Check the drag and drop and show the interactions bettween two cards
   checkDragAndDrop(data,langue,time);
-
-  
-  startTime(data);
-
-  showSection;
-  cloud_sender;
-  initGUI;
-
 }
+
+
 
 /**
  * 
@@ -137,42 +130,6 @@ function showLoc(data){
   showlocs.textContent="Bldg "+loc.substring(4,7)+" Room "+loc.substring(8);
 }
 
-/*
-function showCharacters(){
-  let narch=getId('navchars');
-  for(let i =0; i<CHARS.length;i++){
-    let li = create('li');
-    let a =create('a');
-    let img =create('img');
-    a.href ='#';
-    a.setAttribute("ondragstart","dragstart_handler(event)");
-    a.id=CHARS[i].id;
-    img.setAttribute("class","close");
-    img.src=CHARS[i].url;
-    img.id=CHARS[i].id;
-    img.draggable ='true';
-    img.width=80;
-    append(a,img);
-    append(li,a);
-    append(narch,li);
-  }
-}
-function showItems(){
-  let narIt=getId('navitems');
-  for (let i = 0; i<DECKS.length;i++){
-    let li = create('li');
-    let a = create('a');
-    let p = create('p');
-    a.href='#';
-    a.setAttribute("ondragstart","dragstart_handler(event)");
-    p.setAttribute("class","close");
-    p.textContent=DECKS[i].deck;
-    li.setAttribute("class","small item");
-    append(a,p);
-    append(li,a);
-    append(narIt,li);
-  }
-}*/
 
 function initDrag(){
   //add the function for the drag and drop
@@ -191,17 +148,17 @@ function initDrag(){
 //Change the language for the game - TO DO
 function language(){
   let btn = getId('monselect');
-  btn.addEventListener('click', updateBtn);
+  /*btn.addEventListener('click', updateBtn);
 
   function updateBtn() {
   if (btn.value === 'fr') {
-      return btn.value;
+      //return btn.value;
   } else if (btn.value === 'en') {
-      return
+      //return 
   }else {
-      console.log('demat');
+      //console.log('demat');
   }
-  }
+  }*/
   return btn.value;
 }
 

@@ -47,12 +47,12 @@
           </select>
         </li>
       </ul>-->
-      <article id="status">
-        <nav style="display: flex">
+      <article id="status"color="#fffff">
+        <nav style="display: flex" >
           <ul style="flex-grow: 1">
-            <li class="menu"><a id="settings" class="child" href="#" title="Settings"><a id="closeBtn" href="#" class="close">&times;</a></a>
+            <li class="menu"><a id="settings" class="child" href="#" title="Settings"></a></li>
+            <li class="menu">              
               <select id="monselect">
-              <a href="#" id="openBtn"></a>
               <option value="fr" selected>Français</option>
               <option value="en">English</option>
             </select></li>
@@ -76,7 +76,7 @@
             <li class="menu"><a id="time"  class="child" href="#"  title="Time"></a></li>
             <li class="menu"><span id="showtimes" class="wherewhen"></span></li>
           </ul>
-    
+          <p id="de"></p>
     
         </nav>
         </article>
@@ -112,7 +112,6 @@
         <input id='chek'type ='button' value="Chek">
       </article>
     </section>
-
     <!-- Inventory -->
     <aside id="sidebar">
       <span class="elem">aside: Inventory</span>
@@ -164,7 +163,7 @@
   }-->
 </script>
 <script>
-  init('./bob_test4.json');
+  init('./bob_test5.json');
   initGUI();
 </script>
 </body>

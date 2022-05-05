@@ -425,10 +425,8 @@ function noDuplicationvalue(code){
     //Chek if the code is allready used
     let variable = getId(code);
     if(variable===null){
-        console.log("oui");
         return true
     }else{
-        console.log("non");
         return false;
     }
 }
@@ -453,7 +451,7 @@ function startGame(){
     start.title="0";
 }
 
-function endGame(){
+function stopGame(){
     //Finish the game
     let start = getId('jeu');
     start.title="1";
@@ -461,11 +459,50 @@ function endGame(){
 
 function endtime(data){
     //Check the time limit of the game
-    let time = data['gamers'][0]['settings']['endtime'];
-    let showtime = getId('showtimes');
-    if(showtime.textContent===time){
-        endGame()
-        alert("Vous n'avez plus de temps");
+    if(checkGame()){
+        let time = data['gamers'][0]['settings']['endtime'];
+        let showtime = getId('showtimes');
+        if(showtime.textContent===time){
+            stopGame()
+            alert("Vous n'avez plus de temps");
+        }
+    }
+}
+
+function endGame(data){
+    let el = data['gamers'][0]['settings']['endgame'];
+    let indicat = 0;
+    for(let i = 0; i<el.length;i++){
+            let valueRequire=el[i]['require'];
+            for(let j=0;j<valueRequire.length;j++){
+                let func = valueRequire[j]['func'];
+                switch(func){
+                    case "checkvalue" : {
+                        let type =valueRequire[j]['args'];
+                        let value =valueRequire[j]['value'];
+                        if(checkvalue(type,value)){
+                            indicat =1;
+                        }else{
+                            indicat=0;
+                        };
+                        break;
+                    };
+                    case "checkitem" :{
+                        let type = valueRequire[j]['args']
+                        if(checkitem(type)){
+                            indicat =1;
+                        }else{
+                            indicat=0;
+                        };
+                        break;
+                    }
+                }
+                if(indicat==1){
+                    alert("You did it !")
+                    stopGame();
+                    return;
+                }
+            }
     }
 }
 
