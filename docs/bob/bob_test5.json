@@ -1,0 +1,532 @@
+{
+  "title": "Bob",
+  "settings": {
+    "comment" : "General Settings for all the gamers",
+    "timecost": {
+      "move": 20,
+      "interrogate": 5
+    }
+  },
+  "gamers" : [
+    {
+      "name": "gamer0",
+      "settings": {
+        "starttime": "00:11:00",
+        "endtime":"00:12:00",
+        "location": "loc:A28.005",
+        "variables" : [
+          {
+            "var": "blast",
+            "value": "0"
+          },
+          {
+            "var": "failure",
+            "value": "0"
+          },
+          {
+            "var": "seq",
+            "value": "0"
+          }
+        ],
+        "endgame":{
+          "require":[
+            {
+              "func": "checkvalue",
+              "args": "blast",
+              "value": "52"
+            }
+          ],
+          "update":[],
+          "fr":"BLASTx est lancé avec tous les paramètres modifiés. Après une poignée de secondes d'attente, la page suivante s'affiche avec 6 résultats.",
+          "en":"BLASTx is launched with all parameters changed. After a few seconds of waiting, the following page is displayed with 6 results."
+
+        },
+          
+        "intro": {
+          "require": [],
+          "update": [
+            {
+              "func": "addchar",
+              "args": ["char_02"],
+              "name": ["Bob"]
+            },
+           {
+              "func": "additem",
+              "args": ["item_103"],
+              "type": ["PAPER"]
+            }
+          ],
+          "fr": "Vous venez d'entrer dans la salle info 005 où plusieurs étudiant.e.s travaillent silencieusement devant les ordinateurs quand soudain, un étudiant `char:44` s'arrache les cheveux et se lamente bruyamment en chiffonnant une feuille `item:papers` qu'il jette au sol avant de la piétiner.",
+          "en" : "You have just entered computer room 005 where several students are silently working in front of the computers when suddenly, a student `char:02` is tearing his hair out and wailing loudly while crumpling up a paper sheet `item:papers` that he throws to the ground before stomping on it."
+        }
+      },
+
+
+
+
+      
+      "char_02": {
+        "name": "Bob",
+        "states" : [
+          {
+            "name": "present"
+          },
+          {
+            "name": "absent"
+          }
+        ],
+        "about" : [
+          {
+            "dest" : "char_02",
+            "name": "Bob",
+            "require" : [],
+            "update" : [
+              {
+                "func": "addchar",
+                "args": ["char_01"],
+                "name": ["Lio"]
+              },
+              {
+                "func": "addchar",
+                "args": ["char_03"],
+                "name": ["HAL"]
+              },
+              {
+                "func": "addchar",
+                "args": ["char_04"],
+                "name": ["Amy"]
+              }
+            ],
+            "fr": "Je m'appelle Bob et je suis étudiant en Biologie. Je suis inscrit à un cours de Bioinfo et c'est vraiment difficile. Je viens ici pour travailler sur ordinateur `char:03` car il y a souvent des étudiants en bioinformatique qui peuvent m'aider... D'ailleurs, il y en a deux ici `char:01` et `char:04`.",
+            "en": "My name is Bob and I am a Biology student. I am enrolled in a Bioinfo course and it is really difficult. I come here to work on computer `char:03` because there are often bioinformatics students who can help me... By the way, there are two here `char:01` and `char:04` ."
+          },
+          {
+            "dest" : "char_01",
+            "name" : "Lio",
+            "require" : [],
+            "update" : [],
+            "fr": "Je la vois souvent dans cette salle qui est ouverte aux étudiant.e.s d'autres formations. Je l'ai entendu dire qu'elle était en master de bioinformatique.",
+            "en": "I often see her in this room which is open to students from other courses. I heard her say that she was in a master's program in bioinformatics."
+          },
+          {
+            "dest": "char_04",
+            "name": "Amy",
+            "require": [],
+            "update" : [],
+            "fr":"Je l'ai déjà vu mais je ne lui ai jamais parlé. Elle travaille toujours avec `char_03`",
+            "en":"I've seen her before but never talked to her. She always works with `char_03`"
+          },
+          {
+            "dest": "char_03",
+            "name": "HAL",
+            "require": [],
+            "update" : [
+              {
+                "func": "additem",
+                "args": ["item_105"],
+                "type": ["SEARCH"]
+              }
+            ],
+            "fr":"Sur le navigateur web, j'ai utilisé le moteur de recherche NCBI:Entrez `item_search` mais je ne sais pas quoi taper comme mots clés. Je n'y comprends rien du tout. Ah la la!!! et l'heure tourne. C'est la catastrophe.",
+            "en":"On the web browser, I used the NCBI:Enter `item_search` engine but I don't know what to type in as keywords. I don't understand it at all. Oh boy!!! and the clock is ticking. It's a disaster."
+          },
+          {
+            "dest": "item_103",
+            "name": "bob's project topic",
+            "require": [],
+            "update" : [],
+            "fr":"C'est le sujet de mon projet que je dois rendre avant midi. Vous pouvez le lire. Il vous tend le papier chiffonné.\nSujet: \nVous devez rechercher dans UniprotKB des séquences protéiques similaires chez E. coli à partir de la séquence dont le numéro d'accession est: AB011381.",
+            "en":"This is the subject of my project due by noon. You can read it. He hands you the crumpled paper. \nTopic: \nYou are to search UniprotKB for similar protein sequences in E. coli from the sequence whose accession number is: AB011381."
+          },
+          {
+            "dest": "item_01",
+            "name": "blast",
+            "require":[],
+            "uptade":[
+              {
+                "func" : "transformvalue",
+                "args": "blast",
+                "value": "2",
+                "code" : "TV01"
+              }
+            ],
+            "fr":"Oui, c'est une super idée!! Je dois chercher des séquences protéiques, c'est donc un BLASTp que je dois faire. Génial!!!",
+            "en":"Yes, that's a great idea!! I have to look for protein sequences, so it's a BLASTp that I have to do. Awesome!!!"
+          },
+          {
+            "dest": "item_01",
+            "name": "blast",
+            "require":[
+              {
+                "func" : "checkvalue",
+                "args" : "blast",
+                "value" : "4"
+              },
+              {
+                "func" : "checkvalue",
+                "args" : "seq",
+                "value" : "1"
+              }
+
+            ],
+            "uptade":[
+              {
+                "func": "additem",
+                "args": ["item_106"],
+                "type": ["BDD"]
+              },
+              {
+                "func": "additem",
+                "args": ["item_107"],
+                "type": ["SPECIES"]
+              }
+            ],
+            "fr":"Ouuiiiii!!! bien sûr, je le savais... BLASTx prend en entrée une séquence nucléique traduite et interroge une banque de données protéique... Il ne me reste plus qu'à définir la banque de données `item:bdd` et que je restreigne la recherche `item:species` à l'espèce E. coli.",
+            "en":"Yes, of course, I knew that... BLASTx takes as input a translated nucleic sequence and queries a protein database... I just have to define the `item:bdd` database and restrict the `item:species` search to the E. coli species."
+          }
+
+        ]
+      },
+
+
+
+
+
+      "char_03":{
+        "name": "HAL",
+        "states" : [
+          {
+            "name": "present"
+          },
+          {
+            "name": "absent"
+          }
+        ],
+        "about" : [
+          {
+            "dest" : "char_03",
+            "name" : "HAL",
+            "require" : [],
+            "update" : [],
+            "fr": "Dans une fenêtre, un shell Linux et un prompt `$> ` vous attend impassible... ",
+            "en": "In a window, a Linux shell and a prompt `$> ` awaits you impassively..."
+          },
+          {
+            "dest" : "item_103",
+            "name" : "bob's project topic",
+            "require" : [
+              {
+                "func": "checkitem",
+                "args": "item_105",
+                "type": "SEARCH"
+              }
+            ],
+            "update" : [
+              {
+                "func" : "transformvalue",
+                "args" : "seq",
+                "value" : "1",
+                "code" : "TV02"
+              }
+            ],
+            "fr": "En tapant sur NCBI:ENTREZ le numéro d'accession, le texte ci-dessous s'affiche. On peut lire que c'est une séquence nucléique.",
+            "en": "By typing on NCBI:ENTER the accession number, the text below is displayed. It says that it is a nucleic sequence."
+
+          },
+          {
+            "dest" : "item_01",
+            "name" : "blast",
+            "require" : [
+              {
+                "func": "checkvalue",
+                "args": "seq",
+                "value": "0"
+              }
+            ],
+            "update" : [],
+            "fr": "Sur la page NCBI de BLAST, vous ne savez pas quoi faire... il y a des tas de paramètres à définir.",
+            "en": "On the NCBI page of BLAST, you don't know what to do... there are lots of parameters to set."
+          },
+          {
+            "dest" : "item_01",
+            "name" : "blast",
+            "require" : [
+              {
+                "func": "checkvalue",
+                "args": "blast",
+                "value": "2"
+              }
+            ],
+            "update" : [
+              {
+                "func": "addvalue",
+                "args": "failure",
+                "value": "10",
+                "code": "AV01"
+              }
+            ],
+            "fr": "Vous choisissez BLASTp et cliquez sur le bouton `BLAST`.... quand soudain, le message d'erreur suivant s'affiche : `Message ID#24 Error: Failed to read the Blast query: GI/accession/sequence mismatch.`. Qu'est ce qui se passe? Visiblement, ce n'était pas une bonne idée... ",
+            "en": "You choose BLASTp and click the `BLAST`button....  when suddenly the following error message appears: `Message ID#24 Error: Failed to read the Blast query: GI/accession/sequence mismatch.`What's going on? Obviously, this was not a good idea..."
+          },
+          {
+            "dest" : "item_01",
+            "name" : "blast",
+            "require" : [
+              {
+                "func": "checkvalue",
+                "args": "blast",
+                "value": "6"
+              }
+            ],
+            "update" : [],
+            "fr": "Vous hésitez entre BLASTx et BLASTp. Lequel choisir?",
+            "en": "You hesitate between BLASTx and BLASTp. Which one should you choose?"
+          },
+          {
+            "dest" : "item_01",
+            "name" : "blast",
+            "require" : [
+              {
+                "func": "checkvalue",
+                "args": "seq",
+                "value": "1"
+              },
+              {
+                "func": "checkvalue",
+                "args": "blast",
+                "value": "4"
+              }
+            ],
+            "update" : [],
+            "fr": "Comme la séquence est nucléique, vous choisissez BLASTx et cliquez sur le bouton bleu `BLAST`.... Une grande quantité de résultats de séquences protéiques d'un grand nombre d'espèces s'affiche à l'écran. C'est difficilement exploitable pour répondre au devoir maison. Il faudrait restreindre la recherche.",
+            "en": "As the sequence is nucleic, you choose BLASTx and click on the blue button `BLAST`.... A large amount of protein sequence results from a large number of species is displayed on the screen. This is difficult to use for the homework assignment. The search should be narrowed down."
+          },
+          {
+            "dest" : "item_106",
+            "name" : "bdd",
+            "require" : [
+            ],
+            "update" : [
+              {
+                "func": "addvalue",
+                "args": "blast",
+                "value": "16",
+                "code": "AV02"
+              }
+            ],
+            "fr": "Vous sélectionnez dans le menu **Database** &mdash; parmi les banques proposées &mdash; la banque `UniprotKB/Swiss-Prot(swissprot)`.",
+            "en": "You choose in the combo **Database** &mdash; among the listed databanks &mdash; `UniprotKB/Swiss-Prot(swissprot)`. "
+          },
+          {
+            "dest" : "item_107",
+            "name" : "species",
+            "require" : [
+            ],
+            "update" : [
+              {
+                "func": "addvalue",
+                "args": "blast",
+                "value": "32",
+                "code": "AV03"
+              }
+            ],
+            "fr": "Vous saisissez dans le champ texte **Organism**, `Escherichia coli (taxid:562)`. ",
+            "en": "You type in the textfield **Organism**, `Escherichia coli (taxid:562)`. "
+          }
+        ]
+      },
+
+
+
+
+
+      "char_01":{
+        "name": "Lio",
+        "states" : [
+          {
+            "name": "present"
+          },
+          {
+            "name": "absent"
+          }
+        ],
+        "about" : [
+          {
+            "dest" : "char_01",
+            "name" : "Lio",
+            "require" : [],
+            "update" : [],
+            "fr": "Je m'appelle Lio et je suis étudiante en 2ème année de master de Bioinformatique.",
+            "en": "My name is Lio and I am a student in my 2nd year of master in Bioinformatics."
+          },
+          {
+            "dest" : "char_04",
+            "name" : "Amy",
+            "require" : [],
+            "update" : [],
+            "fr": "On travaille souvent ensemble sur des projets bioinformatiques.",
+            "en": "We often work together on bioinformatics projects."
+          },
+          {
+            "dest" : "char_02",
+            "name" : "Bob",
+            "require" : [],
+            "update" : [],
+            "fr": "On le voit de temps en temps. Il parle fort et il a l'air bizarre et... toujours en retard sur ces projets.",
+            "en": "We see him from time to time. He's loud and he looks weird and... always late on these projects."
+          },
+          {
+            "dest" : "char_03",
+            "name" : "HAL",
+            "require" : [],
+            "update" : [],
+            "fr": "C'est un des ordinateurs de la salle info. Il est sous Linux. Il faut avoir un login et un mot de passe pour se connecter.",
+            "en": "This is one of the computers in the info room. It is under Linux. You need a login and a password to connect."
+          },
+          {
+            "dest": "item_103",
+            "name": "bob's project topic",
+            "require": [],
+            "update" : [],
+            "fr":"C'est un sujet classique de bio-informatique. Ce n'est pas très dur...",
+            "en":"This is a classic bioinformatics topic. It is not very hard..."
+          },
+          {
+            "dest": "item_01",
+            "name": "blast",
+            "require": [
+              {
+                "func": "checkitem",
+                "args": "item_103",
+                "type": "PAPER"
+              }
+            ],
+            "update" : [
+              {
+                "func": "transformvalue",
+                "args": "blast",
+                "value": "6",
+                "code": "TV03"
+              }
+            ],
+            "fr":"Comme on souhaite trouver des séquences protéiques, le BLASTp ou le BLASTx sont les deux les plus adaptés. Tout dépend de la nature de la séquence `AB011381`.",
+            "en":"Since we want to find protein sequences, BLASTp or BLASTx are the two most suitable. Everything depends on the nature of the sequence `AB011381`."
+          },
+          {
+            "dest": "item_01",
+            "name": "blast",
+            "require": [
+              {
+                "func": "checkitem",
+                "args": "item_103",
+                "type": "PAPER"
+              },
+              {
+                "func": "checkvalue",
+                "args": "seq",
+                "value": "1"
+              }
+            ],
+            "update" : [
+              {
+                "func": "transformvalue",
+                "args": "blast",
+                "value": "4",
+                "code": "TV04"
+              }
+            ],
+            "fr":"Comme on souhaite trouver des séquences protéiques et que la séquence d'entrée est nucléique, BLASTx est le meilleur choix.",
+            "en":"Since we want to find protein sequences and the input sequence is nucleic, BLASTx is the best choice."
+          }
+        ]
+      },
+
+
+
+
+
+      "char_04":{
+        "name": "Amy",
+        "states" : [
+          {
+            "name": "present"
+          },
+          {
+            "name": "absent"
+          }
+        ],
+        "about" : [
+          {
+            "dest" : "char_04",
+            "name" : "Amy",
+            "require" : [],
+            "update" : [],
+            "fr": "Je m'appelle Amy et je suis en 1ère année de master bio-informatique.",
+            "en": "My name is Amy and I'm in my first year of a bioinformatics master's degree."
+          },
+          {
+            "dest" : "char_01",
+            "name" : "Lio",
+            "require" : [],
+            "update" : [],
+            "fr": "On travaille ensemble sur un projet de phylogénie sur les variants du COVID-19.",
+            "en": "We are working together on a phylogeny project on COVID-19 variants."
+          },
+          {
+            "dest" : "char_02",
+            "name" : "Bob",
+            "require" : [],
+            "update" : [],
+            "fr": "Je ne le connais pas...",
+            "en": "I don't know him..."
+          },
+          {
+            "dest" : "char_03",
+            "name" : "HAL",
+            "require" : [],
+            "update" : [],
+            "fr": "C'est un ordinateur Tour classique sous Linux. On l'appelle familièrement HAL en rapport avec ... enfin, vous savez déjà ... La plupart des logiciels pour le développement de programmes et de bio-informatique sont installés.",
+            "en": "It is a classic Tower computer under Linux. It is familiarly called HAL in connection with ... well, you already know ... Most of the software for program development and bioinformatics are installed."
+          },
+          {
+            "dest": "item_103",
+            "name": "bob's project topic",
+            "require": [],
+            "update" : [],
+            "fr":"Hmmm... Vu le sujet, tout peut être fait en ligne avec un navigateur web. Pas besoin de la ligne de commande sous Linux.",
+            "en":"Hmmm... Given the subject, everything can be done online with a web browser. No need for the command line under Linux."
+          },
+          {
+            "dest": "item_105",
+            "name": "search",
+            "require": [
+              {
+                "func": "checkitem",
+                "args": "item_103",
+                "type": "PAPER"
+              }
+            ],
+            "update" : [
+              {
+                "func": "additem",
+                "args": ["item_01"],
+                "type": ["NCBI"]
+              }
+            ],
+            "fr":"Je ne ferai pas comme Bob qui utilise NCBI:Entrez mais je ferai plutôt une recherche par similarité de séquences avec BLAST `item:BLAST`",
+            "en":"I won't do like Bob who uses NCBI:Entrez but I will do a sequence similarity search with BLAST `item:BLAST`"
+          },
+          {
+            "dest": "item_01",
+            "name": "blast",
+            "require": [],
+            "update" : [],
+            "fr":"En fonction du type de séquence (nucléique ou protéique) et du type de banques de données (nucléique ou protéique), on peut choisir de lancer BLASTn, BLASTp, BLASTx ou tBLASTn.",
+            "en":"Depending on the type of sequence (nucleic or protein) and the type of database (nucleic or protein), one can choose to run BLASTn, BLASTp, BLASTx or tBLASTn."
+          }
+        ]
+      }
+
+    }
+  ]
+}
