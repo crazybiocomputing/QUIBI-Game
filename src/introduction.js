@@ -34,6 +34,7 @@
  * @param {String} language
  */
 function intro(data,language){
+    //mettre toutes les fonctions de departs
     let el =data['gamers'][0]["settings"]['intro']['update']
     let text= data['gamers'][0]["settings"]['intro'][language];
     for (let i =0; i<el.length;i++){
@@ -44,6 +45,7 @@ function intro(data,language){
         }
     }
     dialog(text);
+    startGame();
 }
 
 /**
@@ -212,6 +214,7 @@ function require(array,data,language){
  * 
  * @param {Object} data - in format JSON
  * @param {String} language
+ * @param {Array} array - contient le temps (pour les actions)
  */ 
 function checkDragAndDrop(data,language,array){
     //Check the drag and drop and show the interactions bettween two cards
@@ -219,17 +222,22 @@ function checkDragAndDrop(data,language,array){
     btn.addEventListener('click', chek);
 
     function chek(){
-        let el =returnId();
-        if(el === undefined){
-            alert("There is no card or the card is misplaced");
-            return;
+        if(checkGame()){
+            let el =returnId();
+            if(el === undefined){
+                alert("There is no card or the card is misplaced");
+                return;
+            }
+            if(el.length==1){
+                alert("There is only one card");
+                return;
+            }
+            require(el,data,language);
+            updateTime(array,'interrogate');
+            endtime(data);
+        }else{
+            alert("Fin de la partie");
         }
-        if(el.length==1){
-            alert("There is only one card");
-            return;
-        }
-        require(el,data,language);
-        updateTime(array,'interrogate');
     }
 }
 

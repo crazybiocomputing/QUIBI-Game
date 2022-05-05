@@ -55,7 +55,7 @@ function drop_handler_0(ev) {
   ev.target.style.backgroundImage = `url(${asset.url}`;
 }
 
-function drop_handler_down(ev) {
+function drop_handler_bottom(ev) {
   ev.preventDefault();
   // On obtient l'identifiant de la cible et on ajoute l'élément déplacé
   // au DOM de la cible
@@ -94,7 +94,7 @@ function drop_handler_down(ev) {
 }
   
 
-  function drop_handler_up(ev) {
+  function drop_handler_top(ev) {
     ev.preventDefault();
     // On obtient l'identifiant de la cible et on ajoute l'élément déplacé
     // au DOM de la cible

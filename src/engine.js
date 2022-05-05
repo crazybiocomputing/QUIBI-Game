@@ -446,3 +446,34 @@ function checkitem(type){
     }
     return true;
 }
+
+function startGame(){
+    //Init the game
+    let start = getId('jeu');
+    start.title="0";
+}
+
+function endGame(){
+    //Finish the game
+    let start = getId('jeu');
+    start.title="1";
+}
+
+function endtime(data){
+    //Check the time limit of the game
+    let time = data['gamers'][0]['settings']['endtime'];
+    let showtime = getId('showtimes');
+    if(showtime.textContent===time){
+        endGame()
+        alert("Vous n'avez plus de temps");
+    }
+}
+
+function checkGame(){
+    //Check if the game is still in progress
+    let start = getId('jeu');
+    if(start.title==="1"){
+        return false;
+    }
+    return true;
+}
