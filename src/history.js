@@ -70,7 +70,7 @@ function convert(string, base_string, base_convert){
  * @param {string} value - String containing the history string
 */
 function set_cookie(value){
-    localStorage.setItem('history',value.toString());
+    localStorage.setItem('history',value);
 }
 
 /** 
@@ -128,6 +128,31 @@ function update_history(data, array, string){
     return (string);
 }
 
+function fill_history(string, data){
+    let array = [[data['gamers'][0]['settings']['intro']['fr']],[data['gamers'][0]['settings']['intro']['en']]];
+    for (let a=0; a<string.length; a+=2){
+        for (let i in data["gamers"]){
+            for (let j in data['gamers'][i]){
+                if (j.substring(0,4)=="char" ){
+                    for (let k in data['gamers'][i][j]){
+                        if (k == "about"){
+                            for (let l in data['gamers'][i][j][k]){
+                                if (data['gamers'][i][j][k][l]["id"] == string.substring(a,a+2)) {
+                                    array[0].push(data['gamers'][i][j][k][l]["fr"]);
+                                    array[1].push(data['gamers'][i][j][k][l]["en"]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return (array);
+}
+
+
+
 function create_cookie_value(inventory, history){
     history = convert(history,10,16);
     let passphrase = "^"+history+"_"+inventory+"$";
@@ -145,8 +170,14 @@ function transform_cookie(cookie){
             }
         }
     }
-    console.log(array);
     array[1] = convert(array[1],16,2);
     array[0] = convert(array[0],16,10);
-    console.log(array);
+    return (array);
+}
+
+function loading(data,inventory,cookie){
+    let array = transform_cookie(cookie);
+    let array_2 = fill_history(array[0],data);
+    console.log(array_2);
+    //set_status(data,inventory,array[1]);
 }

@@ -49,8 +49,7 @@
 */
 function update_inventory(array,data){
     for (let i in data) {
-        console.log(i);
-        if (array[0] == i){
+        if (array[0] == i || array[1]==i){
             data[`${i}`] = 1;
         }
     }
@@ -79,9 +78,9 @@ function create_hexadecimal_inventory(data){
  * @param {object} object -  Object containing the status of the events (Define object and status)
  * @param {string} hexadecimal -  String containing the hexadecimal number
 */
-function set_status(data,object,hexadecimal){
+function set_status(data,object,binary){
+    console.log(binary);
     let j = 0;
-    let binary = convert(hexadecimal,16,2);
     let str = "";
     let el =data['gamers'][0]["settings"]['intro']['update'];
 
@@ -89,22 +88,24 @@ function set_status(data,object,hexadecimal){
         for (let k=0; k<Object.keys(object).length-binary.length; k++){
             str += "0";
         }
-        str += binary;
     }
+    str += binary;
 
     for (let i in object){
-        console.log(i);
-        console.log(str[j]);
+        
         if ( i.substring(0,4) == "char" && str[j] == 1){
             let els =el[j]['args']; 
             let name = el[j]['name'];
             addchar(els,name);
+            console.log("Perso ajouté")
         }
+        
         if ( i.substring(0,4) == "item" && str[j] == 1){
             let array = el[i]['args'];
             let type = el[i]['type']; 
             additem(array,type);
         }
+        
         j++;
     }
 }

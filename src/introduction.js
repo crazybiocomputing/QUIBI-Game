@@ -217,7 +217,7 @@ function require(array,data,language){
  * @param {String} language
  * @param {Array} array - contient le temps (pour les actions)
  */ 
-function checkDragAndDrop(data,language,array){
+function checkDragAndDrop(data,language,array,string,inventory){
     //Check the drag and drop and show the interactions bettween two cards
     let btn = getId('chek');
     btn.addEventListener('click', chek);
@@ -235,6 +235,13 @@ function checkDragAndDrop(data,language,array){
             }
             require(el,data,language);
             updateTime(array,'interrogate');
+
+            string = update_history(data, el, string);
+            inventory = update_inventory(el,inventory);
+            let hexaInventory = create_hexadecimal_inventory(inventory);
+            let passphrase = create_cookie_value(hexaInventory, string);
+            set_cookie(passphrase);
+
             endGame(data);
             endtime(data);
         }else{

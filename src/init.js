@@ -59,19 +59,12 @@ async function fetchMD(url) {
 //Pour appler le code dans engine
 async function init(scenario) {
   console.log('init');
+
   // Load scenario in format JSON or Markdown
-  const data = await fetchJSON(scenario);
-  console.log(data);
+  const scene = await fetchJSON(scenario);
+  console.log(scene);
+  const data = update_id_scenario(scene);
   
-  /* Tests historique et inventaire
-  const data_2 = update_id_scenario(data);
-  let text_history = "";
-  let array = ["char_02","char_01"];
-  text_history = update_history(data_2, array, text_history);
-  array = ["char_04","char_01"];
-  text_history = update_history(data_2, array, text_history);
-  array = ["char_02","char_01"];
-  text_history = update_history(data_2, array, text_history);
   let status = {"char_01" : 0,
   "char_02" : 1,
   "char_03" : 0,
@@ -82,12 +75,7 @@ async function init(scenario) {
   "item_104" : 0,
   "item_105" : 0,
   };
-  status = create_hexadecimal_inventory(status);
-  console.log(status);console.log(text_history);
-  let passphrase = create_cookie_value(status, text_history);
-  transform_cookie(passphrase);
-*/
-
+  let historyDialogues = "";
 
   // Create Game and GUI
   let obj =data;
@@ -109,7 +97,7 @@ async function init(scenario) {
   //let time = setTime(data);
 
   //Check the drag and drop and show the interactions bettween two cards
-  checkDragAndDrop(data,langue,time);
+  checkDragAndDrop(data,langue,time,historyDialogues,status);
 }
 
 
