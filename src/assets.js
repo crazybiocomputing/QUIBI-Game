@@ -308,7 +308,30 @@ const DECKS = [
     code:'IX01'
     }
   ]
+  },
+  {
+  deck: 'BDD',
+  comment:'',
+  collection:[
+    {
+      id:'item_106',
+      name:'banque de donnees proteique',
+      code:'IY01'
+    }
+  ]
+  },
+  {
+    deck: 'SPECIES',
+    comment:'',
+    collection:[
+      {
+        id:'item_107',
+        name:'Escherichia coli',
+        code:'IZ01'
+      }
+    ]
   }
+
 
 ];
 

@@ -242,7 +242,7 @@ function checkDragAndDrop(data,language,array,string,inventory){
             let passphrase = create_cookie_value(hexaInventory, string);
             set_cookie(passphrase);
 
-            endGame(data);
+            endGame(data,language);
             endtime(data);
         }else{
             alert("End of the Game");

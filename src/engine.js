@@ -115,7 +115,7 @@ function addchar(char,name){
 
 /**
  * 
- * @param {Object} data - format JSON
+ * @param {String} text
  */
  function dialog(text){
     let p= getId('dialogue');
@@ -469,17 +469,22 @@ function endtime(data){
     }
 }
 
-function endGame(data){
+function endGame(data,language){
     let el = data['gamers'][0]['settings']['endgame'];
+    let valueRequire=el['require'];
+    console.log("Fin");
+    console.log(el['require'].length);
     let indicat = 0;
-    for(let i = 0; i<el.length;i++){
-            let valueRequire=el[i]['require'];
-            for(let j=0;j<valueRequire.length;j++){
-                let func = valueRequire[j]['func'];
+    for(let i = 0; i<valueRequire.length;i++){
+            //let valueRequire=el[i]['require'];
+            console.log(valueRequire);
+            console.log(el[language]);
+            //for(let j=0;j<valueRequire.length;j++){
+                let func = valueRequire[i]['func'];
                 switch(func){
                     case "checkvalue" : {
-                        let type =valueRequire[j]['args'];
-                        let value =valueRequire[j]['value'];
+                        let type =valueRequire[i]['args'];
+                        let value =valueRequire[i]['value'];
                         if(checkvalue(type,value)){
                             indicat =1;
                         }else{
@@ -488,7 +493,7 @@ function endGame(data){
                         break;
                     };
                     case "checkitem" :{
-                        let type = valueRequire[j]['args']
+                        let type = valueRequire[i]['args']
                         if(checkitem(type)){
                             indicat =1;
                         }else{
@@ -498,11 +503,13 @@ function endGame(data){
                     }
                 }
                 if(indicat==1){
-                    alert("You did it !")
+                    alert(el[language]);
+                    dialog(el[language]);
+                    alert("You did it !");
                     stopGame();
                     return;
                 }
-            }
+            //}
     }
 }
 

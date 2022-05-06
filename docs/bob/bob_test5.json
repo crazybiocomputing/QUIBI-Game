@@ -141,21 +141,6 @@
           {
             "dest": "item_01",
             "name": "blast",
-            "require":[],
-            "uptade":[
-              {
-                "func" : "transformvalue",
-                "args": "blast",
-                "value": "2",
-                "code" : "TV01"
-              }
-            ],
-            "fr":"Oui, c'est une super idée!! Je dois chercher des séquences protéiques, c'est donc un BLASTp que je dois faire. Génial!!!",
-            "en":"Yes, that's a great idea!! I have to look for protein sequences, so it's a BLASTp that I have to do. Awesome!!!"
-          },
-          {
-            "dest": "item_01",
-            "name": "blast",
             "require":[
               {
                 "func" : "checkvalue",
@@ -169,7 +154,7 @@
               }
 
             ],
-            "uptade":[
+            "update":[
               {
                 "func": "additem",
                 "args": ["item_106"],
@@ -183,6 +168,21 @@
             ],
             "fr":"Ouuiiiii!!! bien sûr, je le savais... BLASTx prend en entrée une séquence nucléique traduite et interroge une banque de données protéique... Il ne me reste plus qu'à définir la banque de données `item:bdd` et que je restreigne la recherche `item:species` à l'espèce E. coli.",
             "en":"Yes, of course, I knew that... BLASTx takes as input a translated nucleic sequence and queries a protein database... I just have to define the `item:bdd` database and restrict the `item:species` search to the E. coli species."
+          },
+          {
+            "dest": "item_01",
+            "name": "blast",
+            "require":[],
+            "uptade":[
+              {
+                "func" : "transformvalue",
+                "args": "blast",
+                "value": "2",
+                "code" : "TV01"
+              }
+            ],
+            "fr":"Oui, c'est une super idée!! Je dois chercher des séquences protéiques, c'est donc un BLASTp que je dois faire. Génial!!!",
+            "en":"Yes, that's a great idea!! I have to look for protein sequences, so it's a BLASTp that I have to do. Awesome!!!"
           }
 
         ]
@@ -399,27 +399,6 @@
                 "func": "checkitem",
                 "args": "item_103",
                 "type": "PAPER"
-              }
-            ],
-            "update" : [
-              {
-                "func": "transformvalue",
-                "args": "blast",
-                "value": "6",
-                "code": "TV03"
-              }
-            ],
-            "fr":"Comme on souhaite trouver des séquences protéiques, le BLASTp ou le BLASTx sont les deux les plus adaptés. Tout dépend de la nature de la séquence `AB011381`.",
-            "en":"Since we want to find protein sequences, BLASTp or BLASTx are the two most suitable. Everything depends on the nature of the sequence `AB011381`."
-          },
-          {
-            "dest": "item_01",
-            "name": "blast",
-            "require": [
-              {
-                "func": "checkitem",
-                "args": "item_103",
-                "type": "PAPER"
               },
               {
                 "func": "checkvalue",
@@ -437,7 +416,29 @@
             ],
             "fr":"Comme on souhaite trouver des séquences protéiques et que la séquence d'entrée est nucléique, BLASTx est le meilleur choix.",
             "en":"Since we want to find protein sequences and the input sequence is nucleic, BLASTx is the best choice."
+          },
+          {
+            "dest": "item_01",
+            "name": "blast",
+            "require": [
+              {
+                "func": "checkitem",
+                "args": "item_103",
+                "type": "PAPER"
+              }
+            ],
+            "update" : [
+              {
+                "func": "transformvalue",
+                "args": "blast",
+                "value": "6",
+                "code": "TV03"
+              }
+            ],
+            "fr":"Comme on souhaite trouver des séquences protéiques, le BLASTp ou le BLASTx sont les deux les plus adaptés. Tout dépend de la nature de la séquence `AB011381`.",
+            "en":"Since we want to find protein sequences, BLASTp or BLASTx are the two most suitable. Everything depends on the nature of the sequence `AB011381`."
           }
+
         ]
       },
 
