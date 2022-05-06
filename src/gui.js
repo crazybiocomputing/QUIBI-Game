@@ -25,6 +25,27 @@
 'use strict';
 
 const showSection = (name) => (ev) => {
+  if (name == "session_saver"){
+    let passphrase = get_cookie();
+    alert(passphrase);
+  }
+  if (name == "historian"){
+    let data = readScenario('./bob_test5.json');
+    data.then((value)=>{
+      console.log(value);
+      let passphrase = get_cookie();
+      let array = transform_cookie(passphrase);
+      let history = fill_history(array[0],value);
+      let string = '';
+      for (let i of history[0]){
+        string+=i;
+        string+="\n";
+        string+="\n";
+      }
+      console.log(string);
+      alert(string);
+    });
+  }
   // Switch off all the main sections
   document.querySelectorAll('.main').forEach( (section) => section.style.display = 'none');
   document.getElementById(name).style.display = 'block';
@@ -46,6 +67,8 @@ const cloud_sender = (scenario,lang) => {
 }
 
 const initGUI = (scenario) => {
+  console.log("on rentre ici");
+  let data = readScenario(scenario)
 
   const sections = [
     {buttonid:'',title:'Introduction',sectionid:'introducer',pos: 'none'},
@@ -69,10 +92,12 @@ const initGUI = (scenario) => {
   // Get language
   const lang = navigator.language || 'en';
   
+  /*
   // Create all the sections required for the scenario
   
   // Update header menu
   // Create menubar
+  console.log("on create le menu");
   const left = document.getElementById('buttons');
   const right = document.getElementById('status');
   
@@ -89,11 +114,13 @@ const initGUI = (scenario) => {
     let button;
     // Separator
     if (s.buttonid === 'separator') {
+      console.log("on check les seprators");
       button = document.createElement('span');
       button.id = s.buttonid;
     }
     // Others...
     else {
+      console.log("on check les autres");
       button = document.createElement('a');
       button.id = s.buttonid;
       button.className = 'child';
@@ -101,11 +128,44 @@ const initGUI = (scenario) => {
       button.title = s.title;
 
       // Add listener
+      console.log("ça rajoute l'ev du bouton");
       button.addEventListener('click',showSection(s.sectionid));
     }
+    console.log("on rentre dans le bouton selon le click");
     item.appendChild(button);
     
+  });*/
+
+  const list = document.getElementById('status');
+  
+  sections.forEach( (s) => {
+    const item = document.createElement('li');
+    item.className = 'menu';
+    list.appendChild(item);
+    const button = document.createElement('a');
+    button.id = s.buttonid;
+    button.className = 'child';
+    button.href='#';
+    button.title = s.title;
+    item.appendChild(button);
+
+    // Add listener
+    button.addEventListener('click',showSection(s.sectionid));
   });
+  
+
+  document.getElementById('history').addEventListener('click',showSection('historian'));
+  document.getElementById('team').addEventListener('click',showSection('team_builder'));
+  document.getElementById('load_session').addEventListener('click',showSection('session_loader'));
+  document.getElementById('save_session').addEventListener('click',showSection('session_saver'));
+  document.getElementById('chat').addEventListener('click',showSection('interrogate'));
+  document.getElementById('scan').addEventListener('click',showSection('scanner'));
+  document.getElementById('explore').addEventListener('click',showSection('explorer'));
+  document.getElementById('puzzle').addEventListener('click',showSection('solver'));
+  document.getElementById('cloud_upload').addEventListener('click',showSection('cloudsender'));
+  document.getElementById('cloud_download').addEventListener('click',showSection('cloudreceiver'));
+  document.getElementById('location').addEventListener('click',showSection('moveto'));
+
 
   // Create sections
   const parent = document.getElementById('wrapper');

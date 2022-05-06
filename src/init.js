@@ -180,3 +180,8 @@ function append(parent,child){
   parent.appendChild(child);
 }
 
+async function readScenario(scenario){
+  const scene = await fetchJSON(scenario);
+  const data = update_id_scenario(scene);
+  return data;
+}
