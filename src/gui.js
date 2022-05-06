@@ -24,32 +24,15 @@
 
 'use strict';
 
-const showSection = (name) => (ev) => {
-  if (name == "session_saver"){
-    let passphrase = get_cookie();
-    alert(passphrase);
-  }
-  if (name == "historian"){
-    let data = readScenario('./bob_test5.json');
-    data.then((value)=>{
-      console.log(value);
-      let passphrase = get_cookie();
-      let array = transform_cookie(passphrase);
-      let history = fill_history(array[0],value);
-      let string = '';
-      for (let i of history[0]){
-        string+=i;
-        string+="\n";
-        string+="\n";
-      }
-      console.log(string);
-      alert(string);
-    });
-  }
+
+const showSection = (name,func=null) => (ev) => {
   // Switch off all the main sections
   document.querySelectorAll('.main').forEach( (section) => section.style.display = 'none');
   document.getElementById(name).style.display = 'block';
   console.log('hey je marche');
+  if (func != null ) {
+    func(name,ev);
+  }
 }
 
 const cloud_sender = (scenario,lang) => {
@@ -72,11 +55,11 @@ const initGUI = (scenario) => {
 
   const sections = [
     {buttonid:'',title:'Introduction',sectionid:'introducer',pos: 'none'},
-    {buttonid:'settings',title:'Settings',sectionid:'setter',pos: 'left'},
-    {buttonid:'history',title:'History',sectionid:'historian',pos: 'left'},
+    {buttonid:'settings',title:'Settings',sectionid:'setter',pos: 'left',createSection:newSettings},
+    {buttonid:'history',title:'History',sectionid:'historian',pos: 'left',func:history},
     {buttonid:'team',title:'Team',sectionid:'team_builder',pos: 'left'},
     {buttonid:'load_session',title:'Load Session',sectionid:'session_loader',pos: 'left'},
-    {buttonid:'save_session',title:'Save Session',sectionid:'session_saver',pos: 'left'},
+    {buttonid:'save_session',title:'Save Session',sectionid:'session_saver',pos: 'left',func:sessionSaver},
     {buttonid:'separator',title:'',sectionid:'',pos: 'left'},
     {buttonid:'chat',title:'Interrogate',sectionid:'interrogate',pos: 'left'},
     {buttonid:'scan',title:'Scan',sectionid:'scanner',pos: 'left'},
@@ -85,22 +68,24 @@ const initGUI = (scenario) => {
     {buttonid:'cloud_upload',title:'Send in Cloud',sectionid:'cloudsender',func: cloud_sender,pos: 'left'},
     {buttonid:'cloud_download',title:'Receive from Cloud',sectionid:'cloudreceiver',pos: 'left'},
     {buttonid:'separator',title:'',sectionid:'',pos: 'left'},
-    {buttonid:'location',title:'Location',sectionid:'location',pos: 'right'},
+    {buttonid:'location',title:'Location',sectionid:'locations',pos: 'right'},
+    {buttonid:'_text',title:'Location',sectionid:'',pos: 'right'},
     {buttonid:'time',title:'Time',sectionid:'',pos: 'right'},
+    {buttonid:'_text',title:'Time',sectionid:'',pos: 'right'},
   ];
-  
+
   // Get language
   const lang = navigator.language || 'en';
-  
-  /*
+
+
   // Create all the sections required for the scenario
-  
+
   // Update header menu
   // Create menubar
   console.log("on create le menu");
   const left = document.getElementById('buttons');
   const right = document.getElementById('status');
-  
+
   sections.filter( (s) => s.buttonid !== '').forEach( (s) => {
     const item = document.createElement('li');
     item.className = 'menu';
@@ -114,13 +99,23 @@ const initGUI = (scenario) => {
     let button;
     // Separator
     if (s.buttonid === 'separator') {
-      console.log("on check les seprators");
       button = document.createElement('span');
       button.id = s.buttonid;
     }
+    else if (s.buttonid === '_text'){
+      //TODO
+      button = document.createElement('span');
+      if (s.title === "Time"){
+        button.id = "showtimes";
+      }
+      else if (s.title === "Location"){
+        button.id = "showlocs";
+      }
+      button.className = "wherewhen";
+      button.textContent = (s.title === 'Location') ? 'A28 Room 205' : "00:00:00";
+    }
     // Others...
     else {
-      console.log("on check les autres");
       button = document.createElement('a');
       button.id = s.buttonid;
       button.className = 'child';
@@ -128,16 +123,14 @@ const initGUI = (scenario) => {
       button.title = s.title;
 
       // Add listener
-      console.log("ça rajoute l'ev du bouton");
-      button.addEventListener('click',showSection(s.sectionid));
+      button.addEventListener('click',showSection(s.sectionid,s.func));
     }
-    console.log("on rentre dans le bouton selon le click");
     item.appendChild(button);
-    
-  });*/
 
+  });
+/*
   const list = document.getElementById('status');
-  
+
   sections.forEach( (s) => {
     const item = document.createElement('li');
     item.className = 'menu';
@@ -152,7 +145,7 @@ const initGUI = (scenario) => {
     // Add listener
     button.addEventListener('click',showSection(s.sectionid));
   });
-  
+
 
   document.getElementById('history').addEventListener('click',showSection('historian'));
   document.getElementById('team').addEventListener('click',showSection('team_builder'));
@@ -165,7 +158,7 @@ const initGUI = (scenario) => {
   document.getElementById('cloud_upload').addEventListener('click',showSection('cloudsender'));
   document.getElementById('cloud_download').addEventListener('click',showSection('cloudreceiver'));
   document.getElementById('location').addEventListener('click',showSection('moveto'));
-
+*/
 
   // Create sections
   const parent = document.getElementById('wrapper');
@@ -176,10 +169,19 @@ const initGUI = (scenario) => {
     sec.className = "main";
     sec.id = s.sectionid;
     // DEBUG ONLY
-    sec.innerHTML = `<span class="elem">section:${s.title}</span>`;
-    parent.insertBefore(sec,ref);
+    if ("createSection" in s) {
+            s.createSection(sec);
+    }
+    else {
+
+      sec.innerHTML = `<span class="elem">section:${s.title}</span>`;
+
+    }
+    console.log(sec);
+      parent.insertBefore(sec,ref);
+
   });
-  
+
 }
 
 const keypressed = (key) => (ev) => {
@@ -207,12 +209,12 @@ const keyboard = (kb_layout) => {
       ['enter','U','V','W','X','Y','Z','del']
     ]
   };
-    
+
   const icons = {
     'enter' : '<div><img src="../assets/icons/arrow-return-left.svg" alt="Entrer" class="icon"></div>',
-    'del'   : '<div><img src="../assets/icons/backspace.svg" alt="Suppr" class="icon"></div>'    
+    'del'   : '<div><img src="../assets/icons/backspace.svg" alt="Suppr" class="icon"></div>'
   };
-  
+
   const kboard = document.createElement('div');
   kboard.className = 'keyboard';
   layouts[kb_layout].forEach( (line) => {
@@ -268,4 +270,3 @@ const keyboard = (kb_layout) => {
         </div>
       </div>
 */
-

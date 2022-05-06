@@ -28,9 +28,9 @@
 
 'use strict';
 
-/** 
+/**
  * Convert a binary number into hexadecimal
- * 
+ *
  * @param {string} binary -  String containing the binary number
  * @return {string} - String containing the hexadecimal number
 */
@@ -39,9 +39,9 @@ function convert_to_hexa(binary){
     return hexadecimal;
 }
 
-/** 
+/**
  * Convert a hexadecimal number into binary
- * 
+ *
  * @param {string} hexadecimal -  String containing the hexadecimal number
  * @return {string} - String containing the binary number
 */
@@ -50,11 +50,11 @@ function convert_to_binary(hexadecimal){
     return binary;
 }
 
-/** 
+/**
  * Convert a number into another base
- * 
+ *
  * @param {string} string -  String containing the number to convert
- * @param {int} base_string -  Current base in which the string is 
+ * @param {int} base_string -  Current base in which the string is
  * @param {int} base_convert -  Base for the conversion
  * @return {string} - String containing the new number
 */
@@ -64,18 +64,18 @@ function convert(string, base_string, base_convert){
 }
 
 
-/** 
+/**
  * Create and set a cookie for the key 'hexadecimal'
- * 
+ *
  * @param {string} value - String containing the history string
 */
 function set_cookie(value){
     localStorage.setItem('history',value);
 }
 
-/** 
+/**
  * Get the cookie for the key 'hexadecimal'
- * 
+ *
  * @return {string} - String containing the hexadecimal number
 */
 function get_cookie(){
@@ -84,9 +84,9 @@ function get_cookie(){
 }
 
 
-/** 
+/**
  * Update the scenario and apply an id for each text
- * 
+ *
  * @param {object} data - Object containing the scenario
  * @return {object} - Data with id apply
 */
@@ -130,6 +130,10 @@ function update_history(data, array, string){
 
 function fill_history(string, data){
     let array = [[data['gamers'][0]['settings']['intro']['fr']],[data['gamers'][0]['settings']['intro']['en']]];
+    if (string.length % 2 == 1){
+      string = "0" + string;
+    }
+    console.log(string);
     for (let a=0; a<string.length; a+=2){
         for (let i in data["gamers"]){
             for (let j in data['gamers'][i]){
@@ -180,4 +184,25 @@ function loading(data,inventory,cookie){
     let array_2 = fill_history(array[0],data);
     console.log(array_2);
     //set_status(data,inventory,array[1]);
+}
+
+const sessionSaver = (name,ev) => {
+  let passphrase = get_cookie();
+  alert(passphrase);
+}
+
+const history = (name,ev) => {
+  let data = readScenario('./bob_test5.json');
+  data.then((value)=>{
+    let passphrase = get_cookie();
+    let array = transform_cookie(passphrase);
+    let history = fill_history(array[0],value);
+    let string = '';
+    for (let i of history[0]){
+      string+=i;
+      string += "\r\n";
+    }
+    let el = document.getElementById('historian');
+    el.textContent = string;
+  });
 }

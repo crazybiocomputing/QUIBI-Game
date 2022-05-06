@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../css/crazybio.css" type="text/css">
   <link rel="stylesheet" href="../css/burger.css" type="text/css">
   <link rel="stylesheet" href="../css/quibi.css" type="text/css">
-  
+
   <script type="text/javascript" src="../../src/assets.js"></script>
   <script type="text/javascript" src="../../src/dragdrop.js"></script>
   <script type="text/javascript" src="../../src/debug.js"></script>
@@ -18,6 +18,7 @@
   <script type="text/javascript" src="../../src/network.js"></script>
   <script type="text/javascript" src="../../src/introduction.js"></script>
   <script type="text/javascript" src="../../src/inventory.js"></script>
+  <script type="text/javascript" src="../../src/settings.js"></script>
   <script type="text/javascript" src="../../src/gui.js"></script>
 </head>
 <body>
@@ -32,65 +33,14 @@
     </ul>
   </header>
   <div id="wrapper">
-      <!-- Menu 
-    <article id="burger">
-    <nav>
-      <span class="elem">nav</span>
-      <a id="closeBtn" href="#" class="close">&times;</a>
-      <ul>
-        <li>History</li>
-        <li>Save Session</li>
-        <li>  Settings
-          <select id="monselect">
-            <option value="fr" selected>Français</option>
-            <option value="en">Inglish</option>
-            <option value="br">Brezoneg</option>
-          </select>
-        </li>
-      </ul>-->
-      <article id="status"color="#fffff">
-        <nav style="display: flex" >
-          <ul style="flex-grow: 1">
-            <li class="menu"><a id="settings" class="child" href="#" title="Settings"></a></li>
-            <li class="menu">              
-              <select id="monselect">
-              <option value="fr" selected>Français</option>
-              <option value="en">English</option>
-            </select></li>
-            <li class="menu"><a id="history"  class="child" href="#"  title="History"></a></li>
-            <li class="menu"><a id="load_session"  class="child" href="#"  title="Load Session"></a></li>
-            <li class="menu"><a id="save_session"  class="child" href="#"  title="Save Session"></a></li>
-            <li class="menu"><a id="team"  class="child" href="#"  title="Team"></a></li>
-            <li class="menu"><span id="separator"></span></li>
-            <li class="menu"><a id="chat"  class="child" href="#"  title="Interrogate"></a></li>
-            <li class="menu"><a id="scan"  class="child" href="#"  title="Scan"></a></li>
-            <li class="menu"><a id="explore"  class="child" href="#"  title="Explore"></a></li>
-            <li class="menu"><a id="puzzle"  class="child" href="#"  title="Solve"></a></li>
-            <li class="menu"><a id="cloud_upload"  class="child" href="#"  title="Send in Cloud"></a></li>
-            <li class="menu"><a id="cloud_download"  class="child" href="#"  title="Receive from Cloud"></a></li>
-            <li class="menu"><span id="separator"></span></li>
-          </ul>
-          <!-- Location Time -->
-          <ul style="flex-shrink: 1">
-            <li class="menu"><a id="location" class="child" href="#"  title="A28 Room 205"></a></li>
-            <li class="menu"><span id="showlocs"class="wherewhen"></span></li>
-            <li class="menu"><a id="time"  class="child" href="#"  title="Time"></a></li>
-            <li class="menu"><span id="showtimes" class="wherewhen"></span></li>
-          </ul>
-          <p id="de"></p>
-    
-        </nav>
-        </article>
-    <!-- Location Time
-    <p id="wherewhen" style="float:right">Location DD:HH:MM</p>
-    <a href="#" id="openBtn">
-      <span class="burger-icon">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-    </a> -->
-    </article>
+      <!-- Menu-->
+      <article id="menubar">
+      <nav style="display: flex">
+        <ul id="buttons"  style="flex-grow: 1"></ul>
+        <!-- Location Time -->
+        <ul id="status" style="flex-shrink: 1"></ul>
+      </nav>
+      </article>
     <!-- Main panel -->
     <section id="main">
       <article id="bubble">
@@ -98,7 +48,7 @@
       </article>
       <article>
          <span class="elem">Drag and drop a character...</span>
-         
+
           <input id="Retour1" type="button" value="Retour">
 
          <article id="dropzone1">
@@ -149,15 +99,12 @@
   let sidenav = document.querySelector("#burger>nav");
   let openBtn = document.getElementById("openBtn");
   let closeBtn = document.getElementById("closeBtn");
-
   openBtn.onclick = openNav;
   closeBtn.onclick = closeNav;
-
   /* Set the width of the side navigation to 250px */
   function openNav() {
     sidenav.classList.add("active");
   }
-
   /* Set the width of the side navigation to 0 */
   function closeNav() {
     sidenav.classList.remove("active");

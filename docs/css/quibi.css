@@ -137,7 +137,7 @@ legend {
   code, pre, samp {
      white-space: pre-wrap;
   }
-  
+
   p + details, form, h3 {margin-left:0 !important;}
   img {
      float: none !important;
@@ -162,6 +162,15 @@ legend {
 #wrapper {
   width:1200px;
   margin: 0 auto 0 auto;
+}
+
+#status {
+  background-color: #444;
+}
+
+#historian {
+  word-break: break-all;
+  white-space: pre-wrap;
 }
 
 .main {
@@ -314,7 +323,7 @@ span.elem {
 }
 
 #menubar {
-  background-color: #666;
+  background-color: #444;
 }
 
 .menu {
