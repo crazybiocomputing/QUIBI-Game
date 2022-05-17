@@ -3,7 +3,7 @@
  * Alsacreations.com
  */
 
-body {
+ body {
   font: normal 90% "Trebuchet MS",Verdana,"Lucida Grande",Tahoma,Arial,Helvetica,Sans-Serif;
   color: #444;
   background:#f4f4f4;
@@ -162,6 +162,12 @@ legend {
 #wrapper {
   width:1200px;
   margin: 0 auto 0 auto;
+  display:flex;
+  flex-wrap: wrap;
+}
+
+#main {
+  width: 50%;
 }
 
 #status {

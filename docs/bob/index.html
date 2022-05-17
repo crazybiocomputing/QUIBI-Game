@@ -33,29 +33,33 @@
     </ul>
   </header>
   <div id="wrapper">
+
       <!-- Menu-->
       <article id="menubar">
       <nav style="display: flex">
         <ul id="buttons"  style="flex-grow: 1"></ul>
+
         <!-- Location Time -->
         <ul id="status" style="flex-shrink: 1"></ul>
       </nav>
       </article>
+
     <!-- Main panel -->
     <section id="main">
+
+      <select id="monselect">
+        <option value="fr" selected>Français</option>
+        <option value="en">English</option>
+        </select>
       <article id="bubble">
         <p id="dialogue"></p>
       </article>
-      <article>
+      <article id="drag">
          <span class="elem">Drag and drop a character...</span>
-
-          <input id="Retour1" type="button" value="Retour">
-
          <article id="dropzone1">
           <img id="zone1" title="" src="../assets/icons/person-bounding-box.svg" width=150></img>
          </article>
         <p style="font-size: 2em; font-family: 'Coda',cursive;">is asked about...</p>
-        <input id="Retour2" type="button" value="Retour">
         <span class="elem">a character or an item</span><br>
         <article id="dropzone2">
           <img id ="zone2" src="../assets/icons/question-square.svg" width=200 height=150 title=""></img>
@@ -63,29 +67,35 @@
         <input id='chek'type ='button' value="Chek">
       </article>
     </section>
+
+
     <!-- Inventory -->
     <aside id="sidebar">
-      <span class="elem">aside: Inventory</span>
+
       <nav id="locs">
-        <span class="elem">nav:locs</span>
+
         <ul id="navlocs">
         </ul>
       </nav>
       <nav id="chars">
-        <span class="elem">nav:chars</span>
+
         <ul id="navchars">
         </ul>
       </nav>
       <nav id="items">
-        <span class="elem">nav:items</span>
+
         <ul id="navitems">
         </ul>
       </nav>
     </aside>
-  </div>
+
   <span id="jeu"></span>
-  <span id="value">
-  </span>
+  <span id="value"></span>
+</div>
+
+<div id="showsections">
+  <section id="stop"></section>
+</div>
   <footer>
     <span class="elem">footer</span>
     <article id="debug">

@@ -93,7 +93,7 @@ async function init(scenario) {
   let time = intro(data,langue);
 
   //Clean the drag and drop
-  cleanDragAndDrop();
+  //cleanDragAndDrop();
   //let time = setTime(data);
 
   //Check the drag and drop and show the interactions bettween two cards

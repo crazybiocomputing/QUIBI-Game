@@ -122,7 +122,7 @@ function addchar(char,name){
     p.textContent = text;
 }
 
-
+/*
 function cleanDragAndDrop(){
     //Clear the img of the target darg and drop
 
@@ -133,6 +133,7 @@ function cleanDragAndDrop(){
     
     input2.addEventListener('click', updateRetour2);
     input1.addEventListener('click',updateRetour1);
+
     
     function updateRetour2() {
       if (zone2.src != '../assets/icons/question-square.svg' || zone2.title !='') {
@@ -142,7 +143,6 @@ function cleanDragAndDrop(){
         zone2.setAttribute("class","");
       }
     }
-
     function updateRetour1(){
         if (zone1.src != '../assets/icons/person-bounding-box.svg') {
             zone1.src = '../assets/icons/person-bounding-box.svg';
@@ -150,7 +150,7 @@ function cleanDragAndDrop(){
             zone1.title ='';
             }
     }
-}
+}*/
 
 /**
  * 

@@ -29,7 +29,6 @@ const showSection = (name,func=null) => (ev) => {
   // Switch off all the main sections
   document.querySelectorAll('.main').forEach( (section) => section.style.display = 'none');
   document.getElementById(name).style.display = 'block';
-  console.log('hey je marche');
   if (func != null ) {
     func(name,ev);
   }
@@ -50,7 +49,6 @@ const cloud_sender = (scenario,lang) => {
 }
 
 const initGUI = (scenario) => {
-  console.log("on rentre ici");
   let data = readScenario(scenario)
 
   const sections = [
@@ -82,7 +80,6 @@ const initGUI = (scenario) => {
 
   // Update header menu
   // Create menubar
-  console.log("on create le menu");
   const left = document.getElementById('buttons');
   const right = document.getElementById('status');
 
