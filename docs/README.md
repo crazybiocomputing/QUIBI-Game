@@ -13,5 +13,20 @@ The SVG icons belong to the collection of [Bootstrap Icons](https://icons.getboo
 
 ### Intro TODO
 
-### History.js ...
-ToDO
+### history.js @author Texier Louis
+
+Convert string into hexadecimal, binary or decimal.
+Getter and setter of cookie.
+Read json file and add an id for each text message of the scenario.
+After an interaction, save the id in a string for the cookie.
+With a cookie, get the string containing the id and display them with the button history.
+
+### inventory.js @author Texier Louis
+
+Get the status of the characters and items and stock them into a hexadecimal string.
+Get the string from the cookie and set the status and display them (Not working).
+
+### settings.js @author Texier Louis
+
+Create a button to change the language in the button settings.
+
