@@ -46,6 +46,7 @@
  * @param {object} data -  Object containing the current status of the events
  * @param {array} array -  Array containing the status of the last action of the player
  * @return {object} - Object containing the new status of the events
+ * @author Texier Louis
 */
 function update_inventory(array,data){
     for (let i in data) {
@@ -59,8 +60,9 @@ function update_inventory(array,data){
 /** 
  * Creation of the hexadecimal number
  * 
- * @param {object} object -  Object containing the status of the events
+ * @param {object} data -  Object containing the status of the events
  * @return {String} - String containing the hexadecimal number
+ * @author Texier Louis
 */
 function create_hexadecimal_inventory(data){
     let binary = "";
@@ -72,11 +74,12 @@ function create_hexadecimal_inventory(data){
 }
 
 /** 
- * Set the status of the event depending of the hexadecimal keep in the cookie 
+ * Set the status of the event depending of the hexadecimal keep in the cookie (Not working)
  * 
  * @param {object} data - Object containing the scenario from the json file
  * @param {object} object -  Object containing the status of the events (Define object and status)
  * @param {string} hexadecimal -  String containing the hexadecimal number
+ * @author Texier Louis
 */
 function set_status(data,object,binary){
     console.log(binary);

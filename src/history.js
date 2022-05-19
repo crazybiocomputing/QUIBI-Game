@@ -29,10 +29,11 @@
 'use strict';
 
 /**
- * Convert a binary number into hexadecimal
+ * Convert a binary number into hexadecimal (old)
  *
  * @param {string} binary -  String containing the binary number
  * @return {string} - String containing the hexadecimal number
+ * @author Texier Louis
 */
 function convert_to_hexa(binary){
     let hexadecimal = parseInt(binary,2).toString(16).toUpperCase();
@@ -40,10 +41,11 @@ function convert_to_hexa(binary){
 }
 
 /**
- * Convert a hexadecimal number into binary
+ * Convert a hexadecimal number into binary (old)
  *
  * @param {string} hexadecimal -  String containing the hexadecimal number
  * @return {string} - String containing the binary number
+ * @author Texier Louis
 */
 function convert_to_binary(hexadecimal){
     let binary = parseInt(hexadecimal,16).toString(2);
@@ -57,6 +59,7 @@ function convert_to_binary(hexadecimal){
  * @param {int} base_string -  Current base in which the string is
  * @param {int} base_convert -  Base for the conversion
  * @return {string} - String containing the new number
+ * @author Texier Louis
 */
 function convert(string, base_string, base_convert){
     let conversion = parseInt(string,base_string).toString(base_convert).toUpperCase();
@@ -68,6 +71,7 @@ function convert(string, base_string, base_convert){
  * Create and set a cookie for the key 'hexadecimal'
  *
  * @param {string} value - String containing the history string
+ * @author Texier Louis
 */
 function set_cookie(value){
     localStorage.setItem('history',value);
@@ -77,6 +81,7 @@ function set_cookie(value){
  * Get the cookie for the key 'hexadecimal'
  *
  * @return {string} - String containing the hexadecimal number
+ * @author Texier Louis
 */
 function get_cookie(){
     let cookie = localStorage.getItem('history')
@@ -89,6 +94,7 @@ function get_cookie(){
  *
  * @param {object} data - Object containing the scenario
  * @return {object} - Data with id apply
+ * @author Texier Louis
 */
 function update_id_scenario(data){
     let count = 0;
@@ -109,6 +115,15 @@ function update_id_scenario(data){
     return (data);
 }
 
+/**
+ * Get the result of an interaction and add the id of the dialogue
+ *
+ * @param {object} data -  Object from the scenario in the json file
+ * @param {array} array -  Array containing the two elements used in the interaction
+ * @param {string} string -  String the old id for the current game
+ * @return {string} - String containing the list of the id
+ * @author Texier Louis
+*/
 function update_history(data, array, string){
     let j=0;
     let dest = 0;
@@ -128,12 +143,21 @@ function update_history(data, array, string){
     return (string);
 }
 
+
+/**
+ * Fill the history thanks to the string containing all id
+ *
+ * @param {string} string -  String containing the id
+ * @param {object} data -  Scenario from the json file
+ * @return {array} - Array containing all dialogue for the current game in each language
+ * @author Texier Louis
+*/
 function fill_history(string, data){
     let array = [[data['gamers'][0]['settings']['intro']['fr']],[data['gamers'][0]['settings']['intro']['en']]];
     if (string.length % 2 == 1){
       string = "0" + string;
     }
-    console.log(string);
+
     for (let a=0; a<string.length; a+=2){
         for (let i in data["gamers"]){
             for (let j in data['gamers'][i]){
@@ -156,14 +180,27 @@ function fill_history(string, data){
 }
 
 
-
+/**
+ * Create the cookie with the different strings
+ *
+ * @param {string} inventory -  String containing the id
+ * @param {string} history -  String containing the status
+ * @return {string} - String containing the hexadecimal numbers
+ * @author Texier Louis
+*/
 function create_cookie_value(inventory, history){
     history = convert(history,10,16);
     let passphrase = "^"+history+"_"+inventory+"$";
-    console.log(passphrase);
     return passphrase;
 }
 
+/**
+ * Transform the cookie into an array with the strings of the history and inventory
+ *
+ * @param {string} cookie -  String containing the binary number
+ * @return {array} - Array with the strings for history and inventory
+ * @author Texier Louis
+*/
 function transform_cookie(cookie){
     let array = [];
     if (cookie.substring(0,1)=="^" && cookie.substring(cookie.length - 1)=="$"){
@@ -179,6 +216,14 @@ function transform_cookie(cookie){
     return (array);
 }
 
+/**
+ * Load the history and inventory (inventory not working)
+ *
+ * @param {object} data -  Object from the json file
+ * @param {object} inventory -  Data from the status of the characters and items
+ * @param {string} cookie -  String containing the cookie
+ * @author Texier Louis
+*/
 function loading(data,inventory,cookie){
     let array = transform_cookie(cookie);
     let array_2 = fill_history(array[0],data);
@@ -186,11 +231,25 @@ function loading(data,inventory,cookie){
     //set_status(data,inventory,array[1]);
 }
 
+/**
+ * Display the cookie when clicking on the save_session button
+ *
+ * @param {string} name -  Name given to the button
+ * @param {object} ev -  Event corresponding to a clic
+ * @author Texier Louis
+*/
 const sessionSaver = (name,ev) => {
   let passphrase = get_cookie();
   alert(passphrase);
 }
 
+/**
+ * Display the history when clicking on the history button
+ *
+ * @param {string} name -  Name given to the button
+ * @param {object} ev -  Event corresponding to a clic
+ * @author Texier Louis
+*/
 const history = (name,ev) => {
   let data = readScenario('./bob_test5.json');
   data.then((value)=>{
