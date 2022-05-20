@@ -36,3 +36,4 @@ Allows to store items and characters in constants. Gives them all an identifier,
 
 ### dragdrop.js @author Guidoux d'Halluin Bluwen, Taveau Jean-Christophe
 
+Functions that allow you to drag and drop an item or a character in a graphic interface.
