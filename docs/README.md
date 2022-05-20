@@ -30,3 +30,9 @@ Get the string from the cookie and set the status and display them (Not working)
 
 Create a button to change the language in the button settings.
 
+### history.js @author Chabot Léa, Guidoux d'Halluin Bluwen, Taveau Jean-Christophe
+
+Allows to store items and characters in constants. Gives them all an identifier, a code and a name.
+
+### dragdrop.js @author Guidoux d'Halluin Bluwen, Taveau Jean-Christophe
+
