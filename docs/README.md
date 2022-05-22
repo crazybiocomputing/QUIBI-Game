@@ -40,4 +40,14 @@ Functions that allow you to drag and drop an item or a character in a graphic in
 
 ### engine.js @author Chabot Léa, Guidoux d'Halluin Bluwen, Texier Louis
 
+Contains the functions for gameplay - the game engine :
+-Initialize the time, item, character, variables;
+-Check the time, item, character, variables and the progression of the game;
 
+### introduction.js @author Chabot Léa, Guidoux d'Halluin Bluwen
+
+Contains the functions called in the init file.
+
+### init.js @author Chabot Léa, Guidoux d'Halluin Bluwen, Texier Louis
+
+The main file.
